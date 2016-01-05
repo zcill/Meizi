@@ -1,15 +1,13 @@
 //
-//  ViewController.h
+//  ZCMainViewController.h
 //  Meizi
 //
 //  Created by 朱立焜 on 16/1/6.
 //  Copyright © 2016年 朱立焜. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "ZCRootViewController.h"
 
-@interface ViewController : UIViewController
-
+@interface ZCMainViewController : ZCRootViewController
 
 @end
-

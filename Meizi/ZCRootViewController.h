@@ -1,5 +1,5 @@
 //
-//  AppDelegate.h
+//  ZCRootViewController.h
 //  Meizi
 //
 //  Created by 朱立焜 on 16/1/6.
@@ -8,10 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
-
-@property (strong, nonatomic) UIWindow *window;
-
+@interface ZCRootViewController : UIViewController
 
 @end
-
