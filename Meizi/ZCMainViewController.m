@@ -8,8 +8,13 @@
 
 #import "ZCMainViewController.h"
 #import "NSString+ZCHtmlBodyString.h"
+#import <SDWebImage/UIImageView+WebCache.h>
+#import "ZCMoreDefines.h"
 
-@interface ZCMainViewController ()
+@interface ZCMainViewController ()<UITableViewDelegate, UITableViewDataSource>
+
+@property (nonatomic, strong) NSMutableArray *dataSource;
+@property (nonatomic, strong) UITableView *tableView;
 
 @end
 
@@ -18,11 +23,52 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    NSString *str = [NSString getHtmlBodyStringWithUrl:[NSURL URLWithString:@"http://www.mzitu.com/56435"]];
+    [self getPicUrl];
     
-    NSArray *arr = [str getFeedBackArrayWithSubstringByRegular:@"img[src~=(?i)\\.(png|jpe?g)]"];
+    self.tableView = [[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStylePlain];
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    
+    [self.view addSubview:self.tableView];
+    
+}
 
-    NSLog(@"%@", arr);
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cell"];
+    }
+    
+    UIImageView *image = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 350, 500)];
+    [image sd_setImageWithURL:[NSURL URLWithString:self.dataSource[indexPath.row]]];
+    [cell addSubview:image];
+    
+    return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 500;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.dataSource.count;
+}
+
+- (void)getPicUrl {
+    
+    NSString *str = @"";
+    self.dataSource = [NSMutableArray array];
+    
+    for (int i = 1; i < 36; i++) {
+        str = [NSString getHtmlBodyStringWithUrl:[NSURL URLWithString:[NSString stringWithFormat:@"http://www.mzitu.com/56435/%d", i]]];
+        NSArray *arr = [str getFeedBackArrayWithSubstringByRegular:@"[a-zA-z]+://[^\\s]*jpe?g"];
+        NSString *string = [arr objectAtIndex:0];
+        NSLog(@"%@", string);
+        [self.dataSource addObject:string];
+    }
+    
+    NSLog(@"%@", self.dataSource);
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -30,14 +76,16 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
+//    NSArray *arr = [str getFeedBackArrayWithSubstringByRegular:@"img[src~=(?i)\\.(png|jpe?g)]"];
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+
+
+//    CGRect frame = self.view.frame;
+//    UIImageView *imageView = [[UIImageView alloc] initWithFrame:frame];
+//    [imageView sd_setImageWithURL:[NSURL URLWithString:string]];
+
+//    [self.view addSubview:imageView];
+
+//    NSLog(@"%@", arr);
 
 @end

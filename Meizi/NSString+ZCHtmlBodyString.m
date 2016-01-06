@@ -49,11 +49,11 @@
         
         while (r.length != NSNotFound && r.length != 0) {
             
-            NSLog(@"index = %d regIndex = %ld loc = %ld",(++i),r.length,r.location);
+//            NSLog(@"index = %d regIndex = %ld loc = %ld",(++i),r.length,r.location);
             
             NSString* substr = [self substringWithRange:r];
             
-            NSLog(@"substr = %@",substr);
+//            NSLog(@"substr = %@",substr);
             
             [arr addObject:substr];
             
