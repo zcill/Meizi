@@ -19,4 +19,14 @@
  */
 + (NSString *)getHtmlBodyStringWithUrl:(NSURL *)url;
 
+/**
+ *  传入正则表达式，返回结果数组
+ *
+ *  @param regular 需要匹配的正则表达式
+ *
+ *  @return 结果数组
+ */
+- (NSMutableArray *)getFeedBackArrayWithSubstringByRegular:(NSString *)regular;
+
+
 @end

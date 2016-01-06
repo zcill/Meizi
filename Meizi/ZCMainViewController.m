@@ -18,8 +18,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    NSLog(@"%@", [NSString getHtmlBodyStringWithUrl:[NSURL URLWithString:@"http://www.mzitu.com/"]]);
+    NSString *str = [NSString getHtmlBodyStringWithUrl:[NSURL URLWithString:@"http://www.mzitu.com/56435"]];
     
+    NSArray *arr = [str getFeedBackArrayWithSubstringByRegular:@"img[src~=(?i)\\.(png|jpe?g)]"];
+
+    NSLog(@"%@", arr);
 }
 
 - (void)didReceiveMemoryWarning {

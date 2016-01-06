@@ -15,16 +15,21 @@ PODS:
   - AFNetworking/UIKit (3.0.4):
     - AFNetworking/NSURLSession
   - MJRefresh (3.0.7)
+  - SDWebImage (3.7.3):
+    - SDWebImage/Core (= 3.7.3)
+  - SDWebImage/Core (3.7.3)
   - SIAlertView (1.3)
 
 DEPENDENCIES:
   - AFNetworking
   - MJRefresh
+  - SDWebImage
   - SIAlertView
 
 SPEC CHECKSUMS:
   AFNetworking: a0075feb321559dc78d9d85b55d11caa19eabb93
   MJRefresh: f3e1228ec3d38c7ba5208d58032631a52f39f495
+  SDWebImage: 1d2b1a1efda1ade1b00b6f8498865f8ddedc8a84
   SIAlertView: 20c794b55eaf44d888773ea51647cf8907723919
 
 COCOAPODS: 0.39.0
