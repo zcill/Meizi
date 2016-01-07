@@ -9,6 +9,7 @@
 #import "ZCMainViewController.h"
 #import "NSString+ZCHtmlBodyString.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import <SCLAlertView-Objective-C/SCLAlertView.h>
 #import "ZCMoreDefines.h"
 
 @interface ZCMainViewController ()<UITableViewDelegate, UITableViewDataSource>
