@@ -20,6 +20,7 @@ PODS:
   - Crashlytics (3.4.1):
     - Fabric (~> 1.6.0)
   - Fabric (1.6.1)
+  - GDataXML-HTML (1.3.0)
   - LMDropdownView (1.0.2)
   - MJRefresh (3.0.7)
   - SCLAlertView-Objective-C (0.7.9)
@@ -33,6 +34,7 @@ DEPENDENCIES:
   - ChameleonFramework
   - Crashlytics
   - Fabric
+  - GDataXML-HTML (~> 1.3.0)
   - LMDropdownView
   - MJRefresh
   - SCLAlertView-Objective-C
@@ -44,6 +46,7 @@ SPEC CHECKSUMS:
   ChameleonFramework: a6b466873ff9a4ce3a5196c20bccf1a97ad9f446
   Crashlytics: 41574a245bc6ae10c55d57f385ebd2004e5bee05
   Fabric: bf0ceb04e7c924090efc5f8c55e4fbcca189e0a0
+  GDataXML-HTML: 7adc03668cab35c288f1dbb8929a179f0fece898
   LMDropdownView: 50188c9678eab3690153993d1824b7235d9b7edc
   MJRefresh: f3e1228ec3d38c7ba5208d58032631a52f39f495
   SCLAlertView-Objective-C: e36ab12dc1ec4ff6f932888083b21d71a3a1ad23

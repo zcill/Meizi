@@ -19,6 +19,10 @@
 		4C1A5CBF1C3C2FE000A1DF98 /* ZCCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1A5CBE1C3C2FE000A1DF98 /* ZCCategoryViewController.m */; };
 		4C1A5CC21C3C2FE900A1DF98 /* ZCSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1A5CC11C3C2FE900A1DF98 /* ZCSettingViewController.m */; };
 		4C1A5CC51C3C39A600A1DF98 /* NSString+ZCHtmlBodyString.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1A5CC41C3C39A600A1DF98 /* NSString+ZCHtmlBodyString.m */; };
+		4C3BE1041C4173BB0001AC14 /* libxml2.2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C3BE1031C4173BB0001AC14 /* libxml2.2.tbd */; };
+		4C3BE10E1C41745D0001AC14 /* TFHpple.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C3BE1091C41745D0001AC14 /* TFHpple.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		4C3BE10F1C41745D0001AC14 /* TFHppleElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C3BE10B1C41745D0001AC14 /* TFHppleElement.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		4C3BE1101C41745D0001AC14 /* XPathQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C3BE10D1C41745D0001AC14 /* XPathQuery.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		E8CC6059EB64A86EA12469B2 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 56FD7F5C37AE729DC9825FB1 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +45,7 @@
 
 /* Begin PBXFileReference section */
 		18C292FF408F4F9ADA5EE91D /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		4C00FD521C3EC2000068D852 /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
 		4C1A5C721C3C214600A1DF98 /* Meizi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Meizi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C1A5C761C3C214600A1DF98 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4C1A5C781C3C214600A1DF98 /* ZCAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZCAppDelegate.h; sourceTree = "<group>"; };
@@ -67,6 +72,13 @@
 		4C1A5CC11C3C2FE900A1DF98 /* ZCSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCSettingViewController.m; sourceTree = "<group>"; };
 		4C1A5CC31C3C39A600A1DF98 /* NSString+ZCHtmlBodyString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+ZCHtmlBodyString.h"; sourceTree = "<group>"; };
 		4C1A5CC41C3C39A600A1DF98 /* NSString+ZCHtmlBodyString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+ZCHtmlBodyString.m"; sourceTree = "<group>"; };
+		4C3BE1031C4173BB0001AC14 /* libxml2.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.2.tbd; path = usr/lib/libxml2.2.tbd; sourceTree = SDKROOT; };
+		4C3BE1081C41745D0001AC14 /* TFHpple.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFHpple.h; sourceTree = "<group>"; };
+		4C3BE1091C41745D0001AC14 /* TFHpple.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFHpple.m; sourceTree = "<group>"; };
+		4C3BE10A1C41745D0001AC14 /* TFHppleElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFHppleElement.h; sourceTree = "<group>"; };
+		4C3BE10B1C41745D0001AC14 /* TFHppleElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFHppleElement.m; sourceTree = "<group>"; };
+		4C3BE10C1C41745D0001AC14 /* XPathQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPathQuery.h; sourceTree = "<group>"; };
+		4C3BE10D1C41745D0001AC14 /* XPathQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPathQuery.m; sourceTree = "<group>"; };
 		56FD7F5C37AE729DC9825FB1 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5135A3A579CE788B4CA8A3A /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -76,6 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C3BE1041C4173BB0001AC14 /* libxml2.2.tbd in Frameworks */,
 				E8CC6059EB64A86EA12469B2 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -122,6 +135,7 @@
 		4C1A5C741C3C214600A1DF98 /* Meizi */ = {
 			isa = PBXGroup;
 			children = (
+				4C3BE1061C41745D0001AC14 /* Vendor */,
 				4C1A5CB81C3C2F8800A1DF98 /* ZCTools */,
 				4C1A5CA81C3C272000A1DF98 /* Application */,
 				4C1A5CAA1C3C2B2900A1DF98 /* RootViewController */,
@@ -211,6 +225,27 @@
 			name = ViewControllers;
 			sourceTree = "<group>";
 		};
+		4C3BE1061C41745D0001AC14 /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				4C3BE1071C41745D0001AC14 /* TFHpple */,
+			);
+			path = Vendor;
+			sourceTree = "<group>";
+		};
+		4C3BE1071C41745D0001AC14 /* TFHpple */ = {
+			isa = PBXGroup;
+			children = (
+				4C3BE1081C41745D0001AC14 /* TFHpple.h */,
+				4C3BE1091C41745D0001AC14 /* TFHpple.m */,
+				4C3BE10A1C41745D0001AC14 /* TFHppleElement.h */,
+				4C3BE10B1C41745D0001AC14 /* TFHppleElement.m */,
+				4C3BE10C1C41745D0001AC14 /* XPathQuery.h */,
+				4C3BE10D1C41745D0001AC14 /* XPathQuery.m */,
+			);
+			path = TFHpple;
+			sourceTree = "<group>";
+		};
 		B950DDE44F62B5EC0EDF56EB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -223,6 +258,8 @@
 		E3BF12CA3CCEF2D075C6577C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4C3BE1031C4173BB0001AC14 /* libxml2.2.tbd */,
+				4C00FD521C3EC2000068D852 /* libxml2.tbd */,
 				56FD7F5C37AE729DC9825FB1 /* libPods.a */,
 			);
 			name = Frameworks;
@@ -413,6 +450,9 @@
 				4C1A5C7A1C3C214600A1DF98 /* ZCAppDelegate.m in Sources */,
 				4C1A5C771C3C214600A1DF98 /* main.m in Sources */,
 				4C1A5CC21C3C2FE900A1DF98 /* ZCSettingViewController.m in Sources */,
+				4C3BE1101C41745D0001AC14 /* XPathQuery.m in Sources */,
+				4C3BE10F1C41745D0001AC14 /* TFHppleElement.m in Sources */,
+				4C3BE10E1C41745D0001AC14 /* TFHpple.m in Sources */,
 				4C1A5CB61C3C2EFC00A1DF98 /* ZCTabBar.m in Sources */,
 				4C1A5CAD1C3C2B3E00A1DF98 /* ZCRootViewController.m in Sources */,
 				4C1A5CBC1C3C2FD200A1DF98 /* ZCMainViewController.m in Sources */,

@@ -7,8 +7,13 @@
 //
 
 #import "ZCCategoryViewController.h"
+#import "TFHpple.h"
+#import "TFHppleElement.h"
+#import "XPathQuery.h"
 
 @interface ZCCategoryViewController ()
+
+@property (nonatomic, strong) NSMutableArray *dataArray;
 
 @end
 
@@ -16,22 +21,88 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    // 标题是前24个string
+    self.dataArray = [NSMutableArray array];
+    
+    [self parsingHtml];
+    
+}
+
+- (void)parsingHtml {
+    
+    NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://www.mzitu.com/"]];
+    NSString *htmlStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        self.dataArray = [self parseHtml:htmlStr];
+        for (NSDictionary *dict in _dataArray) {
+            NSString *title = [dict objectForKey:@"alt"];
+            NSString *dataOriginal = [dict objectForKey:@"data-original"];
+            NSString *width = [dict objectForKey:@"width"];
+            NSString *height = [dict objectForKey:@"height"];
+            
+            NSLog(@"title - %@ \ndataOriginal - %@ \nwidth - %@ \n height - %@", title, dataOriginal, width, height);
+        }
+    });
+    
+}
+                          
+- (NSMutableArray *)parseHtml:(NSString *)htmlStr {
+    
+    TFHpple *xpathParser = [[TFHpple alloc] initWithHTMLData:[htmlStr dataUsingEncoding:NSUTF8StringEncoding]];
+    NSArray *array = [xpathParser searchWithXPathQuery:@"//li"];
+    for (TFHppleElement *element in array) {
+        if (element.children.count > 0) {
+            for (TFHppleElement *subElement in element.children) {
+//                NSLog(@"element arrtibutes = %@", element.attributes);
+                if ([subElement.tagName isEqualToString:@"a"]) {
+                    
+                    if (subElement.content.length > 0) {
+//                        NSString *content = subElement.content;
+//                        NSLog(@"if tagName = a subElement -------> %@", content);
+//                        [_dataArray addObject:content];
+                    }
+                    else {
+//                        NSLog(@"subElement.content <= 0 subElement ------> %@", subElement);
+                        
+//                        NSLog(@"subElement.content -----> %@", subElement.content);
+//                        NSLog(@"subElement.attributes -----> %@", subElement.attributes);
+                        
+                        for (TFHppleElement *subElementChildren in subElement.children) {
+                            
+//                            NSLog(@"subElementChildren content ----> %@", subElementChildren.content);
+//                            NSLog(@"subElementChildren attributes ----> %@", subElementChildren.attributes);
+                            
+                            [_dataArray addObject:subElementChildren.attributes];
+                            
+                        }
+                    }
+                }
+                if ([subElement.tagName isEqualToString:@"img"]) {
+                    NSLog(@"img");
+                }
+            }
+            if (element.content.length > 0) {
+//                NSLog(@"if element.content.length > 0 element -------> %@", element.content);
+            }
+            
+        } else {
+            
+//            NSLog(@"else element -------> %@", element.content);
+            
+        }
+    }
+    
+    NSLog(@"%@", _dataArray);
+    NSLog(@"%ld", _dataArray.count);
+    
+    return _dataArray;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

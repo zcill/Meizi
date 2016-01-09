@@ -43,7 +43,7 @@
  */
 - (void)setupAllSubViewControllers {
     
-    [self setupSingleViewController:[[ZCMainViewController alloc] init] vcTitle:@"首页" tabBarTitle:@"首页" image:@"" selectedImage:@""];
+    [self setupSingleViewController:[[ZCCategoryViewController alloc] init] vcTitle:@"首页" tabBarTitle:@"首页" image:@"" selectedImage:@""];
     
     [self setupSingleViewController:[[ZCCategoryViewController alloc] init] vcTitle:@"专题" tabBarTitle:@"专题" image:@"" selectedImage:@""];
     

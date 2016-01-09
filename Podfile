@@ -4,6 +4,8 @@ pod 'MJRefresh'
 pod 'AFNetworking'
 pod 'SDWebImage'
 
+pod 'GDataXML-HTML', '~> 1.3.0'
+
 pod 'ChameleonFramework'
 
 pod 'SIAlertView'

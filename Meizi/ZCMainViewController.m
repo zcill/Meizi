@@ -24,7 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self getPicUrl];
+    [self getPicWithUrlString:@"http://www.mzitu.com/56508" picNumber:42];
     
     self.tableView = [[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStylePlain];
     self.tableView.delegate = self;
@@ -55,13 +55,13 @@
     return self.dataSource.count;
 }
 
-- (void)getPicUrl {
+- (void)getPicWithUrlString:(NSString *)urlString picNumber:(NSInteger)picNumber {
     
     NSString *str = @"";
     self.dataSource = [NSMutableArray array];
     
-    for (int i = 1; i < 36; i++) {
-        str = [NSString getHtmlBodyStringWithUrl:[NSURL URLWithString:[NSString stringWithFormat:@"http://www.mzitu.com/56435/%d", i]]];
+    for (int i = 1; i < picNumber + 1; i++) {
+        str = [NSString getHtmlBodyStringWithUrl:[NSURL URLWithString:[NSString stringWithFormat:@"%@/%d", urlString, i]]];
         NSArray *arr = [str getFeedBackArrayWithSubstringByRegular:@"[a-zA-z]+://[^\\s]*jpe?g"];
         NSString *string = [arr objectAtIndex:0];
         NSLog(@"%@", string);
