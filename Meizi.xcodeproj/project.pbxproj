@@ -8,21 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		4C1A5C771C3C214600A1DF98 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1A5C761C3C214600A1DF98 /* main.m */; };
-		4C1A5C7A1C3C214600A1DF98 /* ZCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1A5C791C3C214600A1DF98 /* ZCAppDelegate.m */; };
 		4C1A5C821C3C214600A1DF98 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C1A5C811C3C214600A1DF98 /* Assets.xcassets */; };
 		4C1A5C851C3C214600A1DF98 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C1A5C831C3C214600A1DF98 /* LaunchScreen.storyboard */; };
 		4C1A5C901C3C214600A1DF98 /* MeiziTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1A5C8F1C3C214600A1DF98 /* MeiziTests.m */; };
 		4C1A5C9B1C3C214600A1DF98 /* MeiziUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1A5C9A1C3C214600A1DF98 /* MeiziUITests.m */; };
-		4C1A5CAD1C3C2B3E00A1DF98 /* ZCRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1A5CAC1C3C2B3E00A1DF98 /* ZCRootViewController.m */; };
-		4C1A5CB61C3C2EFC00A1DF98 /* ZCTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1A5CB51C3C2EFC00A1DF98 /* ZCTabBar.m */; };
-		4C1A5CBC1C3C2FD200A1DF98 /* ZCMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1A5CBB1C3C2FD200A1DF98 /* ZCMainViewController.m */; };
-		4C1A5CBF1C3C2FE000A1DF98 /* ZCCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1A5CBE1C3C2FE000A1DF98 /* ZCCategoryViewController.m */; };
-		4C1A5CC21C3C2FE900A1DF98 /* ZCSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1A5CC11C3C2FE900A1DF98 /* ZCSettingViewController.m */; };
-		4C1A5CC51C3C39A600A1DF98 /* NSString+ZCHtmlBodyString.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1A5CC41C3C39A600A1DF98 /* NSString+ZCHtmlBodyString.m */; };
 		4C3BE1041C4173BB0001AC14 /* libxml2.2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C3BE1031C4173BB0001AC14 /* libxml2.2.tbd */; };
 		4C3BE10E1C41745D0001AC14 /* TFHpple.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C3BE1091C41745D0001AC14 /* TFHpple.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		4C3BE10F1C41745D0001AC14 /* TFHppleElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C3BE10B1C41745D0001AC14 /* TFHppleElement.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		4C3BE1101C41745D0001AC14 /* XPathQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C3BE10D1C41745D0001AC14 /* XPathQuery.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		4C3BE1251C418AED0001AC14 /* ZCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C3BE1131C418AED0001AC14 /* ZCAppDelegate.m */; };
+		4C3BE1261C418AED0001AC14 /* ZCTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C3BE1161C418AED0001AC14 /* ZCTabBar.m */; };
+		4C3BE1271C418AED0001AC14 /* ZCRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C3BE1191C418AED0001AC14 /* ZCRootViewController.m */; };
+		4C3BE1281C418AED0001AC14 /* ZCCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C3BE11C1C418AED0001AC14 /* ZCCategoryViewController.m */; };
+		4C3BE1291C418AED0001AC14 /* ZCMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C3BE11E1C418AED0001AC14 /* ZCMainViewController.m */; };
+		4C3BE12A1C418AED0001AC14 /* ZCSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C3BE1201C418AED0001AC14 /* ZCSettingViewController.m */; };
+		4C3BE12B1C418AED0001AC14 /* NSString+ZCHtmlBodyString.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C3BE1231C418AED0001AC14 /* NSString+ZCHtmlBodyString.m */; };
 		E8CC6059EB64A86EA12469B2 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 56FD7F5C37AE729DC9825FB1 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -48,8 +48,6 @@
 		4C00FD521C3EC2000068D852 /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
 		4C1A5C721C3C214600A1DF98 /* Meizi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Meizi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C1A5C761C3C214600A1DF98 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		4C1A5C781C3C214600A1DF98 /* ZCAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZCAppDelegate.h; sourceTree = "<group>"; };
-		4C1A5C791C3C214600A1DF98 /* ZCAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZCAppDelegate.m; sourceTree = "<group>"; };
 		4C1A5C811C3C214600A1DF98 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4C1A5C841C3C214600A1DF98 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4C1A5C861C3C214600A1DF98 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -59,19 +57,6 @@
 		4C1A5C961C3C214600A1DF98 /* MeiziUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MeiziUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C1A5C9A1C3C214600A1DF98 /* MeiziUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MeiziUITests.m; sourceTree = "<group>"; };
 		4C1A5C9C1C3C214600A1DF98 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4C1A5CAB1C3C2B3E00A1DF98 /* ZCRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCRootViewController.h; sourceTree = "<group>"; };
-		4C1A5CAC1C3C2B3E00A1DF98 /* ZCRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCRootViewController.m; sourceTree = "<group>"; };
-		4C1A5CB41C3C2EFC00A1DF98 /* ZCTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCTabBar.h; sourceTree = "<group>"; };
-		4C1A5CB51C3C2EFC00A1DF98 /* ZCTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCTabBar.m; sourceTree = "<group>"; };
-		4C1A5CB71C3C2F8400A1DF98 /* ZCMoreDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCMoreDefines.h; sourceTree = "<group>"; };
-		4C1A5CBA1C3C2FD200A1DF98 /* ZCMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCMainViewController.h; sourceTree = "<group>"; };
-		4C1A5CBB1C3C2FD200A1DF98 /* ZCMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCMainViewController.m; sourceTree = "<group>"; };
-		4C1A5CBD1C3C2FE000A1DF98 /* ZCCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCCategoryViewController.h; sourceTree = "<group>"; };
-		4C1A5CBE1C3C2FE000A1DF98 /* ZCCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCCategoryViewController.m; sourceTree = "<group>"; };
-		4C1A5CC01C3C2FE900A1DF98 /* ZCSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCSettingViewController.h; sourceTree = "<group>"; };
-		4C1A5CC11C3C2FE900A1DF98 /* ZCSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCSettingViewController.m; sourceTree = "<group>"; };
-		4C1A5CC31C3C39A600A1DF98 /* NSString+ZCHtmlBodyString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+ZCHtmlBodyString.h"; sourceTree = "<group>"; };
-		4C1A5CC41C3C39A600A1DF98 /* NSString+ZCHtmlBodyString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+ZCHtmlBodyString.m"; sourceTree = "<group>"; };
 		4C3BE1031C4173BB0001AC14 /* libxml2.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.2.tbd; path = usr/lib/libxml2.2.tbd; sourceTree = SDKROOT; };
 		4C3BE1081C41745D0001AC14 /* TFHpple.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFHpple.h; sourceTree = "<group>"; };
 		4C3BE1091C41745D0001AC14 /* TFHpple.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFHpple.m; sourceTree = "<group>"; };
@@ -79,6 +64,21 @@
 		4C3BE10B1C41745D0001AC14 /* TFHppleElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFHppleElement.m; sourceTree = "<group>"; };
 		4C3BE10C1C41745D0001AC14 /* XPathQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPathQuery.h; sourceTree = "<group>"; };
 		4C3BE10D1C41745D0001AC14 /* XPathQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPathQuery.m; sourceTree = "<group>"; };
+		4C3BE1121C418AED0001AC14 /* ZCAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCAppDelegate.h; sourceTree = "<group>"; };
+		4C3BE1131C418AED0001AC14 /* ZCAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCAppDelegate.m; sourceTree = "<group>"; };
+		4C3BE1151C418AED0001AC14 /* ZCTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCTabBar.h; sourceTree = "<group>"; };
+		4C3BE1161C418AED0001AC14 /* ZCTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCTabBar.m; sourceTree = "<group>"; };
+		4C3BE1181C418AED0001AC14 /* ZCRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCRootViewController.h; sourceTree = "<group>"; };
+		4C3BE1191C418AED0001AC14 /* ZCRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCRootViewController.m; sourceTree = "<group>"; };
+		4C3BE11B1C418AED0001AC14 /* ZCCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCCategoryViewController.h; sourceTree = "<group>"; };
+		4C3BE11C1C418AED0001AC14 /* ZCCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCCategoryViewController.m; sourceTree = "<group>"; };
+		4C3BE11D1C418AED0001AC14 /* ZCMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCMainViewController.h; sourceTree = "<group>"; };
+		4C3BE11E1C418AED0001AC14 /* ZCMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCMainViewController.m; sourceTree = "<group>"; };
+		4C3BE11F1C418AED0001AC14 /* ZCSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCSettingViewController.h; sourceTree = "<group>"; };
+		4C3BE1201C418AED0001AC14 /* ZCSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCSettingViewController.m; sourceTree = "<group>"; };
+		4C3BE1221C418AED0001AC14 /* NSString+ZCHtmlBodyString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+ZCHtmlBodyString.h"; sourceTree = "<group>"; };
+		4C3BE1231C418AED0001AC14 /* NSString+ZCHtmlBodyString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+ZCHtmlBodyString.m"; sourceTree = "<group>"; };
+		4C3BE1241C418AED0001AC14 /* ZCMoreDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCMoreDefines.h; sourceTree = "<group>"; };
 		56FD7F5C37AE729DC9825FB1 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5135A3A579CE788B4CA8A3A /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -136,11 +136,11 @@
 			isa = PBXGroup;
 			children = (
 				4C3BE1061C41745D0001AC14 /* Vendor */,
-				4C1A5CB81C3C2F8800A1DF98 /* ZCTools */,
-				4C1A5CA81C3C272000A1DF98 /* Application */,
-				4C1A5CAA1C3C2B2900A1DF98 /* RootViewController */,
-				4C1A5CA91C3C2A2500A1DF98 /* Navi And TabBar */,
-				4C1A5CB91C3C2FA800A1DF98 /* ViewControllers */,
+				4C3BE1211C418AED0001AC14 /* ZCTools */,
+				4C3BE1111C418AED0001AC14 /* Application */,
+				4C3BE1141C418AED0001AC14 /* NaviAndTab */,
+				4C3BE1171C418AED0001AC14 /* Root */,
+				4C3BE11A1C418AED0001AC14 /* ViewControllers */,
 				4C1A5C831C3C214600A1DF98 /* LaunchScreen.storyboard */,
 				4C1A5C811C3C214600A1DF98 /* Assets.xcassets */,
 				4C1A5C861C3C214600A1DF98 /* Info.plist */,
@@ -175,56 +175,6 @@
 			path = MeiziUITests;
 			sourceTree = "<group>";
 		};
-		4C1A5CA81C3C272000A1DF98 /* Application */ = {
-			isa = PBXGroup;
-			children = (
-				4C1A5C781C3C214600A1DF98 /* ZCAppDelegate.h */,
-				4C1A5C791C3C214600A1DF98 /* ZCAppDelegate.m */,
-			);
-			name = Application;
-			sourceTree = "<group>";
-		};
-		4C1A5CA91C3C2A2500A1DF98 /* Navi And TabBar */ = {
-			isa = PBXGroup;
-			children = (
-				4C1A5CB41C3C2EFC00A1DF98 /* ZCTabBar.h */,
-				4C1A5CB51C3C2EFC00A1DF98 /* ZCTabBar.m */,
-			);
-			name = "Navi And TabBar";
-			sourceTree = "<group>";
-		};
-		4C1A5CAA1C3C2B2900A1DF98 /* RootViewController */ = {
-			isa = PBXGroup;
-			children = (
-				4C1A5CAB1C3C2B3E00A1DF98 /* ZCRootViewController.h */,
-				4C1A5CAC1C3C2B3E00A1DF98 /* ZCRootViewController.m */,
-			);
-			name = RootViewController;
-			sourceTree = "<group>";
-		};
-		4C1A5CB81C3C2F8800A1DF98 /* ZCTools */ = {
-			isa = PBXGroup;
-			children = (
-				4C1A5CB71C3C2F8400A1DF98 /* ZCMoreDefines.h */,
-				4C1A5CC31C3C39A600A1DF98 /* NSString+ZCHtmlBodyString.h */,
-				4C1A5CC41C3C39A600A1DF98 /* NSString+ZCHtmlBodyString.m */,
-			);
-			name = ZCTools;
-			sourceTree = "<group>";
-		};
-		4C1A5CB91C3C2FA800A1DF98 /* ViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-				4C1A5CBA1C3C2FD200A1DF98 /* ZCMainViewController.h */,
-				4C1A5CBB1C3C2FD200A1DF98 /* ZCMainViewController.m */,
-				4C1A5CBD1C3C2FE000A1DF98 /* ZCCategoryViewController.h */,
-				4C1A5CBE1C3C2FE000A1DF98 /* ZCCategoryViewController.m */,
-				4C1A5CC01C3C2FE900A1DF98 /* ZCSettingViewController.h */,
-				4C1A5CC11C3C2FE900A1DF98 /* ZCSettingViewController.m */,
-			);
-			name = ViewControllers;
-			sourceTree = "<group>";
-		};
 		4C3BE1061C41745D0001AC14 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
@@ -244,6 +194,56 @@
 				4C3BE10D1C41745D0001AC14 /* XPathQuery.m */,
 			);
 			path = TFHpple;
+			sourceTree = "<group>";
+		};
+		4C3BE1111C418AED0001AC14 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				4C3BE1121C418AED0001AC14 /* ZCAppDelegate.h */,
+				4C3BE1131C418AED0001AC14 /* ZCAppDelegate.m */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		4C3BE1141C418AED0001AC14 /* NaviAndTab */ = {
+			isa = PBXGroup;
+			children = (
+				4C3BE1151C418AED0001AC14 /* ZCTabBar.h */,
+				4C3BE1161C418AED0001AC14 /* ZCTabBar.m */,
+			);
+			path = NaviAndTab;
+			sourceTree = "<group>";
+		};
+		4C3BE1171C418AED0001AC14 /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				4C3BE1181C418AED0001AC14 /* ZCRootViewController.h */,
+				4C3BE1191C418AED0001AC14 /* ZCRootViewController.m */,
+			);
+			path = Root;
+			sourceTree = "<group>";
+		};
+		4C3BE11A1C418AED0001AC14 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				4C3BE11B1C418AED0001AC14 /* ZCCategoryViewController.h */,
+				4C3BE11C1C418AED0001AC14 /* ZCCategoryViewController.m */,
+				4C3BE11D1C418AED0001AC14 /* ZCMainViewController.h */,
+				4C3BE11E1C418AED0001AC14 /* ZCMainViewController.m */,
+				4C3BE11F1C418AED0001AC14 /* ZCSettingViewController.h */,
+				4C3BE1201C418AED0001AC14 /* ZCSettingViewController.m */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		4C3BE1211C418AED0001AC14 /* ZCTools */ = {
+			isa = PBXGroup;
+			children = (
+				4C3BE1221C418AED0001AC14 /* NSString+ZCHtmlBodyString.h */,
+				4C3BE1231C418AED0001AC14 /* NSString+ZCHtmlBodyString.m */,
+				4C3BE1241C418AED0001AC14 /* ZCMoreDefines.h */,
+			);
+			path = ZCTools;
 			sourceTree = "<group>";
 		};
 		B950DDE44F62B5EC0EDF56EB /* Pods */ = {
@@ -446,17 +446,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4C1A5CC51C3C39A600A1DF98 /* NSString+ZCHtmlBodyString.m in Sources */,
-				4C1A5C7A1C3C214600A1DF98 /* ZCAppDelegate.m in Sources */,
+				4C3BE12A1C418AED0001AC14 /* ZCSettingViewController.m in Sources */,
+				4C3BE1261C418AED0001AC14 /* ZCTabBar.m in Sources */,
 				4C1A5C771C3C214600A1DF98 /* main.m in Sources */,
-				4C1A5CC21C3C2FE900A1DF98 /* ZCSettingViewController.m in Sources */,
+				4C3BE1251C418AED0001AC14 /* ZCAppDelegate.m in Sources */,
 				4C3BE1101C41745D0001AC14 /* XPathQuery.m in Sources */,
 				4C3BE10F1C41745D0001AC14 /* TFHppleElement.m in Sources */,
 				4C3BE10E1C41745D0001AC14 /* TFHpple.m in Sources */,
-				4C1A5CB61C3C2EFC00A1DF98 /* ZCTabBar.m in Sources */,
-				4C1A5CAD1C3C2B3E00A1DF98 /* ZCRootViewController.m in Sources */,
-				4C1A5CBC1C3C2FD200A1DF98 /* ZCMainViewController.m in Sources */,
-				4C1A5CBF1C3C2FE000A1DF98 /* ZCCategoryViewController.m in Sources */,
+				4C3BE1291C418AED0001AC14 /* ZCMainViewController.m in Sources */,
+				4C3BE1271C418AED0001AC14 /* ZCRootViewController.m in Sources */,
+				4C3BE12B1C418AED0001AC14 /* NSString+ZCHtmlBodyString.m in Sources */,
+				4C3BE1281C418AED0001AC14 /* ZCCategoryViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -588,6 +588,20 @@
 			baseConfigurationReference = E5135A3A579CE788B4CA8A3A /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
+					"\"${PODS_ROOT}/Headers/Public/ChameleonFramework\"",
+					"\"${PODS_ROOT}/Headers/Public/Crashlytics\"",
+					"\"${PODS_ROOT}/Headers/Public/Fabric\"",
+					"\"${PODS_ROOT}/Headers/Public/LMDropdownView\"",
+					"\"${PODS_ROOT}/Headers/Public/MJRefresh\"",
+					"\"${PODS_ROOT}/Headers/Public/SCLAlertView-Objective-C\"",
+					"\"${PODS_ROOT}/Headers/Public/SDWebImage\"",
+					"\"${PODS_ROOT}/Headers/Public/SIAlertView\"",
+					/usr/include/libxml2,
+				);
 				INFOPLIST_FILE = Meizi/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -601,6 +615,20 @@
 			baseConfigurationReference = 18C292FF408F4F9ADA5EE91D /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
+					"\"${PODS_ROOT}/Headers/Public/ChameleonFramework\"",
+					"\"${PODS_ROOT}/Headers/Public/Crashlytics\"",
+					"\"${PODS_ROOT}/Headers/Public/Fabric\"",
+					"\"${PODS_ROOT}/Headers/Public/LMDropdownView\"",
+					"\"${PODS_ROOT}/Headers/Public/MJRefresh\"",
+					"\"${PODS_ROOT}/Headers/Public/SCLAlertView-Objective-C\"",
+					"\"${PODS_ROOT}/Headers/Public/SDWebImage\"",
+					"\"${PODS_ROOT}/Headers/Public/SIAlertView\"",
+					/usr/include/libxml2,
+				);
 				INFOPLIST_FILE = Meizi/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
