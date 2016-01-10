@@ -45,7 +45,7 @@
     
     if (r.length != NSNotFound && r.length != 0) {
         
-        int i = 0;
+//        int i = 0;
         
         while (r.length != NSNotFound && r.length != 0) {
             

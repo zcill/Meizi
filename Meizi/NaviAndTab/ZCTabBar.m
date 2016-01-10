@@ -8,10 +8,9 @@
 
 #import "ZCTabBar.h"
 #import "ZCMoreDefines.h"
-#import "ZCMainViewController.h"
 #import "ZCCategoryViewController.h"
 #import "ZCSettingViewController.h"
-#import "ZCMeiziViewController.h"
+#import "ZCMainCollectionViewController.h"
 
 @interface ZCTabBar ()
 
@@ -44,7 +43,19 @@
  */
 - (void)setupAllSubViewControllers {
     
-    [self setupSingleViewController:[[ZCMeiziViewController alloc] init] vcTitle:@"首页" tabBarTitle:@"首页" image:@"" selectedImage:@""];
+    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
+    //    self.automaticallyAdjustsScrollViewInsets = NO;
+    
+    CGFloat sizeCompare = 236.f/354.f;
+    
+    CGFloat sizeWidth = ScreenWidth / 2 - 15;
+    CGFloat sizeHeight = sizeWidth / sizeCompare;
+    
+    flowLayout.itemSize = CGSizeMake(sizeWidth, sizeHeight + 30);
+    flowLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
+    flowLayout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
+    
+    [self setupSingleViewController:[[ZCMainCollectionViewController alloc] initWithCollectionViewLayout:flowLayout] vcTitle:@"首页" tabBarTitle:@"首页" image:@"" selectedImage:@""];
     
     [self setupSingleViewController:[[ZCCategoryViewController alloc] init] vcTitle:@"专题" tabBarTitle:@"专题" image:@"" selectedImage:@""];
     
