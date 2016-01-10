@@ -15,12 +15,14 @@
 #import "ZCAdCell.h"
 #import "ZCMoreDefines.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import <MJRefresh/MJRefresh.h>
 
 @interface ZCMeiziViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) NSMutableArray *dataSource;
 
+@property (nonatomic, assign) NSInteger page;
 
 @end
 
@@ -29,7 +31,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationController.navigationBarHidden = YES;
+    self.page = 1;
+    
+    
+    
+    [self.navigationController.navigationBar setTranslucent:NO];
     self.view.backgroundColor = [UIColor whiteColor];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(createCollectionView) name:@"Html_Data_Fetch_Completed" object:nil];
@@ -48,12 +54,16 @@
 
 - (void)parsingHtml {
     
-    NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://www.mzitu.com/"]];
+    NSString *urlString = [NSString stringWithFormat:@"http://www.mzitu.com/page/%ld", self.page];
+    
+    NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:urlString]];
     NSString *htmlStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    
+    [self parseHtml:htmlStr];
     
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         
-        [self parseHtml:htmlStr];
+//        [self parseHtml:htmlStr];
         
     });
     
@@ -88,14 +98,20 @@
     UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
 //    self.automaticallyAdjustsScrollViewInsets = NO;
     
-    flowLayout.itemSize = CGSizeMake(150, 300);
+    CGFloat sizeCompare = 236.f/354.f;
+    
+    CGFloat sizeWidth = ScreenWidth / 2 - 15;
+    CGFloat sizeHeight = sizeWidth / sizeCompare;
+    
+    flowLayout.itemSize = CGSizeMake(sizeWidth, sizeHeight + 30);
     flowLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
-    flowLayout.sectionInset = UIEdgeInsetsMake(10, 20, 10, 20);
+    flowLayout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
     
     self.collectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:flowLayout];
+    self.collectionView.contentInset = UIEdgeInsetsMake(0, 0, 44 + 49 + 20, 0);
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
-    self.collectionView.backgroundColor = [UIColor whiteColor];
+    self.collectionView.backgroundColor = myGrayColor;
     
     [self.collectionView registerClass:[ZCMainCell class] forCellWithReuseIdentifier:NSStringFromClass([ZCMainCell class])];
     [self.collectionView registerClass:[ZCAdCell class] forCellWithReuseIdentifier:NSStringFromClass([ZCAdCell class])];
@@ -111,7 +127,7 @@
         
     ZCMainCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([ZCMainCell class]) forIndexPath:indexPath];
     
-    NSDictionary *dict = self.dataSource[indexPath.row];
+    NSDictionary *dict = self.dataSource[indexPath.item];
     
     cell.model = [ZCMainPageModel modelWithDictionary:dict];
     
@@ -121,10 +137,18 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
+    NSLog(@"item--->%ld, row--->%ld, section--->%ld", indexPath.item, indexPath.row, indexPath.section);
+    NSLog(@"%@", indexPath);
+    
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return CGSizeMake(150, 300);
+    CGFloat sizeCompare = 236.f/354.f;
+    
+    CGFloat sizeWidth = ScreenWidth / 2 - 15;
+    CGFloat sizeHeight = sizeWidth / sizeCompare;
+    
+    return CGSizeMake(sizeWidth, sizeHeight + 30);
 }
 
 
