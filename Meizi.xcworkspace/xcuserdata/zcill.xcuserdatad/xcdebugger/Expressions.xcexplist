@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "-[ZCMeiziViewController collectionView:numberOfItemsInSection:]:ZCMeiziViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.dataSource.count">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "__36-[ZCMeiziViewController parsingHtml]_block_invoke:ZCMeiziViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.dataSource">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

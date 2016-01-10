@@ -55,47 +55,23 @@
     for (TFHppleElement *element in array) {
         if (element.children.count > 0) {
             for (TFHppleElement *subElement in element.children) {
-//                NSLog(@"element arrtibutes = %@", element.attributes);
                 if ([subElement.tagName isEqualToString:@"a"]) {
                     
-                    if (subElement.content.length > 0) {
-//                        NSString *content = subElement.content;
-//                        NSLog(@"if tagName = a subElement -------> %@", content);
-//                        [_dataArray addObject:content];
-                    }
-                    else {
-//                        NSLog(@"subElement.content <= 0 subElement ------> %@", subElement);
-                        
-//                        NSLog(@"subElement.content -----> %@", subElement.content);
-//                        NSLog(@"subElement.attributes -----> %@", subElement.attributes);
+                    if (subElement.content.length <= 0) {
                         
                         for (TFHppleElement *subElementChildren in subElement.children) {
-                            
-//                            NSLog(@"subElementChildren content ----> %@", subElementChildren.content);
-//                            NSLog(@"subElementChildren attributes ----> %@", subElementChildren.attributes);
                             
                             [_dataArray addObject:subElementChildren.attributes];
                             
                         }
                     }
                 }
-                if ([subElement.tagName isEqualToString:@"img"]) {
-                    NSLog(@"img");
-                }
             }
-            if (element.content.length > 0) {
-//                NSLog(@"if element.content.length > 0 element -------> %@", element.content);
-            }
-            
-        } else {
-            
-//            NSLog(@"else element -------> %@", element.content);
-            
         }
     }
     
     NSLog(@"%@", _dataArray);
-    NSLog(@"%ld", _dataArray.count);
+//    NSLog(@"%ld", _dataArray.count);
     
     return _dataArray;
 }
@@ -104,5 +80,59 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+#if 0
+
+TFHpple *xpathParser = [[TFHpple alloc] initWithHTMLData:[htmlStr dataUsingEncoding:NSUTF8StringEncoding]];
+NSArray *array = [xpathParser searchWithXPathQuery:@"//span"];
+for (TFHppleElement *element in array) {
+    if (element.children.count > 0) {
+        for (TFHppleElement *subElement in element.children) {
+            //                NSLog(@"element arrtibutes = %@", element.attributes);
+            if ([subElement.tagName isEqualToString:@"a"]) {
+                
+                if (subElement.content.length > 0) {
+                    NSString *content = subElement.content;
+                    NSLog(@"if tagName = a subElement -------> %@", content);
+                    //                        [_dataArray addObject:content];
+                }
+                else {
+                    //                        NSLog(@"subElement.content <= 0 subElement ------> %@", subElement);
+                    
+                    //                        NSLog(@"subElement.content -----> %@", subElement.content);
+                    //                        NSLog(@"subElement.attributes -----> %@", subElement.attributes);
+                    
+                    for (TFHppleElement *subElementChildren in subElement.children) {
+                        
+                        //                            NSLog(@"subElementChildren content ----> %@", subElementChildren.content);
+                        //                            NSLog(@"subElementChildren attributes ----> %@", subElementChildren.attributes);
+                        
+                        [_dataArray addObject:subElementChildren.attributes];
+                        
+                    }
+                }
+            }
+            if ([subElement.tagName isEqualToString:@"img"]) {
+                NSLog(@"img");
+            }
+        }
+        if (element.content.length > 0) {
+            //                NSLog(@"if element.content.length > 0 element -------> %@", element.content);
+        }
+        
+    } else {
+        
+        //            NSLog(@"else element -------> %@", element.content);
+        
+    }
+}
+
+//    NSLog(@"%@", _dataArray);
+//    NSLog(@"%ld", _dataArray.count);
+
+return _dataArray;
+
+
+#endif
 
 @end

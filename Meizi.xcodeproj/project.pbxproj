@@ -12,6 +12,14 @@
 		4C1A5C851C3C214600A1DF98 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C1A5C831C3C214600A1DF98 /* LaunchScreen.storyboard */; };
 		4C1A5C901C3C214600A1DF98 /* MeiziTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1A5C8F1C3C214600A1DF98 /* MeiziTests.m */; };
 		4C1A5C9B1C3C214600A1DF98 /* MeiziUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1A5C9A1C3C214600A1DF98 /* MeiziUITests.m */; };
+		4C28435D1C423B7200FBA332 /* ZCCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C2843581C423B7200FBA332 /* ZCCategoryViewController.m */; };
+		4C28435E1C423B7200FBA332 /* ZCMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C28435A1C423B7200FBA332 /* ZCMainViewController.m */; };
+		4C28435F1C423B7200FBA332 /* ZCSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C28435C1C423B7200FBA332 /* ZCSettingViewController.m */; };
+		4C28436B1C426FCD00FBA332 /* ZCMeiziViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C28436A1C426FCD00FBA332 /* ZCMeiziViewController.m */; };
+		4C28436E1C4270EB00FBA332 /* ZCMainPageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C28436D1C4270EB00FBA332 /* ZCMainPageModel.m */; };
+		4C2843721C427CD100FBA332 /* ZCMainCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C2843701C427CD100FBA332 /* ZCMainCell.m */; };
+		4C2843771C427D5500FBA332 /* ZCAdCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C2843751C427D5500FBA332 /* ZCAdCell.m */; };
+		4C2843781C427D5500FBA332 /* ZCAdCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C2843761C427D5500FBA332 /* ZCAdCell.xib */; };
 		4C3BE1041C4173BB0001AC14 /* libxml2.2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C3BE1031C4173BB0001AC14 /* libxml2.2.tbd */; };
 		4C3BE10E1C41745D0001AC14 /* TFHpple.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C3BE1091C41745D0001AC14 /* TFHpple.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		4C3BE10F1C41745D0001AC14 /* TFHppleElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C3BE10B1C41745D0001AC14 /* TFHppleElement.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -19,9 +27,6 @@
 		4C3BE1251C418AED0001AC14 /* ZCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C3BE1131C418AED0001AC14 /* ZCAppDelegate.m */; };
 		4C3BE1261C418AED0001AC14 /* ZCTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C3BE1161C418AED0001AC14 /* ZCTabBar.m */; };
 		4C3BE1271C418AED0001AC14 /* ZCRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C3BE1191C418AED0001AC14 /* ZCRootViewController.m */; };
-		4C3BE1281C418AED0001AC14 /* ZCCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C3BE11C1C418AED0001AC14 /* ZCCategoryViewController.m */; };
-		4C3BE1291C418AED0001AC14 /* ZCMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C3BE11E1C418AED0001AC14 /* ZCMainViewController.m */; };
-		4C3BE12A1C418AED0001AC14 /* ZCSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C3BE1201C418AED0001AC14 /* ZCSettingViewController.m */; };
 		4C3BE12B1C418AED0001AC14 /* NSString+ZCHtmlBodyString.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C3BE1231C418AED0001AC14 /* NSString+ZCHtmlBodyString.m */; };
 		E8CC6059EB64A86EA12469B2 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 56FD7F5C37AE729DC9825FB1 /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -57,6 +62,21 @@
 		4C1A5C961C3C214600A1DF98 /* MeiziUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MeiziUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C1A5C9A1C3C214600A1DF98 /* MeiziUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MeiziUITests.m; sourceTree = "<group>"; };
 		4C1A5C9C1C3C214600A1DF98 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4C2843571C423B7200FBA332 /* ZCCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCCategoryViewController.h; sourceTree = "<group>"; };
+		4C2843581C423B7200FBA332 /* ZCCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCCategoryViewController.m; sourceTree = "<group>"; };
+		4C2843591C423B7200FBA332 /* ZCMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCMainViewController.h; sourceTree = "<group>"; };
+		4C28435A1C423B7200FBA332 /* ZCMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCMainViewController.m; sourceTree = "<group>"; };
+		4C28435B1C423B7200FBA332 /* ZCSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCSettingViewController.h; sourceTree = "<group>"; };
+		4C28435C1C423B7200FBA332 /* ZCSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCSettingViewController.m; sourceTree = "<group>"; };
+		4C2843691C426FCD00FBA332 /* ZCMeiziViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCMeiziViewController.h; sourceTree = "<group>"; };
+		4C28436A1C426FCD00FBA332 /* ZCMeiziViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCMeiziViewController.m; sourceTree = "<group>"; };
+		4C28436C1C4270EB00FBA332 /* ZCMainPageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCMainPageModel.h; sourceTree = "<group>"; };
+		4C28436D1C4270EB00FBA332 /* ZCMainPageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCMainPageModel.m; sourceTree = "<group>"; };
+		4C28436F1C427CD100FBA332 /* ZCMainCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCMainCell.h; sourceTree = "<group>"; };
+		4C2843701C427CD100FBA332 /* ZCMainCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCMainCell.m; sourceTree = "<group>"; };
+		4C2843741C427D5500FBA332 /* ZCAdCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCAdCell.h; sourceTree = "<group>"; };
+		4C2843751C427D5500FBA332 /* ZCAdCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCAdCell.m; sourceTree = "<group>"; };
+		4C2843761C427D5500FBA332 /* ZCAdCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZCAdCell.xib; sourceTree = "<group>"; };
 		4C3BE1031C4173BB0001AC14 /* libxml2.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.2.tbd; path = usr/lib/libxml2.2.tbd; sourceTree = SDKROOT; };
 		4C3BE1081C41745D0001AC14 /* TFHpple.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFHpple.h; sourceTree = "<group>"; };
 		4C3BE1091C41745D0001AC14 /* TFHpple.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFHpple.m; sourceTree = "<group>"; };
@@ -70,12 +90,6 @@
 		4C3BE1161C418AED0001AC14 /* ZCTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCTabBar.m; sourceTree = "<group>"; };
 		4C3BE1181C418AED0001AC14 /* ZCRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCRootViewController.h; sourceTree = "<group>"; };
 		4C3BE1191C418AED0001AC14 /* ZCRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCRootViewController.m; sourceTree = "<group>"; };
-		4C3BE11B1C418AED0001AC14 /* ZCCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCCategoryViewController.h; sourceTree = "<group>"; };
-		4C3BE11C1C418AED0001AC14 /* ZCCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCCategoryViewController.m; sourceTree = "<group>"; };
-		4C3BE11D1C418AED0001AC14 /* ZCMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCMainViewController.h; sourceTree = "<group>"; };
-		4C3BE11E1C418AED0001AC14 /* ZCMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCMainViewController.m; sourceTree = "<group>"; };
-		4C3BE11F1C418AED0001AC14 /* ZCSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCSettingViewController.h; sourceTree = "<group>"; };
-		4C3BE1201C418AED0001AC14 /* ZCSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCSettingViewController.m; sourceTree = "<group>"; };
 		4C3BE1221C418AED0001AC14 /* NSString+ZCHtmlBodyString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+ZCHtmlBodyString.h"; sourceTree = "<group>"; };
 		4C3BE1231C418AED0001AC14 /* NSString+ZCHtmlBodyString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+ZCHtmlBodyString.m"; sourceTree = "<group>"; };
 		4C3BE1241C418AED0001AC14 /* ZCMoreDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCMoreDefines.h; sourceTree = "<group>"; };
@@ -140,7 +154,7 @@
 				4C3BE1111C418AED0001AC14 /* Application */,
 				4C3BE1141C418AED0001AC14 /* NaviAndTab */,
 				4C3BE1171C418AED0001AC14 /* Root */,
-				4C3BE11A1C418AED0001AC14 /* ViewControllers */,
+				4C2843561C423B7200FBA332 /* Classes */,
 				4C1A5C831C3C214600A1DF98 /* LaunchScreen.storyboard */,
 				4C1A5C811C3C214600A1DF98 /* Assets.xcassets */,
 				4C1A5C861C3C214600A1DF98 /* Info.plist */,
@@ -173,6 +187,52 @@
 				4C1A5C9C1C3C214600A1DF98 /* Info.plist */,
 			);
 			path = MeiziUITests;
+			sourceTree = "<group>";
+		};
+		4C2843561C423B7200FBA332 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				4C2843621C423B9200FBA332 /* Model */,
+				4C2843611C423B8B00FBA332 /* View */,
+				4C2843601C423B7A00FBA332 /* Controller */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		4C2843601C423B7A00FBA332 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				4C2843691C426FCD00FBA332 /* ZCMeiziViewController.h */,
+				4C28436A1C426FCD00FBA332 /* ZCMeiziViewController.m */,
+				4C2843571C423B7200FBA332 /* ZCCategoryViewController.h */,
+				4C2843581C423B7200FBA332 /* ZCCategoryViewController.m */,
+				4C2843591C423B7200FBA332 /* ZCMainViewController.h */,
+				4C28435A1C423B7200FBA332 /* ZCMainViewController.m */,
+				4C28435B1C423B7200FBA332 /* ZCSettingViewController.h */,
+				4C28435C1C423B7200FBA332 /* ZCSettingViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		4C2843611C423B8B00FBA332 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4C28436F1C427CD100FBA332 /* ZCMainCell.h */,
+				4C2843701C427CD100FBA332 /* ZCMainCell.m */,
+				4C2843741C427D5500FBA332 /* ZCAdCell.h */,
+				4C2843751C427D5500FBA332 /* ZCAdCell.m */,
+				4C2843761C427D5500FBA332 /* ZCAdCell.xib */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		4C2843621C423B9200FBA332 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4C28436C1C4270EB00FBA332 /* ZCMainPageModel.h */,
+				4C28436D1C4270EB00FBA332 /* ZCMainPageModel.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 		4C3BE1061C41745D0001AC14 /* Vendor */ = {
@@ -221,19 +281,6 @@
 				4C3BE1191C418AED0001AC14 /* ZCRootViewController.m */,
 			);
 			path = Root;
-			sourceTree = "<group>";
-		};
-		4C3BE11A1C418AED0001AC14 /* ViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-				4C3BE11B1C418AED0001AC14 /* ZCCategoryViewController.h */,
-				4C3BE11C1C418AED0001AC14 /* ZCCategoryViewController.m */,
-				4C3BE11D1C418AED0001AC14 /* ZCMainViewController.h */,
-				4C3BE11E1C418AED0001AC14 /* ZCMainViewController.m */,
-				4C3BE11F1C418AED0001AC14 /* ZCSettingViewController.h */,
-				4C3BE1201C418AED0001AC14 /* ZCSettingViewController.m */,
-			);
-			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		4C3BE1211C418AED0001AC14 /* ZCTools */ = {
@@ -374,6 +421,7 @@
 			files = (
 				4C1A5C851C3C214600A1DF98 /* LaunchScreen.storyboard in Resources */,
 				4C1A5C821C3C214600A1DF98 /* Assets.xcassets in Resources */,
+				4C2843781C427D5500FBA332 /* ZCAdCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -446,17 +494,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4C3BE12A1C418AED0001AC14 /* ZCSettingViewController.m in Sources */,
 				4C3BE1261C418AED0001AC14 /* ZCTabBar.m in Sources */,
 				4C1A5C771C3C214600A1DF98 /* main.m in Sources */,
 				4C3BE1251C418AED0001AC14 /* ZCAppDelegate.m in Sources */,
 				4C3BE1101C41745D0001AC14 /* XPathQuery.m in Sources */,
+				4C28435E1C423B7200FBA332 /* ZCMainViewController.m in Sources */,
+				4C28435F1C423B7200FBA332 /* ZCSettingViewController.m in Sources */,
 				4C3BE10F1C41745D0001AC14 /* TFHppleElement.m in Sources */,
+				4C2843721C427CD100FBA332 /* ZCMainCell.m in Sources */,
 				4C3BE10E1C41745D0001AC14 /* TFHpple.m in Sources */,
-				4C3BE1291C418AED0001AC14 /* ZCMainViewController.m in Sources */,
+				4C28436B1C426FCD00FBA332 /* ZCMeiziViewController.m in Sources */,
+				4C2843771C427D5500FBA332 /* ZCAdCell.m in Sources */,
 				4C3BE1271C418AED0001AC14 /* ZCRootViewController.m in Sources */,
 				4C3BE12B1C418AED0001AC14 /* NSString+ZCHtmlBodyString.m in Sources */,
-				4C3BE1281C418AED0001AC14 /* ZCCategoryViewController.m in Sources */,
+				4C28436E1C4270EB00FBA332 /* ZCMainPageModel.m in Sources */,
+				4C28435D1C423B7200FBA332 /* ZCCategoryViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
