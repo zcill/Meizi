@@ -67,8 +67,9 @@
     
     // 下拉刷新
     self.collectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        self.dataSource = [[NSMutableArray alloc] initWithCapacity:0];
         self.page = 1;
-        [self initData];
+        [self parsingHtmlGetTitleAndThumbImg];
     }];
     
 //    [self.collectionView.mj_header beginRefreshing];
@@ -76,7 +77,7 @@
     // 上拉刷新
     self.collectionView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
         self.page += 1;
-        [self initData];
+        [self parsingHtmlGetTitleAndThumbImg];
     }];
     
 }
@@ -100,7 +101,7 @@
     
     [self parseHtml:htmlStr];
     
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+    dispatch_async(dispatch_get_main_queue(), ^{
         
         [self.collectionView reloadData];
         

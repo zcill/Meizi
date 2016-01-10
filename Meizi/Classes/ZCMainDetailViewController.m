@@ -9,7 +9,7 @@
 #import "ZCMainDetailViewController.h"
 #import "NSString+ZCHtmlBodyString.h"
 #import <SDWebImage/UIImageView+WebCache.h>
-
+#import <SVProgressHUD/SVProgressHUD.h>
 #import "ZCMoreDefines.h"
 
 @interface ZCMainDetailViewController ()<UITableViewDelegate, UITableViewDataSource>
@@ -34,18 +34,18 @@
     
     self.dataSource = [[NSMutableArray alloc] init];
     
-
-    
     self.tableView = [[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStylePlain];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
-    [self.view addSubview:self.tableView];
+    [SVProgressHUD showWithStatus:@"正在加载"];
     
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+    dispatch_async(dispatch_get_main_queue(), ^{
         [self getPicWithUrlString:self.contentUrl picNumber:60];
+        [SVProgressHUD dismiss];
     });
     
+    [self.view addSubview:self.tableView];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

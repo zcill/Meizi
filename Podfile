@@ -7,7 +7,7 @@ pod 'SDWebImage'
 pod 'ChameleonFramework'
 
 pod 'SIAlertView'
-pod 'SCLAlertView-Objective-C'
+pod 'SVProgressHUD', :head
 pod 'LMDropdownView'
 
 pod 'Fabric'
