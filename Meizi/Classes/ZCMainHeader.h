@@ -18,13 +18,15 @@
 #import "XPathQuery.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <MJRefresh/MJRefresh.h>
+#import <SDCycleScrollView/SDCycleScrollView.h>
 
 /**
  *  Model Cell and Controller
  */
 #import "ZCMainPageModel.h"
 #import "ZCMainCell.h"
-#import "ZCAdCell.h"
+#import "ZCAdView.h"
 #import "ZCMainDetailViewController.h"
+
 
 #endif /* ZCMainHeader_h */

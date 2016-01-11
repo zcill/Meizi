@@ -10,7 +10,9 @@
 #import "NSString+ZCHtmlBodyString.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <SVProgressHUD/SVProgressHUD.h>
+#import <SCLAlertView-Objective-C/SCLAlertView.h>
 #import "ZCMoreDefines.h"
+
 
 @interface ZCMainDetailViewController ()<UITableViewDelegate, UITableViewDataSource>
 
@@ -29,6 +31,19 @@
     return _dataSource;
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    SCLAlertView *alert = [[SCLAlertView alloc] init];
+    alert.showAnimationType = SlideInToCenter;
+    alert.hideAnimationType = SlideOutFromCenter;
+    
+    alert.backgroundType = Shadow;
+    
+    [alert showWaiting:self title:@"正在刷新数据" subTitle:@"加载有点慢哦，请耐心等待" closeButtonTitle:nil duration:3.0f];
+    
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -38,11 +53,11 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
-    [SVProgressHUD showWithStatus:@"正在加载"];
+//    [SVProgressHUD showWithStatus:@"正在加载"];
     
     dispatch_async(dispatch_get_main_queue(), ^{
         [self getPicWithUrlString:self.contentUrl picNumber:60];
-        [SVProgressHUD dismiss];
+//        [SVProgressHUD dismiss];
     });
     
     [self.view addSubview:self.tableView];

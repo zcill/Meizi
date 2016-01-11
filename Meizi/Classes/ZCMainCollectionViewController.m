@@ -9,7 +9,7 @@
 #import "ZCMainCollectionViewController.h"
 #import "ZCMainHeader.h"
 
-@interface ZCMainCollectionViewController ()<UICollectionViewDelegateFlowLayout>
+@interface ZCMainCollectionViewController ()<UICollectionViewDelegateFlowLayout, SDCycleScrollViewDelegate>
 
 /**
  *  包含了缩略图url和标题的数组
@@ -69,20 +69,30 @@
     self.collectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         self.dataSource = [[NSMutableArray alloc] initWithCapacity:0];
         self.page = 1;
-        [self parsingHtmlGetTitleAndThumbImg];
+        [self initData];
     }];
     
-//    [self.collectionView.mj_header beginRefreshing];
+    [self.collectionView.mj_header beginRefreshing];
     
     // 上拉刷新
     self.collectionView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
         self.page += 1;
-        [self parsingHtmlGetTitleAndThumbImg];
+        [self initData];
     }];
+}
+
+#pragma mark - 布局相关
+- (void)setupScrollView {
+    
+    
+
+    
+    
+    
     
 }
 
-// 请求数据
+#pragma mark - 数据相关
 - (void)initData {
     
     // 请求缩略图和title数据
@@ -170,8 +180,7 @@
     self.collectionView.backgroundColor = myGrayColor;
     
     [self.collectionView registerClass:[ZCMainCell class] forCellWithReuseIdentifier:NSStringFromClass([ZCMainCell class])];
-    [self.collectionView registerClass:[ZCAdCell class] forCellWithReuseIdentifier:NSStringFromClass([ZCAdCell class])];
-    
+    [self.collectionView registerClass:[ZCAdView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:NSStringFromClass([ZCAdView class])];
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
@@ -217,10 +226,21 @@
     return CGSizeMake(sizeWidth, sizeHeight + 30);
 }
 
+// collectionView头视图
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
+    
+    ZCAdView *adView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:NSStringFromClass([ZCAdView class]) forIndexPath:indexPath];
+    
+    
+    return adView;
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
+    return CGSizeMake(ScreenWidth, 150);
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 @end

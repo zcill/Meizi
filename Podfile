@@ -9,6 +9,9 @@ pod 'ChameleonFramework'
 pod 'SIAlertView'
 pod 'SVProgressHUD', :head
 pod 'LMDropdownView'
+pod 'SCLAlertView-Objective-C'
 
 pod 'Fabric'
 pod 'Crashlytics'
+
+pod 'SDCycleScrollView','~> 1.6'

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C00895E1C43D1CF00FD1DF8 /* ZCAdView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C00895D1C43D1CF00FD1DF8 /* ZCAdView.m */; };
 		4C1A5C771C3C214600A1DF98 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1A5C761C3C214600A1DF98 /* main.m */; };
 		4C1A5C821C3C214600A1DF98 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C1A5C811C3C214600A1DF98 /* Assets.xcassets */; };
 		4C1A5C851C3C214600A1DF98 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C1A5C831C3C214600A1DF98 /* LaunchScreen.storyboard */; };
@@ -16,8 +17,6 @@
 		4C28435F1C423B7200FBA332 /* ZCSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C28435C1C423B7200FBA332 /* ZCSettingViewController.m */; };
 		4C28436E1C4270EB00FBA332 /* ZCMainPageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C28436D1C4270EB00FBA332 /* ZCMainPageModel.m */; };
 		4C2843721C427CD100FBA332 /* ZCMainCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C2843701C427CD100FBA332 /* ZCMainCell.m */; };
-		4C2843771C427D5500FBA332 /* ZCAdCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C2843751C427D5500FBA332 /* ZCAdCell.m */; };
-		4C2843781C427D5500FBA332 /* ZCAdCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C2843761C427D5500FBA332 /* ZCAdCell.xib */; };
 		4C28437B1C42A11500FBA332 /* ZCMainCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C28437A1C42A11500FBA332 /* ZCMainCollectionViewController.m */; };
 		4C3BE1041C4173BB0001AC14 /* libxml2.2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C3BE1031C4173BB0001AC14 /* libxml2.2.tbd */; };
 		4C3BE10E1C41745D0001AC14 /* TFHpple.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C3BE1091C41745D0001AC14 /* TFHpple.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -50,6 +49,8 @@
 
 /* Begin PBXFileReference section */
 		18C292FF408F4F9ADA5EE91D /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		4C00895C1C43D1CF00FD1DF8 /* ZCAdView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCAdView.h; sourceTree = "<group>"; };
+		4C00895D1C43D1CF00FD1DF8 /* ZCAdView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCAdView.m; sourceTree = "<group>"; };
 		4C00FD521C3EC2000068D852 /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
 		4C1A5C721C3C214600A1DF98 /* Meizi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Meizi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C1A5C761C3C214600A1DF98 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -70,9 +71,6 @@
 		4C28436D1C4270EB00FBA332 /* ZCMainPageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCMainPageModel.m; sourceTree = "<group>"; };
 		4C28436F1C427CD100FBA332 /* ZCMainCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCMainCell.h; sourceTree = "<group>"; };
 		4C2843701C427CD100FBA332 /* ZCMainCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCMainCell.m; sourceTree = "<group>"; };
-		4C2843741C427D5500FBA332 /* ZCAdCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCAdCell.h; sourceTree = "<group>"; };
-		4C2843751C427D5500FBA332 /* ZCAdCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCAdCell.m; sourceTree = "<group>"; };
-		4C2843761C427D5500FBA332 /* ZCAdCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZCAdCell.xib; sourceTree = "<group>"; };
 		4C2843791C42A11400FBA332 /* ZCMainCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCMainCollectionViewController.h; sourceTree = "<group>"; };
 		4C28437A1C42A11500FBA332 /* ZCMainCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCMainCollectionViewController.m; sourceTree = "<group>"; };
 		4C3BE1031C4173BB0001AC14 /* libxml2.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.2.tbd; path = usr/lib/libxml2.2.tbd; sourceTree = SDKROOT; };
@@ -221,9 +219,8 @@
 			children = (
 				4C28436F1C427CD100FBA332 /* ZCMainCell.h */,
 				4C2843701C427CD100FBA332 /* ZCMainCell.m */,
-				4C2843741C427D5500FBA332 /* ZCAdCell.h */,
-				4C2843751C427D5500FBA332 /* ZCAdCell.m */,
-				4C2843761C427D5500FBA332 /* ZCAdCell.xib */,
+				4C00895C1C43D1CF00FD1DF8 /* ZCAdView.h */,
+				4C00895D1C43D1CF00FD1DF8 /* ZCAdView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -423,7 +420,6 @@
 			files = (
 				4C1A5C851C3C214600A1DF98 /* LaunchScreen.storyboard in Resources */,
 				4C1A5C821C3C214600A1DF98 /* Assets.xcassets in Resources */,
-				4C2843781C427D5500FBA332 /* ZCAdCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -498,6 +494,7 @@
 			files = (
 				4C28437B1C42A11500FBA332 /* ZCMainCollectionViewController.m in Sources */,
 				4C3BE1261C418AED0001AC14 /* ZCTabBar.m in Sources */,
+				4C00895E1C43D1CF00FD1DF8 /* ZCAdView.m in Sources */,
 				4C1A5C771C3C214600A1DF98 /* main.m in Sources */,
 				4C3BE1251C418AED0001AC14 /* ZCAppDelegate.m in Sources */,
 				4C3BE1101C41745D0001AC14 /* XPathQuery.m in Sources */,
@@ -505,7 +502,6 @@
 				4C3BE10F1C41745D0001AC14 /* TFHppleElement.m in Sources */,
 				4C2843721C427CD100FBA332 /* ZCMainCell.m in Sources */,
 				4C3BE10E1C41745D0001AC14 /* TFHpple.m in Sources */,
-				4C2843771C427D5500FBA332 /* ZCAdCell.m in Sources */,
 				4C3C179F1C42ABD40060BCA9 /* ZCMainDetailViewController.m in Sources */,
 				4C3BE1271C418AED0001AC14 /* ZCRootViewController.m in Sources */,
 				4C3BE12B1C418AED0001AC14 /* NSString+ZCHtmlBodyString.m in Sources */,
