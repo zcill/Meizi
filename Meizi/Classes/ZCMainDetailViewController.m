@@ -53,6 +53,7 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
+    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 15+49, 0);
 //    [SVProgressHUD showWithStatus:@"正在加载"];
     
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -72,8 +73,7 @@
     UIImageView *image = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 350, 500)];
     [image sd_setImageWithURL:[NSURL URLWithString:self.dataSource[indexPath.row]]];
     [cell addSubview:image];
-        
-    
+
     return cell;
 }
 

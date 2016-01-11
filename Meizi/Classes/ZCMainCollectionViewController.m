@@ -212,6 +212,7 @@
     detailVC.contentUrl = url;
     detailVC.contentTitle = title;
     detailVC.title = title;
+    detailVC.hidesBottomBarWhenPushed = YES;
     
     [self.navigationController pushViewController:detailVC animated:YES];
     
@@ -229,14 +230,42 @@
 // collectionView头视图
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
     
-    ZCAdView *adView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:NSStringFromClass([ZCAdView class]) forIndexPath:indexPath];
+    NSArray *titles = @[@"翘臀豪乳酷刺青,气质女神夏美酱性感内衣写真", @"19岁美妞陆瓷晒大尺度裸私照", @"米妮大萌萌全裸入浴 自摸E奶叫人欲火焚身"];
+    NSArray *images = @[@"http://pic.mmfile.net/2015/11/19x16.jpg", @"http://pic.mmfile.net/2014/09/15mt03.jpg", @"http://pic.mmfile.net/2015/09/20x06.jpg"];
+    NSArray *urls = @[@"http://www.mzitu.com/53071", @"http://www.mzitu.com/28795", @"http://www.mzitu.com/48873"];
     
+    if ([kind isEqualToString:UICollectionElementKindSectionHeader]) {
+        ZCAdView *adView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:NSStringFromClass([ZCAdView class]) forIndexPath:indexPath];
     
-    return adView;
+        SDCycleScrollView *adCycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, ScreenWidth, 180) delegate:self placeholderImage:[UIImage imageNamed:@""]];
+        
+        adCycleScrollView.pageControlAliment = SDCycleScrollViewPageContolAlimentRight;
+        adCycleScrollView.titlesGroup = titles;
+        adCycleScrollView.currentPageDotColor = [UIColor whiteColor];
+        
+        adCycleScrollView.imageURLStringsGroup = images;
+        
+        adCycleScrollView.clickItemOperationBlock = ^(NSInteger currentIndex) {
+            
+            ZCMainDetailViewController *detailVC = [[ZCMainDetailViewController alloc] init];
+            detailVC.contentUrl = urls[currentIndex];
+            detailVC.contentTitle = titles[currentIndex];
+            detailVC.title = titles[currentIndex];
+            detailVC.hidesBottomBarWhenPushed = YES;
+            
+            [self.navigationController pushViewController:detailVC animated:YES];
+            
+        };
+        
+        [adView addSubview:adCycleScrollView];
+        
+        return adView;
+    }
+    return nil;
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
-    return CGSizeMake(ScreenWidth, 150);
+    return CGSizeMake(ScreenWidth, 180);
 }
 
 - (void)didReceiveMemoryWarning {

@@ -7,11 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <SDCycleScrollView/SDCycleScrollView.h>
 
-@interface ZCAdView : UICollectionReusableView<SDCycleScrollViewDelegate>
-
-@property (nonatomic, strong) NSMutableArray *titleArray;
-@property (nonatomic, strong) NSMutableArray *imageArray;
+@interface ZCAdView : UICollectionReusableView
 
 @end
