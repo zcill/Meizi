@@ -12,6 +12,8 @@
 #import "XPathQuery.h"
 #import <UMengAnalytics/MobClick.h>
 
+#import <Realm/Realm.h>
+
 @interface ZCCategoryViewController ()
 
 @property (nonatomic, strong) NSMutableArray *dataArray;
@@ -22,6 +24,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+
     
     // 标题是前24个string
     self.dataArray = [NSMutableArray array];

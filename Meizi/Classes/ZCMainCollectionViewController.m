@@ -160,6 +160,29 @@
         }
     }
     
+    [self addMeiziDataIntoRealm];
+    
+}
+
+// 把妹子的数据放进本地数据库
+- (void)addMeiziDataIntoRealm {
+    
+    RLMRealm *realm = [RLMRealm defaultRealm];
+    [realm transactionWithBlock:^{
+        
+        for (NSDictionary *dict in _dataSource) {
+            
+            ZCMeiziRealm *girlRealm = [[ZCMeiziRealm alloc] init];
+            girlRealm.meiziTitle = dict[@"alt"];
+            girlRealm.meiziImageUrl = dict[@"data-original"];
+            
+            [realm addObject:girlRealm];
+        }
+        
+        [realm commitWriteTransaction];
+        
+    }];
+    
 }
 
 #pragma mark - CollectionView Delegate DelegateFlowOut And DataSource

@@ -22,6 +22,8 @@
 
 #import <UMengAnalytics/MobClick.h>
 
+#import <Realm/Realm.h>
+
 /**
  *  Model Cell and Controller
  */
@@ -29,6 +31,8 @@
 #import "ZCMainCell.h"
 #import "ZCAdView.h"
 #import "ZCMainDetailViewController.h"
+
+#import "ZCMeiziRealm.h"
 
 
 #endif /* ZCMainHeader_h */
