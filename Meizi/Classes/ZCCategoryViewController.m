@@ -10,6 +10,7 @@
 #import "TFHpple.h"
 #import "TFHppleElement.h"
 #import "XPathQuery.h"
+#import <UMengAnalytics/MobClick.h>
 
 @interface ZCCategoryViewController ()
 
@@ -132,7 +133,20 @@ for (TFHppleElement *element in array) {
 
 return _dataArray;
 
-
 #endif
+
+#pragma mark - Umeng Analytics
+- (void)viewWillAppear:(BOOL)animated {
+    
+    [super viewWillAppear:animated];
+    [MobClick beginLogPageView:@"CategoryPage"];//("PageOne"为页面名称，可自定义)
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    
+    [super viewWillDisappear:animated];
+    [MobClick endLogPageView:@"CategoryPage"];
+    
+}
 
 @end

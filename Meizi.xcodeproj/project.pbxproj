@@ -27,6 +27,8 @@
 		4C3BE1271C418AED0001AC14 /* ZCRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C3BE1191C418AED0001AC14 /* ZCRootViewController.m */; };
 		4C3BE12B1C418AED0001AC14 /* NSString+ZCHtmlBodyString.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C3BE1231C418AED0001AC14 /* NSString+ZCHtmlBodyString.m */; };
 		4C3C179F1C42ABD40060BCA9 /* ZCMainDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C3C179E1C42ABD40060BCA9 /* ZCMainDetailViewController.m */; };
+		4CA8D4EB1C454048009B1119 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CA8D4EA1C454048009B1119 /* libz.tbd */; };
+		4CDE6EAE1C451E4600BBEA6C /* ZCMainRealm.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CDE6EAD1C451E4600BBEA6C /* ZCMainRealm.m */; };
 		E8CC6059EB64A86EA12469B2 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 56FD7F5C37AE729DC9825FB1 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -92,6 +94,9 @@
 		4C3C179D1C42ABD40060BCA9 /* ZCMainDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCMainDetailViewController.h; sourceTree = "<group>"; };
 		4C3C179E1C42ABD40060BCA9 /* ZCMainDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCMainDetailViewController.m; sourceTree = "<group>"; };
 		4C3C17A01C42ADFB0060BCA9 /* ZCMainHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCMainHeader.h; sourceTree = "<group>"; };
+		4CA8D4EA1C454048009B1119 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		4CDE6EAC1C451E4600BBEA6C /* ZCMainRealm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCMainRealm.h; sourceTree = "<group>"; };
+		4CDE6EAD1C451E4600BBEA6C /* ZCMainRealm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCMainRealm.m; sourceTree = "<group>"; };
 		56FD7F5C37AE729DC9825FB1 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5135A3A579CE788B4CA8A3A /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -101,6 +106,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4CA8D4EB1C454048009B1119 /* libz.tbd in Frameworks */,
 				4C3BE1041C4173BB0001AC14 /* libxml2.2.tbd in Frameworks */,
 				E8CC6059EB64A86EA12469B2 /* libPods.a in Frameworks */,
 			);
@@ -230,6 +236,8 @@
 			children = (
 				4C28436C1C4270EB00FBA332 /* ZCMainPageModel.h */,
 				4C28436D1C4270EB00FBA332 /* ZCMainPageModel.m */,
+				4CDE6EAC1C451E4600BBEA6C /* ZCMainRealm.h */,
+				4CDE6EAD1C451E4600BBEA6C /* ZCMainRealm.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -304,6 +312,7 @@
 		E3BF12CA3CCEF2D075C6577C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4CA8D4EA1C454048009B1119 /* libz.tbd */,
 				4C3BE1031C4173BB0001AC14 /* libxml2.2.tbd */,
 				4C00FD521C3EC2000068D852 /* libxml2.tbd */,
 				56FD7F5C37AE729DC9825FB1 /* libPods.a */,
@@ -503,6 +512,7 @@
 				4C2843721C427CD100FBA332 /* ZCMainCell.m in Sources */,
 				4C3BE10E1C41745D0001AC14 /* TFHpple.m in Sources */,
 				4C3C179F1C42ABD40060BCA9 /* ZCMainDetailViewController.m in Sources */,
+				4CDE6EAE1C451E4600BBEA6C /* ZCMainRealm.m in Sources */,
 				4C3BE1271C418AED0001AC14 /* ZCRootViewController.m in Sources */,
 				4C3BE12B1C418AED0001AC14 /* NSString+ZCHtmlBodyString.m in Sources */,
 				4C28436E1C4270EB00FBA332 /* ZCMainPageModel.m in Sources */,

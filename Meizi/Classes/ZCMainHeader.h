@@ -20,6 +20,8 @@
 #import <MJRefresh/MJRefresh.h>
 #import <SDCycleScrollView/SDCycleScrollView.h>
 
+#import <UMengAnalytics/MobClick.h>
+
 /**
  *  Model Cell and Controller
  */

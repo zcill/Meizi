@@ -11,6 +11,7 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <SVProgressHUD/SVProgressHUD.h>
 #import <SCLAlertView-Objective-C/SCLAlertView.h>
+#import <UMengAnalytics/MobClick.h>
 #import "ZCMoreDefines.h"
 
 
@@ -29,19 +30,6 @@
         _dataSource = [[NSMutableArray alloc] initWithCapacity:0];
     }
     return _dataSource;
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    
-    SCLAlertView *alert = [[SCLAlertView alloc] init];
-    alert.showAnimationType = SlideInToCenter;
-    alert.hideAnimationType = SlideOutFromCenter;
-    
-    alert.backgroundType = Shadow;
-    
-    [alert showWaiting:self title:@"正在刷新数据" subTitle:@"加载有点慢哦，请耐心等待" closeButtonTitle:nil duration:3.0f];
-    
 }
 
 - (void)viewDidLoad {
@@ -108,6 +96,28 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - Umeng Analytics
+- (void)viewWillAppear:(BOOL)animated {
+    
+    SCLAlertView *alert = [[SCLAlertView alloc] init];
+    alert.showAnimationType = SlideInToCenter;
+    alert.hideAnimationType = SlideOutFromCenter;
+    
+    alert.backgroundType = Shadow;
+    
+    [alert showWaiting:self title:@"正在刷新数据" subTitle:@"加载有点慢哦，请耐心等待" closeButtonTitle:nil duration:3.0f];
+    
+    [super viewWillAppear:animated];
+    [MobClick beginLogPageView:@"DetailCollectionView"];//("PageOne"为页面名称，可自定义)
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    
+    [super viewWillDisappear:animated];
+    [MobClick endLogPageView:@"DetailPageCollectionView"];
+    
 }
 
 @end

@@ -9,6 +9,8 @@
 #import "ZCAppDelegate.h"
 #import "ZCTabBar.h"
 
+#import <UMengAnalytics/MobClick.h>
+
 @interface ZCAppDelegate ()
 
 @end
@@ -17,6 +19,8 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    [self setUmengAnalytics];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
@@ -28,6 +32,39 @@
     
     return YES;
 }
+
+/**
+ *  集成友盟统计功能
+ */
+- (void)setUmengAnalytics {
+    
+    // 开启友盟统计功能
+    [MobClick startWithAppkey:@"569504ad67e58eefcc0017f9" reportPolicy:BATCH channelId:nil];
+    
+    // 获取Xcode工程的Version号而不是build号
+    NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+    [MobClick setAppVersion:version];
+    
+    // 打开调试模式
+    [MobClick setLogEnabled:YES];
+    
+}
+
+/** 友盟-实现页面的统计需要在每个View中配对调用如下方法
+- (void)viewWillAppear:(BOOL)animated {
+    
+    [super viewWillAppear:animated];
+    [MobClick beginLogPageView:@"PageOne"];//("PageOne"为页面名称，可自定义)
+ }
+
+- (void)viewWillDisappear:(BOOL)animated {
+    
+    [super viewWillDisappear:animated];
+    [MobClick endLogPageView:@"PageOne"];
+    
+}
+ */
+
 
 
 - (void)applicationWillResignActive:(UIApplication *)application {

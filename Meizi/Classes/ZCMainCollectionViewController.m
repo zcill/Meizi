@@ -82,15 +82,6 @@
 }
 
 #pragma mark - 布局相关
-- (void)setupScrollView {
-    
-    
-
-    
-    
-    
-    
-}
 
 #pragma mark - 数据相关
 - (void)initData {
@@ -171,7 +162,7 @@
     
 }
 
-#pragma mark - collectionView
+#pragma mark - CollectionView Delegate DelegateFlowOut And DataSource
 - (void)setupCollectionView {
     
 //    self.collectionView.contentInset = UIEdgeInsetsMake(0, 0, 44 + 49 + 20, 0);
@@ -271,5 +262,20 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
+
+#pragma mark - Umeng Analytics
+- (void)viewWillAppear:(BOOL)animated {
+    
+    [super viewWillAppear:animated];
+    [MobClick beginLogPageView:@"MainPageCollectionView"];//("PageOne"为页面名称，可自定义)
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    
+    [super viewWillDisappear:animated];
+    [MobClick endLogPageView:@"MainPageCollectionView"];
+    
+}
+
 
 @end
