@@ -18,8 +18,9 @@
     
     ZCMainPageModel *model = [[ZCMainPageModel alloc] init];
     
-    model.title = [dict objectForKey:@"alt"];
-    model.thumbImgUrl = [dict objectForKey:@"data-original"];
+    model.title = [dict objectForKey:@"meiziTitle"];
+    model.thumbImgUrl = [dict objectForKey:@"meiziImageUrl"];
+    model.url = [dict objectForKey:@"meiziUrl"];
     
     return model;
 }

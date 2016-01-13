@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "ZCMainPageModel.h"
+#import "ZCMeiziRealm.h"
 
 @interface ZCMainCell : UICollectionViewCell
 
@@ -16,5 +17,6 @@
 
 @property (nonatomic, strong) NSString *url;
 @property (nonatomic, strong) ZCMainPageModel *model;
+@property (nonatomic, strong) ZCMeiziRealm *meiziRealm;
 
 @end

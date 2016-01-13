@@ -52,7 +52,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.dataSource = [[NSMutableArray alloc] initWithCapacity:0];
     self.detailUrlArray = [[NSMutableArray alloc] initWithCapacity:0];
     self.detailUrlDict = [[NSMutableDictionary alloc] initWithCapacity:0];
     
@@ -86,11 +85,15 @@
 #pragma mark - 数据相关
 - (void)initData {
     
+    self.dataSource = [[NSMutableArray alloc] initWithCapacity:0];
+    
     // 请求缩略图和title数据
     [self parsingHtmlGetTitleAndThumbImg];
     
     // 请求下一个页面需要的url
     [self parsingHtmlGetDetailUrl];
+    
+    [self addMeiziDataIntoRealm];
 }
 
 - (void)parsingHtmlGetTitleAndThumbImg {
@@ -160,14 +163,32 @@
         }
     }
     
-    [self addMeiziDataIntoRealm];
-    
 }
 
 // 把妹子的数据放进本地数据库
 - (void)addMeiziDataIntoRealm {
     
     RLMRealm *realm = [RLMRealm defaultRealm];
+    RLMResults *results = [ZCMeiziRealm allObjects];
+    
+    if (results.count < self.page * 24) {
+        
+        [self realm_add_inRealm:realm];
+        
+    }
+    
+    [self.collectionView reloadData];
+    
+    NSLog(@"%@", realm.path);
+}
+
+/**
+ *  把妹子的thumbImageUrl和title存进数据库
+ *
+ *  @param realm 数据库
+ */
+- (void)realm_add_inRealm:(RLMRealm *)realm {
+    
     [realm transactionWithBlock:^{
         
         for (NSDictionary *dict in _dataSource) {
@@ -175,6 +196,7 @@
             ZCMeiziRealm *girlRealm = [[ZCMeiziRealm alloc] init];
             girlRealm.meiziTitle = dict[@"alt"];
             girlRealm.meiziImageUrl = dict[@"data-original"];
+            girlRealm.meiziUrl = [[_detailUrlDict objectForKey:girlRealm.meiziTitle] objectForKey:@"href"];
             
             [realm addObject:girlRealm];
         }
@@ -198,16 +220,22 @@
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.dataSource.count;
+    
+//    return self.dataSource.count;
+    
+    RLMResults *girls = [ZCMeiziRealm allObjects];
+    return girls.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     ZCMainCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([ZCMainCell class]) forIndexPath:indexPath];
     
-    NSDictionary *dict = self.dataSource[indexPath.item];
+//    NSDictionary *dict  = self.dataSource[indexPath.item];
     
-    cell.model = [ZCMainPageModel modelWithDictionary:dict];
+    RLMResults *girls = [ZCMeiziRealm allObjects];
+    
+    cell.meiziRealm = girls[indexPath.item];
     
     return cell;
     
