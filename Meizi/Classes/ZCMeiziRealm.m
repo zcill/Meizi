@@ -10,6 +10,10 @@
 
 @implementation ZCMeiziRealm
 
++ (NSString *)primaryKey {
+    return @"meiziUrl";
+}
+
 // Specify default values for properties
 
 //+ (NSDictionary *)defaultPropertyValues

@@ -19,20 +19,20 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <MJRefresh/MJRefresh.h>
 #import <SDCycleScrollView/SDCycleScrollView.h>
-
 #import <UMengAnalytics/MobClick.h>
-
 #import <Realm/Realm.h>
+#import "NSDate+SFPrettyDate.h"
 
 /**
- *  Model Cell and Controller
+ *  Cell and Controller
  */
-#import "ZCMainPageModel.h"
 #import "ZCMainCell.h"
 #import "ZCAdView.h"
 #import "ZCMainDetailViewController.h"
 
+// Model
 #import "ZCMeiziRealm.h"
+#import "ZCMeiziPageTagRealm.h"
 
 
 #endif /* ZCMainHeader_h */

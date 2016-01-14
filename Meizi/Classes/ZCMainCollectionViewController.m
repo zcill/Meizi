@@ -55,8 +55,17 @@
     self.detailUrlArray = [[NSMutableArray alloc] initWithCapacity:0];
     self.detailUrlDict = [[NSMutableDictionary alloc] initWithCapacity:0];
     
-    // 初始page默认为1
-    self.page = 1;
+    // 读取数据库，查看上次看到的页码，直接赋值给self.page
+    RLMRealm *realm = [RLMRealm defaultRealm];
+    RLMResults *allPageTag = [ZCMeiziPageTagRealm allObjects];
+    if (allPageTag.count == 0) {
+        self.page = 1;
+    } else {
+        
+        ZCMeiziPageTagRealm *lastTagPageObject = [allPageTag lastObject];
+        self.page = lastTagPageObject.page;
+    
+    }
     
     [self.navigationController.navigationBar setTranslucent:NO];
     self.view.backgroundColor = [UIColor whiteColor];
@@ -67,16 +76,21 @@
     // 下拉刷新
     self.collectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         self.dataSource = [[NSMutableArray alloc] initWithCapacity:0];
-        self.page = 1;
+        _page = 1;
+        
+        // 如果用户拉到顶部去刷新，就删除数据库的内容
+        [realm beginWriteTransaction];
+        [realm deleteAllObjects];
+        [realm commitWriteTransaction];
+        
         [self initData];
     }];
-    
-    [self.collectionView.mj_header beginRefreshing];
     
     // 上拉刷新
     self.collectionView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
         self.page += 1;
         [self initData];
+        [self realm_add_pageTag_intoRealm:realm];
     }];
 }
 
@@ -96,9 +110,67 @@
     [self addMeiziDataIntoRealm];
 }
 
+// 把妹子的数据放进本地数据库
+- (void)addMeiziDataIntoRealm {
+    
+    RLMRealm *realm = [RLMRealm defaultRealm];
+
+    [realm beginWriteTransaction];
+    [self realm_update_inRealm:realm];
+    
+    [self.collectionView reloadData];
+    
+    NSLog(@"%@", realm.path);
+}
+
+/**
+ *  把妹子的thumbImageUrl和title存进数据库
+ *
+ *  @param realm 数据库
+ */
+- (void)realm_update_inRealm:(RLMRealm *)realm {
+    
+    for (NSDictionary *dict in _dataSource) {
+        
+        ZCMeiziRealm *girlRealm = [[ZCMeiziRealm alloc] init];
+        girlRealm.meiziTitle = dict[@"alt"];
+        girlRealm.meiziImageUrl = dict[@"data-original"];
+        girlRealm.meiziUrl = [[_detailUrlDict objectForKey:girlRealm.meiziTitle] objectForKey:@"href"];
+        
+        // 用于刷新列表的更新数据，防止插入相同的数据
+        [realm addOrUpdateObject:girlRealm];
+        
+        // 两种方法更新条目，都可以使用，但是都要求在数据库的表中设置了主键
+//        [ZCMeiziRealm createOrUpdateInRealm:realm withValue:girlRealm];
+        
+    }
+    [realm commitWriteTransaction];
+    
+}
+
+/**
+ *  把每次用户阅读到的地方页码标记下来存进数据库
+ *
+ *  @param realm 数据库
+ */
+- (void)realm_add_pageTag_intoRealm:(RLMRealm *)realm {
+    
+    ZCMeiziPageTagRealm *tagPageObject = [[ZCMeiziPageTagRealm alloc] init];
+    
+    NSDate *currentDate = [NSDate date];
+    tagPageObject.tagDate = [currentDate formatDate:currentDate];
+    tagPageObject.page = _page;
+    
+    [realm beginWriteTransaction];
+    [realm addOrUpdateObject:tagPageObject];
+    [realm commitWriteTransaction];
+    
+}
+
+// 从html源代码中抓取数据
 - (void)parsingHtmlGetTitleAndThumbImg {
     
-    NSString *urlString = [NSString stringWithFormat:@"http://www.mzitu.com/page/%ld", self.page];
+    NSString *urlString = [NSString stringWithFormat:@"http://www.mzitu.com/page/%ld", _page];
     
     NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:urlString]];
     NSString *htmlStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
@@ -119,7 +191,7 @@
  */
 - (void)parsingHtmlGetDetailUrl {
     
-    NSString *urlString = [NSString stringWithFormat:@"http://www.mzitu.com/page/%ld", self.page];
+    NSString *urlString = [NSString stringWithFormat:@"http://www.mzitu.com/page/%ld", _page];
     NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:urlString]];
     NSString *htmlStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     
@@ -133,7 +205,7 @@
                 
                 if ([subElement.tagName isEqualToString:@"a"]) {
                     if (subElement.content.length > 0) {
-                            
+                        
                         [_detailUrlArray addObject:subElement.attributes];
                         [_detailUrlDict setValue:subElement.attributes forKey:subElement.content];
                     }
@@ -162,48 +234,6 @@
             }
         }
     }
-    
-}
-
-// 把妹子的数据放进本地数据库
-- (void)addMeiziDataIntoRealm {
-    
-    RLMRealm *realm = [RLMRealm defaultRealm];
-    RLMResults *results = [ZCMeiziRealm allObjects];
-    
-    if (results.count < self.page * 24) {
-        
-        [self realm_add_inRealm:realm];
-        
-    }
-    
-    [self.collectionView reloadData];
-    
-    NSLog(@"%@", realm.path);
-}
-
-/**
- *  把妹子的thumbImageUrl和title存进数据库
- *
- *  @param realm 数据库
- */
-- (void)realm_add_inRealm:(RLMRealm *)realm {
-    
-    [realm transactionWithBlock:^{
-        
-        for (NSDictionary *dict in _dataSource) {
-            
-            ZCMeiziRealm *girlRealm = [[ZCMeiziRealm alloc] init];
-            girlRealm.meiziTitle = dict[@"alt"];
-            girlRealm.meiziImageUrl = dict[@"data-original"];
-            girlRealm.meiziUrl = [[_detailUrlDict objectForKey:girlRealm.meiziTitle] objectForKey:@"href"];
-            
-            [realm addObject:girlRealm];
-        }
-        
-        [realm commitWriteTransaction];
-        
-    }];
     
 }
 
@@ -246,14 +276,17 @@
     NSLog(@"item--->%ld, row--->%ld, section--->%ld", indexPath.item, indexPath.row, indexPath.section);
     NSLog(@"%@", indexPath);
     
+    /*
     NSDictionary *dict = self.dataSource[indexPath.item];
     NSString *title = [dict objectForKey:@"alt"];
     NSString *url = [[_detailUrlDict objectForKey:title] objectForKey:@"href"];
-    
+    */
+//    ZCMeiziRealm *meizi = self.dataSource[indexPath.item];
+    ZCMeiziRealm *meizi = [ZCMeiziRealm allObjects][indexPath.item];
     ZCMainDetailViewController *detailVC = [[ZCMainDetailViewController alloc] init];
-    detailVC.contentUrl = url;
-    detailVC.contentTitle = title;
-    detailVC.title = title;
+    detailVC.contentUrl = meizi.meiziUrl;
+    detailVC.contentTitle = meizi.meiziTitle;
+    detailVC.title = meizi.meiziTitle;
     detailVC.hidesBottomBarWhenPushed = YES;
     
     [self.navigationController pushViewController:detailVC animated:YES];

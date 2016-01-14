@@ -1,16 +1,20 @@
 //
-//  ZCMainRealm.m
+//  ZCMeiziPageTagRealm.m
 //  Meizi
 //
-//  Created by 朱立焜 on 16/1/12.
+//  Created by 朱立焜 on 16/1/14.
 //  Copyright © 2016年 朱立焜. All rights reserved.
 //
 
-#import "ZCMainRealm.h"
+#import "ZCMeiziPageTagRealm.h"
 
-@implementation ZCMainRealm
+@implementation ZCMeiziPageTagRealm
 
 // Specify default values for properties
+
++ (NSString *)primaryKey {
+    return @"tagDate";
+}
 
 //+ (NSDictionary *)defaultPropertyValues
 //{
