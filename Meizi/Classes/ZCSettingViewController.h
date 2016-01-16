@@ -8,6 +8,6 @@
 
 #import "ZCRootViewController.h"
 
-@interface ZCSettingViewController : ZCRootViewController
+@interface ZCSettingViewController : UITableViewController
 
 @end

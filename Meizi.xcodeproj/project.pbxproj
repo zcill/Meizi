@@ -27,6 +27,7 @@
 		4C3BE12B1C418AED0001AC14 /* NSString+ZCHtmlBodyString.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C3BE1231C418AED0001AC14 /* NSString+ZCHtmlBodyString.m */; };
 		4C3C179F1C42ABD40060BCA9 /* ZCMainDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C3C179E1C42ABD40060BCA9 /* ZCMainDetailViewController.m */; };
 		4C5C881E1C4A685C00A3DB4E /* ZCMeiziDetailStringRealm.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5C881D1C4A685C00A3DB4E /* ZCMeiziDetailStringRealm.m */; };
+		4C5C882B1C4AAB1700A3DB4E /* ZCSettingViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C5C882A1C4AAB1700A3DB4E /* ZCSettingViewController.storyboard */; };
 		4CA0BB471C47FBF000665357 /* ZCMeiziPageTagRealm.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA0BB461C47FBF000665357 /* ZCMeiziPageTagRealm.m */; };
 		4CA0BB4A1C47FE8A00665357 /* NSDate+SFPrettyDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA0BB491C47FE8A00665357 /* NSDate+SFPrettyDate.m */; };
 		4CA8D4EB1C454048009B1119 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CA8D4EA1C454048009B1119 /* libz.tbd */; };
@@ -96,6 +97,7 @@
 		4C3C17A01C42ADFB0060BCA9 /* ZCMainHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCMainHeader.h; sourceTree = "<group>"; };
 		4C5C881C1C4A685C00A3DB4E /* ZCMeiziDetailStringRealm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCMeiziDetailStringRealm.h; sourceTree = "<group>"; };
 		4C5C881D1C4A685C00A3DB4E /* ZCMeiziDetailStringRealm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCMeiziDetailStringRealm.m; sourceTree = "<group>"; };
+		4C5C882A1C4AAB1700A3DB4E /* ZCSettingViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ZCSettingViewController.storyboard; sourceTree = "<group>"; };
 		4CA0BB451C47FBF000665357 /* ZCMeiziPageTagRealm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCMeiziPageTagRealm.h; sourceTree = "<group>"; };
 		4CA0BB461C47FBF000665357 /* ZCMeiziPageTagRealm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCMeiziPageTagRealm.m; sourceTree = "<group>"; };
 		4CA0BB481C47FE8A00665357 /* NSDate+SFPrettyDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+SFPrettyDate.h"; sourceTree = "<group>"; };
@@ -203,51 +205,11 @@
 		4C2843561C423B7200FBA332 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				4C2843621C423B9200FBA332 /* Model */,
-				4C2843611C423B8B00FBA332 /* View */,
-				4C2843601C423B7A00FBA332 /* Controller */,
+				4C5C88211C4AAA8000A3DB4E /* 妹子 */,
+				4C5C88221C4AAA8A00A3DB4E /* 分类 */,
+				4C5C88231C4AAAA200A3DB4E /* 我的 */,
 			);
 			path = Classes;
-			sourceTree = "<group>";
-		};
-		4C2843601C423B7A00FBA332 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				4C3C17A01C42ADFB0060BCA9 /* ZCMainHeader.h */,
-				4C2843791C42A11400FBA332 /* ZCMainCollectionViewController.h */,
-				4C28437A1C42A11500FBA332 /* ZCMainCollectionViewController.m */,
-				4C3C179D1C42ABD40060BCA9 /* ZCMainDetailViewController.h */,
-				4C3C179E1C42ABD40060BCA9 /* ZCMainDetailViewController.m */,
-				4C2843571C423B7200FBA332 /* ZCCategoryViewController.h */,
-				4C2843581C423B7200FBA332 /* ZCCategoryViewController.m */,
-				4C28435B1C423B7200FBA332 /* ZCSettingViewController.h */,
-				4C28435C1C423B7200FBA332 /* ZCSettingViewController.m */,
-			);
-			name = Controller;
-			sourceTree = "<group>";
-		};
-		4C2843611C423B8B00FBA332 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				4C28436F1C427CD100FBA332 /* ZCMainCell.h */,
-				4C2843701C427CD100FBA332 /* ZCMainCell.m */,
-				4C00895C1C43D1CF00FD1DF8 /* ZCAdView.h */,
-				4C00895D1C43D1CF00FD1DF8 /* ZCAdView.m */,
-			);
-			name = View;
-			sourceTree = "<group>";
-		};
-		4C2843621C423B9200FBA332 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				4CA8D4FE1C455E27009B1119 /* ZCMeiziRealm.h */,
-				4CA8D4FF1C455E27009B1119 /* ZCMeiziRealm.m */,
-				4CA0BB451C47FBF000665357 /* ZCMeiziPageTagRealm.h */,
-				4CA0BB461C47FBF000665357 /* ZCMeiziPageTagRealm.m */,
-				4C5C881C1C4A685C00A3DB4E /* ZCMeiziDetailStringRealm.h */,
-				4C5C881D1C4A685C00A3DB4E /* ZCMeiziDetailStringRealm.m */,
-			);
-			name = Model;
 			sourceTree = "<group>";
 		};
 		4C3BE1061C41745D0001AC14 /* Vendor */ = {
@@ -308,6 +270,95 @@
 				4C3BE1241C418AED0001AC14 /* ZCMoreDefines.h */,
 			);
 			path = ZCTools;
+			sourceTree = "<group>";
+		};
+		4C5C88211C4AAA8000A3DB4E /* 妹子 */ = {
+			isa = PBXGroup;
+			children = (
+				4C5C88261C4AAAB900A3DB4E /* Model */,
+				4C5C88251C4AAAB400A3DB4E /* View */,
+				4C5C88241C4AAAAF00A3DB4E /* Controller */,
+			);
+			name = "妹子";
+			sourceTree = "<group>";
+		};
+		4C5C88221C4AAA8A00A3DB4E /* 分类 */ = {
+			isa = PBXGroup;
+			children = (
+				4C2843571C423B7200FBA332 /* ZCCategoryViewController.h */,
+				4C2843581C423B7200FBA332 /* ZCCategoryViewController.m */,
+			);
+			name = "分类";
+			sourceTree = "<group>";
+		};
+		4C5C88231C4AAAA200A3DB4E /* 我的 */ = {
+			isa = PBXGroup;
+			children = (
+				4C5C88291C4AAAF500A3DB4E /* Model */,
+				4C5C88281C4AAAF100A3DB4E /* View */,
+				4C5C88271C4AAAEA00A3DB4E /* Controller */,
+			);
+			name = "我的";
+			sourceTree = "<group>";
+		};
+		4C5C88241C4AAAAF00A3DB4E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				4C3C17A01C42ADFB0060BCA9 /* ZCMainHeader.h */,
+				4C2843791C42A11400FBA332 /* ZCMainCollectionViewController.h */,
+				4C28437A1C42A11500FBA332 /* ZCMainCollectionViewController.m */,
+				4C3C179D1C42ABD40060BCA9 /* ZCMainDetailViewController.h */,
+				4C3C179E1C42ABD40060BCA9 /* ZCMainDetailViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		4C5C88251C4AAAB400A3DB4E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4C28436F1C427CD100FBA332 /* ZCMainCell.h */,
+				4C2843701C427CD100FBA332 /* ZCMainCell.m */,
+				4C00895C1C43D1CF00FD1DF8 /* ZCAdView.h */,
+				4C00895D1C43D1CF00FD1DF8 /* ZCAdView.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		4C5C88261C4AAAB900A3DB4E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4CA8D4FE1C455E27009B1119 /* ZCMeiziRealm.h */,
+				4CA8D4FF1C455E27009B1119 /* ZCMeiziRealm.m */,
+				4CA0BB451C47FBF000665357 /* ZCMeiziPageTagRealm.h */,
+				4CA0BB461C47FBF000665357 /* ZCMeiziPageTagRealm.m */,
+				4C5C881C1C4A685C00A3DB4E /* ZCMeiziDetailStringRealm.h */,
+				4C5C881D1C4A685C00A3DB4E /* ZCMeiziDetailStringRealm.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		4C5C88271C4AAAEA00A3DB4E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				4C28435B1C423B7200FBA332 /* ZCSettingViewController.h */,
+				4C28435C1C423B7200FBA332 /* ZCSettingViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		4C5C88281C4AAAF100A3DB4E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4C5C882A1C4AAB1700A3DB4E /* ZCSettingViewController.storyboard */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		4C5C88291C4AAAF500A3DB4E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 		B950DDE44F62B5EC0EDF56EB /* Pods */ = {
@@ -437,6 +488,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C5C882B1C4AAB1700A3DB4E /* ZCSettingViewController.storyboard in Resources */,
 				4C1A5C851C3C214600A1DF98 /* LaunchScreen.storyboard in Resources */,
 				4C1A5C821C3C214600A1DF98 /* Assets.xcassets in Resources */,
 			);

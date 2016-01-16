@@ -60,7 +60,8 @@
     
     [self setupSingleViewController:[[ZCCategoryViewController alloc] init] vcTitle:@"专题" tabBarTitle:@"专题" image:@"" selectedImage:@""];
     
-    [self setupSingleViewController:[[ZCSettingViewController alloc] init] vcTitle:@"我的" tabBarTitle:@"我的" image:@"" selectedImage:@""];
+    ZCSettingViewController *setting = [[UIStoryboard storyboardWithName:@"ZCSettingViewController" bundle:nil] instantiateViewControllerWithIdentifier:@"ZCSettingViewController"];
+    [self setupSingleViewController:setting vcTitle:@"我的" tabBarTitle:@"我的" image:@"" selectedImage:@""];
     
 }
 
