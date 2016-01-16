@@ -1,9 +1,9 @@
 platform:ios, 8.0
 
 pod 'MJRefresh'
-pod 'AFNetworking'
 pod 'SDWebImage'
 pod 'Realm'
+pod 'Qiniu', '~> 7.0'
 
 pod 'ChameleonFramework'
 

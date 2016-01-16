@@ -49,6 +49,10 @@
     return _detailUrlDict;
 }
 
+- (void)back {
+    NSLog(@"aff");
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -68,6 +72,12 @@
     }
     
     [self.navigationController.navigationBar setTranslucent:NO];
+    [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:0.95 green:0.92 blue:0.5 alpha:1]];
+    [self.navigationController.navigationBar setTintColor:[UIColor grayColor]];
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor grayColor],
+                                                                      NSFontAttributeName:[UIFont fontWithName:@"Menlo" size:14]
+                                                                      }];
+    
     self.view.backgroundColor = [UIColor whiteColor];
     
     [self initData];
@@ -170,7 +180,7 @@
 // 从html源代码中抓取数据
 - (void)parsingHtmlGetTitleAndThumbImg {
     
-    NSString *urlString = [NSString stringWithFormat:@"http://www.mzitu.com/page/%ld", _page];
+    NSString *urlString = [NSString stringWithFormat:@"http://www.mzitu.com/page/%ld", (long)_page];
     
     NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:urlString]];
     NSString *htmlStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
@@ -191,7 +201,7 @@
  */
 - (void)parsingHtmlGetDetailUrl {
     
-    NSString *urlString = [NSString stringWithFormat:@"http://www.mzitu.com/page/%ld", _page];
+    NSString *urlString = [NSString stringWithFormat:@"http://www.mzitu.com/page/%ld", (long)_page];
     NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:urlString]];
     NSString *htmlStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     
@@ -266,14 +276,14 @@
     RLMResults *girls = [ZCMeiziRealm allObjects];
     
     cell.meiziRealm = girls[indexPath.item];
-    
+
     return cell;
     
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    NSLog(@"item--->%ld, row--->%ld, section--->%ld", indexPath.item, indexPath.row, indexPath.section);
+    NSLog(@"item--->%ld, row--->%ld, section--->%ld", (long)indexPath.item, (long)indexPath.row, (long)indexPath.section);
     NSLog(@"%@", indexPath);
     
     /*

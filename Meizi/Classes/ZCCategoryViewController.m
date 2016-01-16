@@ -25,7 +25,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-
+    [self.navigationController.navigationBar setTranslucent:NO];
+    [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:0.95 green:0.92 blue:0.5 alpha:1]];
+    [self.navigationController.navigationBar setTintColor:[UIColor grayColor]];
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor grayColor],
+                                                                      NSFontAttributeName:[UIFont fontWithName:@"Menlo" size:14]
+                                                                      }];
     
     // 标题是前24个string
     self.dataArray = [NSMutableArray array];

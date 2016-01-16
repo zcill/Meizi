@@ -34,7 +34,8 @@
     self.tabBar.translucent = NO;
     
     // 镂空颜色
-    self.tabBar.tintColor = RGBA(244, 59, 51, 1);
+//    self.tabBar.tintColor = RGBA(244, 59, 51, 1);
+    self.tabBar.tintColor = rgba(0.95, 0.92, 0.5, 1);
     
 }
 
@@ -55,7 +56,7 @@
     flowLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
     flowLayout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
     
-    [self setupSingleViewController:[[ZCMainCollectionViewController alloc] initWithCollectionViewLayout:flowLayout] vcTitle:@"首页" tabBarTitle:@"首页" image:@"" selectedImage:@""];
+    [self setupSingleViewController:[[ZCMainCollectionViewController alloc] initWithCollectionViewLayout:flowLayout] vcTitle:@"妹子" tabBarTitle:@"妹子" image:@"" selectedImage:@""];
     
     [self setupSingleViewController:[[ZCCategoryViewController alloc] init] vcTitle:@"专题" tabBarTitle:@"专题" image:@"" selectedImage:@""];
     
@@ -90,6 +91,7 @@
     childController.title = title;
     
     UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:childController];
+    [navi.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:0.95 green:0.92 blue:0.5 alpha:1]];
     
     [self addChildViewController:navi];
     

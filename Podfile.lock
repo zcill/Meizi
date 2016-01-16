@@ -1,18 +1,24 @@
 PODS:
-  - AFNetworking (3.0.4):
-    - AFNetworking/NSURLSession (= 3.0.4)
-    - AFNetworking/Reachability (= 3.0.4)
-    - AFNetworking/Security (= 3.0.4)
-    - AFNetworking/Serialization (= 3.0.4)
-    - AFNetworking/UIKit (= 3.0.4)
-  - AFNetworking/NSURLSession (3.0.4):
+  - AFNetworking (2.6.3):
+    - AFNetworking/NSURLConnection (= 2.6.3)
+    - AFNetworking/NSURLSession (= 2.6.3)
+    - AFNetworking/Reachability (= 2.6.3)
+    - AFNetworking/Security (= 2.6.3)
+    - AFNetworking/Serialization (= 2.6.3)
+    - AFNetworking/UIKit (= 2.6.3)
+  - AFNetworking/NSURLConnection (2.6.3):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/Reachability (3.0.4)
-  - AFNetworking/Security (3.0.4)
-  - AFNetworking/Serialization (3.0.4)
-  - AFNetworking/UIKit (3.0.4):
+  - AFNetworking/NSURLSession (2.6.3):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (2.6.3)
+  - AFNetworking/Security (2.6.3)
+  - AFNetworking/Serialization (2.6.3)
+  - AFNetworking/UIKit (2.6.3):
+    - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
   - ChameleonFramework (2.0.6):
     - ChameleonFramework/Default (= 2.0.6)
@@ -20,8 +26,12 @@ PODS:
   - Crashlytics (3.4.1):
     - Fabric (~> 1.6.0)
   - Fabric (1.6.1)
+  - HappyDNS (0.2.3)
   - LMDropdownView (1.0.2)
   - MJRefresh (3.0.7)
+  - Qiniu (7.0.16):
+    - AFNetworking (~> 2.0)
+    - HappyDNS (~> 0.2)
   - Realm (0.97.0):
     - Realm/Headers (= 0.97.0)
   - Realm/Headers (0.97.0)
@@ -36,12 +46,12 @@ PODS:
   - UMengAnalytics (3.6.6)
 
 DEPENDENCIES:
-  - AFNetworking
   - ChameleonFramework
   - Crashlytics
   - Fabric
   - LMDropdownView
   - MJRefresh
+  - Qiniu (~> 7.0)
   - Realm
   - SCLAlertView-Objective-C
   - SDCycleScrollView (~> 1.6)
@@ -51,12 +61,14 @@ DEPENDENCIES:
   - UMengAnalytics
 
 SPEC CHECKSUMS:
-  AFNetworking: a0075feb321559dc78d9d85b55d11caa19eabb93
+  AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
   ChameleonFramework: a6b466873ff9a4ce3a5196c20bccf1a97ad9f446
   Crashlytics: 41574a245bc6ae10c55d57f385ebd2004e5bee05
   Fabric: bf0ceb04e7c924090efc5f8c55e4fbcca189e0a0
+  HappyDNS: 6d85942e64c28b4fa61f8c76580398f52d6d1d11
   LMDropdownView: 50188c9678eab3690153993d1824b7235d9b7edc
   MJRefresh: f3e1228ec3d38c7ba5208d58032631a52f39f495
+  Qiniu: 51a8702cddc02b50867e10cef99291b9a8a006b1
   Realm: b498a6fb9d288b171ff98d0e2d4384c295be8990
   SCLAlertView-Objective-C: bf3590d5c8cf0fcf49f63f82fb3e4a78b545f7bb
   SDCycleScrollView: 436ccec76258f9f280365af5c07b289a71382601
