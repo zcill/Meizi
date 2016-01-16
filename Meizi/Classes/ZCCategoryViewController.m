@@ -10,6 +10,7 @@
 #import "TFHpple.h"
 #import "TFHppleElement.h"
 #import "XPathQuery.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 #import <UMengAnalytics/MobClick.h>
 
 #import <Realm/Realm.h>
@@ -31,6 +32,9 @@
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor grayColor],
                                                                       NSFontAttributeName:[UIFont fontWithName:@"Menlo" size:14]
                                                                       }];
+
+    UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://pic.mmfile.net/2015/10/23m01.jpg"]]];
+    NSLog(@"height%f width%f", image.size.height, image.size.width);
     
     // 标题是前24个string
     self.dataArray = [NSMutableArray array];

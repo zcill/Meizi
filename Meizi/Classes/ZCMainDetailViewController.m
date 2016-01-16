@@ -12,8 +12,10 @@
 #import <SVProgressHUD/SVProgressHUD.h>
 #import <SCLAlertView-Objective-C/SCLAlertView.h>
 #import <UMengAnalytics/MobClick.h>
+#import <Realm/Realm.h>
+#import "ZCMeiziDetailStringRealm.h"
 #import "ZCMoreDefines.h"
-
+#import "ZCMeiziRealm.h"
 
 @interface ZCMainDetailViewController ()<UITableViewDelegate, UITableViewDataSource>
 
@@ -86,6 +88,33 @@
             [_dataSource addObject:string];
         }
     }
+    
+    RLMRealm *realm = [RLMRealm defaultRealm];
+    
+    NSPredicate *pred = [NSPredicate predicateWithFormat:@"meiziUrl == %@", self.contentUrl];
+    RLMResults *result = [ZCMeiziRealm objectsWithPredicate:pred];
+    
+    if (result.count != 0) {
+        ZCMeiziRealm *meiziRealm = [result objectAtIndex:0];
+        
+        if (meiziRealm.allMeiziImgUrl.count == 0) {
+            
+            for (NSString *urlString in _dataSource) {
+                
+                ZCMeiziDetailStringRealm *detailRealm = [[ZCMeiziDetailStringRealm alloc] init];
+                
+                detailRealm.imgUrlString = urlString;
+                
+                [realm beginWriteTransaction];
+                [realm addOrUpdateObject:detailRealm];
+                [meiziRealm.allMeiziImgUrl addObject:detailRealm];
+                [realm commitWriteTransaction];
+            }
+            
+        }
+    }
+    
+//    NSLog(@"%@", realm.path);
     
     [self.tableView reloadData];
     

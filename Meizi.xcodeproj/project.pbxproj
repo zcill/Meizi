@@ -26,6 +26,7 @@
 		4C3BE1271C418AED0001AC14 /* ZCRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C3BE1191C418AED0001AC14 /* ZCRootViewController.m */; };
 		4C3BE12B1C418AED0001AC14 /* NSString+ZCHtmlBodyString.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C3BE1231C418AED0001AC14 /* NSString+ZCHtmlBodyString.m */; };
 		4C3C179F1C42ABD40060BCA9 /* ZCMainDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C3C179E1C42ABD40060BCA9 /* ZCMainDetailViewController.m */; };
+		4C5C881E1C4A685C00A3DB4E /* ZCMeiziDetailStringRealm.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5C881D1C4A685C00A3DB4E /* ZCMeiziDetailStringRealm.m */; };
 		4CA0BB471C47FBF000665357 /* ZCMeiziPageTagRealm.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA0BB461C47FBF000665357 /* ZCMeiziPageTagRealm.m */; };
 		4CA0BB4A1C47FE8A00665357 /* NSDate+SFPrettyDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA0BB491C47FE8A00665357 /* NSDate+SFPrettyDate.m */; };
 		4CA8D4EB1C454048009B1119 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CA8D4EA1C454048009B1119 /* libz.tbd */; };
@@ -93,6 +94,8 @@
 		4C3C179D1C42ABD40060BCA9 /* ZCMainDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCMainDetailViewController.h; sourceTree = "<group>"; };
 		4C3C179E1C42ABD40060BCA9 /* ZCMainDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCMainDetailViewController.m; sourceTree = "<group>"; };
 		4C3C17A01C42ADFB0060BCA9 /* ZCMainHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCMainHeader.h; sourceTree = "<group>"; };
+		4C5C881C1C4A685C00A3DB4E /* ZCMeiziDetailStringRealm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCMeiziDetailStringRealm.h; sourceTree = "<group>"; };
+		4C5C881D1C4A685C00A3DB4E /* ZCMeiziDetailStringRealm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCMeiziDetailStringRealm.m; sourceTree = "<group>"; };
 		4CA0BB451C47FBF000665357 /* ZCMeiziPageTagRealm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCMeiziPageTagRealm.h; sourceTree = "<group>"; };
 		4CA0BB461C47FBF000665357 /* ZCMeiziPageTagRealm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCMeiziPageTagRealm.m; sourceTree = "<group>"; };
 		4CA0BB481C47FE8A00665357 /* NSDate+SFPrettyDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+SFPrettyDate.h"; sourceTree = "<group>"; };
@@ -241,6 +244,8 @@
 				4CA8D4FF1C455E27009B1119 /* ZCMeiziRealm.m */,
 				4CA0BB451C47FBF000665357 /* ZCMeiziPageTagRealm.h */,
 				4CA0BB461C47FBF000665357 /* ZCMeiziPageTagRealm.m */,
+				4C5C881C1C4A685C00A3DB4E /* ZCMeiziDetailStringRealm.h */,
+				4C5C881D1C4A685C00A3DB4E /* ZCMeiziDetailStringRealm.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -511,6 +516,7 @@
 				4CA0BB4A1C47FE8A00665357 /* NSDate+SFPrettyDate.m in Sources */,
 				4C00895E1C43D1CF00FD1DF8 /* ZCAdView.m in Sources */,
 				4C1A5C771C3C214600A1DF98 /* main.m in Sources */,
+				4C5C881E1C4A685C00A3DB4E /* ZCMeiziDetailStringRealm.m in Sources */,
 				4CA8D5001C455E27009B1119 /* ZCMeiziRealm.m in Sources */,
 				4CA0BB471C47FBF000665357 /* ZCMeiziPageTagRealm.m in Sources */,
 				4C3BE1251C418AED0001AC14 /* ZCAppDelegate.m in Sources */,

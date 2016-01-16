@@ -7,12 +7,15 @@
 //
 
 #import <Realm/Realm.h>
+#import "ZCMeiziDetailStringRealm.h"
 
 @interface ZCMeiziRealm : RLMObject
 
-@property (nonatomic, copy) NSString *meiziTitle;
-@property (nonatomic, copy) NSString *meiziUrl;
-@property (nonatomic, copy) NSString *meiziImageUrl;
+@property NSString *meiziTitle;
+@property NSString *meiziUrl;
+@property NSString *meiziImageUrl;
+
+@property RLMArray<ZCMeiziDetailStringRealm> *allMeiziImgUrl;
 
 @end
 
