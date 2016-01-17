@@ -11,6 +11,7 @@
 #import "ZCCategoryViewController.h"
 #import "ZCSettingViewController.h"
 #import "ZCMainCollectionViewController.h"
+#import "ZCLoginViewController.h"
 
 @interface ZCTabBar ()
 
@@ -58,7 +59,10 @@
     
     [self setupSingleViewController:[[ZCMainCollectionViewController alloc] initWithCollectionViewLayout:flowLayout] vcTitle:@"妹子" tabBarTitle:@"妹子" image:@"" selectedImage:@""];
     
-    [self setupSingleViewController:[[ZCCategoryViewController alloc] init] vcTitle:@"专题" tabBarTitle:@"专题" image:@"" selectedImage:@""];
+//    [self setupSingleViewController:[[ZCCategoryViewController alloc] init] vcTitle:@"专题" tabBarTitle:@"专题" image:@"" selectedImage:@""];
+    ZCLoginViewController *login = [[UIStoryboard storyboardWithName:@"ZCLoginViewController" bundle:nil] instantiateViewControllerWithIdentifier:@"ZCLoginViewController"];
+//    [self setupSingleViewController:login vcTitle:@"" tabBarTitle:@"" image:@"" selectedImage:@""];
+    [self addChildViewController:login];
     
     ZCSettingViewController *setting = [[UIStoryboard storyboardWithName:@"ZCSettingViewController" bundle:nil] instantiateViewControllerWithIdentifier:@"ZCSettingViewController"];
     [self setupSingleViewController:setting vcTitle:@"我的" tabBarTitle:@"我的" image:@"" selectedImage:@""];

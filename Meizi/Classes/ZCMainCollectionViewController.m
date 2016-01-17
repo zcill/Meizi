@@ -49,10 +49,6 @@
     return _detailUrlDict;
 }
 
-- (void)back {
-    NSLog(@"aff");
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -88,9 +84,10 @@
         self.dataSource = [[NSMutableArray alloc] initWithCapacity:0];
         _page = 1;
         
-        // 如果用户拉到顶部去刷新，就删除数据库的内容
+        // 如果用户拉到顶部去刷新，就删除数据库的首页妹子和页码表的数据
         [realm beginWriteTransaction];
-        [realm deleteAllObjects];
+        [realm deleteObjects:[ZCMeiziRealm allObjects]];
+        [realm deleteObjects:[ZCMeiziPageTagRealm allObjects]];
         [realm commitWriteTransaction];
         
         [self initData];
@@ -128,7 +125,9 @@
     [realm beginWriteTransaction];
     [self realm_update_inRealm:realm];
     
-    [self.collectionView reloadData];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.collectionView reloadData];
+    });
     
     NSLog(@"%@", realm.path);
 }

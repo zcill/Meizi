@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		4C00895E1C43D1CF00FD1DF8 /* ZCAdView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C00895D1C43D1CF00FD1DF8 /* ZCAdView.m */; };
+		4C147C7C1C4BE8160081C842 /* ZCLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C147C7B1C4BE8160081C842 /* ZCLoginViewController.m */; };
+		4C147C7E1C4BE8340081C842 /* ZCLoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C147C7D1C4BE8340081C842 /* ZCLoginViewController.storyboard */; };
 		4C1A5C771C3C214600A1DF98 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1A5C761C3C214600A1DF98 /* main.m */; };
 		4C1A5C821C3C214600A1DF98 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C1A5C811C3C214600A1DF98 /* Assets.xcassets */; };
 		4C1A5C851C3C214600A1DF98 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C1A5C831C3C214600A1DF98 /* LaunchScreen.storyboard */; };
@@ -57,6 +59,9 @@
 		4C00895C1C43D1CF00FD1DF8 /* ZCAdView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCAdView.h; sourceTree = "<group>"; };
 		4C00895D1C43D1CF00FD1DF8 /* ZCAdView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCAdView.m; sourceTree = "<group>"; };
 		4C00FD521C3EC2000068D852 /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
+		4C147C7A1C4BE8160081C842 /* ZCLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCLoginViewController.h; sourceTree = "<group>"; };
+		4C147C7B1C4BE8160081C842 /* ZCLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCLoginViewController.m; sourceTree = "<group>"; };
+		4C147C7D1C4BE8340081C842 /* ZCLoginViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ZCLoginViewController.storyboard; sourceTree = "<group>"; };
 		4C1A5C721C3C214600A1DF98 /* Meizi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Meizi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C1A5C761C3C214600A1DF98 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4C1A5C811C3C214600A1DF98 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -137,6 +142,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4C147C791C4BE7EA0081C842 /* 注册登录 */ = {
+			isa = PBXGroup;
+			children = (
+				4C147C7A1C4BE8160081C842 /* ZCLoginViewController.h */,
+				4C147C7B1C4BE8160081C842 /* ZCLoginViewController.m */,
+				4C147C7D1C4BE8340081C842 /* ZCLoginViewController.storyboard */,
+			);
+			name = "注册登录";
+			sourceTree = "<group>";
+		};
 		4C1A5C691C3C214600A1DF98 = {
 			isa = PBXGroup;
 			children = (
@@ -205,6 +220,7 @@
 		4C2843561C423B7200FBA332 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				4C147C791C4BE7EA0081C842 /* 注册登录 */,
 				4C5C88211C4AAA8000A3DB4E /* 妹子 */,
 				4C5C88221C4AAA8A00A3DB4E /* 分类 */,
 				4C5C88231C4AAAA200A3DB4E /* 我的 */,
@@ -488,6 +504,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C147C7E1C4BE8340081C842 /* ZCLoginViewController.storyboard in Resources */,
 				4C5C882B1C4AAB1700A3DB4E /* ZCSettingViewController.storyboard in Resources */,
 				4C1A5C851C3C214600A1DF98 /* LaunchScreen.storyboard in Resources */,
 				4C1A5C821C3C214600A1DF98 /* Assets.xcassets in Resources */,
@@ -580,6 +597,7 @@
 				4C3C179F1C42ABD40060BCA9 /* ZCMainDetailViewController.m in Sources */,
 				4C3BE1271C418AED0001AC14 /* ZCRootViewController.m in Sources */,
 				4C3BE12B1C418AED0001AC14 /* NSString+ZCHtmlBodyString.m in Sources */,
+				4C147C7C1C4BE8160081C842 /* ZCLoginViewController.m in Sources */,
 				4C28435D1C423B7200FBA332 /* ZCCategoryViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
