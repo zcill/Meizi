@@ -20,6 +20,7 @@ PODS:
   - AFNetworking/UIKit (2.6.3):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - AVOSCloud (3.2.1)
   - ChameleonFramework (2.0.6):
     - ChameleonFramework/Default (= 2.0.6)
   - ChameleonFramework/Default (2.0.6)
@@ -42,10 +43,11 @@ PODS:
     - SDWebImage/Core (= 3.7.3)
   - SDWebImage/Core (3.7.3)
   - SIAlertView (1.3)
-  - SVProgressHUD (HEAD based on 2.0-beta)
+  - SVProgressHUD (HEAD based on 2.0-beta2)
   - UMengAnalytics (3.6.6)
 
 DEPENDENCIES:
+  - AVOSCloud
   - ChameleonFramework
   - Crashlytics
   - Fabric
@@ -62,6 +64,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
+  AVOSCloud: 770f086cf05983fa09a0781d852499fa452244a9
   ChameleonFramework: a6b466873ff9a4ce3a5196c20bccf1a97ad9f446
   Crashlytics: 41574a245bc6ae10c55d57f385ebd2004e5bee05
   Fabric: bf0ceb04e7c924090efc5f8c55e4fbcca189e0a0
@@ -74,7 +77,7 @@ SPEC CHECKSUMS:
   SDCycleScrollView: 436ccec76258f9f280365af5c07b289a71382601
   SDWebImage: 1d2b1a1efda1ade1b00b6f8498865f8ddedc8a84
   SIAlertView: 20c794b55eaf44d888773ea51647cf8907723919
-  SVProgressHUD: c83337f10ed32d701c423d519059a249973c8662
+  SVProgressHUD: 29ebaaa2574f11c0726421a77d41cb1bd190801e
   UMengAnalytics: 4bf831415146b9c57cb10be65fbd43462ef8cf65
 
 COCOAPODS: 0.39.0

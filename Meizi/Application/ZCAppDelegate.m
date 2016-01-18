@@ -8,8 +8,9 @@
 
 #import "ZCAppDelegate.h"
 #import "ZCTabBar.h"
-
 #import <UMengAnalytics/MobClick.h>
+#import <AVOSCloud/AVOSCloud.h>
+#import "ZCLoginViewController.h"
 
 @interface ZCAppDelegate ()
 
@@ -20,17 +21,40 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+    [self setLeanCloudSDK];
     [self setUmengAnalytics];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
     
-    ZCTabBar *tabBar = [[ZCTabBar alloc] init];
-    self.window.rootViewController = tabBar;
+    // 如果第一次进入app，显示登录界面
+    if (![AVUser currentUser]) {
+        ZCLoginViewController *loginVC = [[UIStoryboard storyboardWithName:@"ZCLoginViewController" bundle:nil] instantiateViewControllerWithIdentifier:@"ZCLoginViewController"];
+        [self.window addSubview:loginVC.view];
+        [self.window setRootViewController:loginVC];
+        
+    } else {
+        
+        ZCTabBar *tabBar = [[ZCTabBar alloc] init];
+        [self.window addSubview:tabBar.view];
+        [self.window setRootViewController:tabBar];
+        
+    }
     
     [self.window makeKeyAndVisible];
     
     return YES;
+}
+
+/**
+ *  集成LeanCloudSDK
+ */
+- (void)setLeanCloudSDK {
+    
+    // 初始化LeanCloud
+    [AVOSCloud setApplicationId:@"appID" clientKey:@"appKey"];
+    [AVOSCloud setAllLogsEnabled:YES];
+    
 }
 
 /**

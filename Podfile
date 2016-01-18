@@ -12,6 +12,7 @@ pod 'SVProgressHUD', :head
 pod 'LMDropdownView'
 pod 'SCLAlertView-Objective-C'
 
+pod 'AVOSCloud'
 pod 'Fabric'
 pod 'Crashlytics'
 
