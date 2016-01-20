@@ -19,6 +19,7 @@
 		4C28435F1C423B7200FBA332 /* ZCSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C28435C1C423B7200FBA332 /* ZCSettingViewController.m */; };
 		4C2843721C427CD100FBA332 /* ZCMainCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C2843701C427CD100FBA332 /* ZCMainCell.m */; };
 		4C28437B1C42A11500FBA332 /* ZCMainCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C28437A1C42A11500FBA332 /* ZCMainCollectionViewController.m */; };
+		4C304CC11C4F6B1E00E49874 /* ZCRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C304CC01C4F6B1E00E49874 /* ZCRegisterViewController.m */; };
 		4C3BE1041C4173BB0001AC14 /* libxml2.2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C3BE1031C4173BB0001AC14 /* libxml2.2.tbd */; };
 		4C3BE10E1C41745D0001AC14 /* TFHpple.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C3BE1091C41745D0001AC14 /* TFHpple.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		4C3BE10F1C41745D0001AC14 /* TFHppleElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C3BE10B1C41745D0001AC14 /* TFHppleElement.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -81,6 +82,8 @@
 		4C2843701C427CD100FBA332 /* ZCMainCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCMainCell.m; sourceTree = "<group>"; };
 		4C2843791C42A11400FBA332 /* ZCMainCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCMainCollectionViewController.h; sourceTree = "<group>"; };
 		4C28437A1C42A11500FBA332 /* ZCMainCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCMainCollectionViewController.m; sourceTree = "<group>"; wrapsLines = 1; };
+		4C304CBF1C4F6B1E00E49874 /* ZCRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCRegisterViewController.h; sourceTree = "<group>"; };
+		4C304CC01C4F6B1E00E49874 /* ZCRegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCRegisterViewController.m; sourceTree = "<group>"; };
 		4C3BE1031C4173BB0001AC14 /* libxml2.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.2.tbd; path = usr/lib/libxml2.2.tbd; sourceTree = SDKROOT; };
 		4C3BE1081C41745D0001AC14 /* TFHpple.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFHpple.h; sourceTree = "<group>"; };
 		4C3BE1091C41745D0001AC14 /* TFHpple.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFHpple.m; sourceTree = "<group>"; };
@@ -147,6 +150,8 @@
 			children = (
 				4C147C7A1C4BE8160081C842 /* ZCLoginViewController.h */,
 				4C147C7B1C4BE8160081C842 /* ZCLoginViewController.m */,
+				4C304CBF1C4F6B1E00E49874 /* ZCRegisterViewController.h */,
+				4C304CC01C4F6B1E00E49874 /* ZCRegisterViewController.m */,
 				4C147C7D1C4BE8340081C842 /* ZCLoginViewController.storyboard */,
 			);
 			name = "注册登录";
@@ -594,6 +599,7 @@
 				4C3BE10F1C41745D0001AC14 /* TFHppleElement.m in Sources */,
 				4C2843721C427CD100FBA332 /* ZCMainCell.m in Sources */,
 				4C3BE10E1C41745D0001AC14 /* TFHpple.m in Sources */,
+				4C304CC11C4F6B1E00E49874 /* ZCRegisterViewController.m in Sources */,
 				4C3C179F1C42ABD40060BCA9 /* ZCMainDetailViewController.m in Sources */,
 				4C3BE1271C418AED0001AC14 /* ZCRootViewController.m in Sources */,
 				4C3BE12B1C418AED0001AC14 /* NSString+ZCHtmlBodyString.m in Sources */,

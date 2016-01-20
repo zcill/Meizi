@@ -9,7 +9,10 @@
 #import "ZCLoginViewController.h"
 #import "ZCAppDelegate.h"
 #import "ZCTabBar.h"
+#import "ZCRegisterViewController.h"
 #import <AVOSCloud/AVOSCloud.h>
+#import <CRToast/CRToast.h>
+#import <ChameleonFramework/Chameleon.h>
 
 @interface ZCLoginViewController ()
 
@@ -25,7 +28,6 @@
 #pragma mark - private extension
 - (void)zc_crtoast_showWithInfo:(NSString *)info {
     
-    /*
     NSDictionary *options = @{
                               kCRToastTextKey : info,
                               kCRToastNotificationTypeKey : @(CRToastTypeNavigationBar),
@@ -41,7 +43,6 @@
                                 completionBlock:^{
                                     NSLog(@"Completed");
                                 }];
-     */
     
 }
 
@@ -100,7 +101,12 @@
 
 - (IBAction)registe:(UIButton *)sender {
     [self zc_resignFirsetResponder];
-    [self zc_crtoast_showWithInfo:@"暂未开放注册"];
+    
+    ZCRegisterViewController *registerVC = [[UIStoryboard storyboardWithName:@"ZCLoginViewController" bundle:nil] instantiateViewControllerWithIdentifier:@"ZCRegisterViewController"];
+    // 设置模态翻转动画效果
+    registerVC.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    
+    [self presentViewController:registerVC animated:YES completion:nil];
 }
 
 - (IBAction)see:(UIButton *)sender {

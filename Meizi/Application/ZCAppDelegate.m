@@ -25,7 +25,7 @@
     [self setUmengAnalytics];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.window.backgroundColor = [UIColor whiteColor];
+//    self.window.backgroundColor = [UIColor whiteColor];
     
     // 如果第一次进入app，显示登录界面
     if (![AVUser currentUser]) {

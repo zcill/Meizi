@@ -3,13 +3,11 @@ platform:ios, 8.0
 pod 'MJRefresh'
 pod 'SDWebImage'
 pod 'Realm'
-pod 'Qiniu', '~> 7.0'
 
 pod 'ChameleonFramework'
 
 pod 'SIAlertView'
-pod 'SVProgressHUD', :head
-pod 'LMDropdownView'
+pod 'CRToast', '~> 0.0.7'
 pod 'SCLAlertView-Objective-C'
 
 pod 'AVOSCloud'
