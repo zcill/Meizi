@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		4C00895E1C43D1CF00FD1DF8 /* ZCAdView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C00895D1C43D1CF00FD1DF8 /* ZCAdView.m */; };
-		4C147C7C1C4BE8160081C842 /* ZCLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C147C7B1C4BE8160081C842 /* ZCLoginViewController.m */; };
-		4C147C7E1C4BE8340081C842 /* ZCLoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C147C7D1C4BE8340081C842 /* ZCLoginViewController.storyboard */; };
 		4C1A5C771C3C214600A1DF98 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1A5C761C3C214600A1DF98 /* main.m */; };
 		4C1A5C821C3C214600A1DF98 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C1A5C811C3C214600A1DF98 /* Assets.xcassets */; };
 		4C1A5C851C3C214600A1DF98 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C1A5C831C3C214600A1DF98 /* LaunchScreen.storyboard */; };
@@ -19,7 +17,8 @@
 		4C28435F1C423B7200FBA332 /* ZCSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C28435C1C423B7200FBA332 /* ZCSettingViewController.m */; };
 		4C2843721C427CD100FBA332 /* ZCMainCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C2843701C427CD100FBA332 /* ZCMainCell.m */; };
 		4C28437B1C42A11500FBA332 /* ZCMainCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C28437A1C42A11500FBA332 /* ZCMainCollectionViewController.m */; };
-		4C304CC11C4F6B1E00E49874 /* ZCRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C304CC01C4F6B1E00E49874 /* ZCRegisterViewController.m */; };
+		4C3165A41C529D8000C8ADD7 /* HoshiTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3165A11C529D8000C8ADD7 /* HoshiTextField.swift */; };
+		4C3165A51C529D8000C8ADD7 /* TextFieldsEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3165A31C529D8000C8ADD7 /* TextFieldsEffects.swift */; };
 		4C3BE1041C4173BB0001AC14 /* libxml2.2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C3BE1031C4173BB0001AC14 /* libxml2.2.tbd */; };
 		4C3BE10E1C41745D0001AC14 /* TFHpple.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C3BE1091C41745D0001AC14 /* TFHpple.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		4C3BE10F1C41745D0001AC14 /* TFHppleElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C3BE10B1C41745D0001AC14 /* TFHppleElement.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -31,6 +30,9 @@
 		4C3C179F1C42ABD40060BCA9 /* ZCMainDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C3C179E1C42ABD40060BCA9 /* ZCMainDetailViewController.m */; };
 		4C5C881E1C4A685C00A3DB4E /* ZCMeiziDetailStringRealm.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5C881D1C4A685C00A3DB4E /* ZCMeiziDetailStringRealm.m */; };
 		4C5C882B1C4AAB1700A3DB4E /* ZCSettingViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C5C882A1C4AAB1700A3DB4E /* ZCSettingViewController.storyboard */; };
+		4C67B0511C54DA2A00071D45 /* ZCLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C67B04D1C54DA2A00071D45 /* ZCLoginViewController.m */; };
+		4C67B0521C54DA2A00071D45 /* ZCLoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C67B04E1C54DA2A00071D45 /* ZCLoginViewController.storyboard */; };
+		4C67B0531C54DA2A00071D45 /* ZCRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C67B0501C54DA2A00071D45 /* ZCRegisterViewController.m */; };
 		4CA0BB471C47FBF000665357 /* ZCMeiziPageTagRealm.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA0BB461C47FBF000665357 /* ZCMeiziPageTagRealm.m */; };
 		4CA0BB4A1C47FE8A00665357 /* NSDate+SFPrettyDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA0BB491C47FE8A00665357 /* NSDate+SFPrettyDate.m */; };
 		4CA8D4EB1C454048009B1119 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CA8D4EA1C454048009B1119 /* libz.tbd */; };
@@ -60,9 +62,6 @@
 		4C00895C1C43D1CF00FD1DF8 /* ZCAdView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCAdView.h; sourceTree = "<group>"; };
 		4C00895D1C43D1CF00FD1DF8 /* ZCAdView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCAdView.m; sourceTree = "<group>"; };
 		4C00FD521C3EC2000068D852 /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
-		4C147C7A1C4BE8160081C842 /* ZCLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCLoginViewController.h; sourceTree = "<group>"; };
-		4C147C7B1C4BE8160081C842 /* ZCLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCLoginViewController.m; sourceTree = "<group>"; };
-		4C147C7D1C4BE8340081C842 /* ZCLoginViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ZCLoginViewController.storyboard; sourceTree = "<group>"; };
 		4C1A5C721C3C214600A1DF98 /* Meizi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Meizi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C1A5C761C3C214600A1DF98 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4C1A5C811C3C214600A1DF98 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -82,8 +81,10 @@
 		4C2843701C427CD100FBA332 /* ZCMainCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCMainCell.m; sourceTree = "<group>"; };
 		4C2843791C42A11400FBA332 /* ZCMainCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCMainCollectionViewController.h; sourceTree = "<group>"; };
 		4C28437A1C42A11500FBA332 /* ZCMainCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCMainCollectionViewController.m; sourceTree = "<group>"; wrapsLines = 1; };
-		4C304CBF1C4F6B1E00E49874 /* ZCRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCRegisterViewController.h; sourceTree = "<group>"; };
-		4C304CC01C4F6B1E00E49874 /* ZCRegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCRegisterViewController.m; sourceTree = "<group>"; };
+		4C31659E1C529CB300C8ADD7 /* Meizi-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Meizi-Bridging-Header.h"; sourceTree = "<group>"; };
+		4C3165A11C529D8000C8ADD7 /* HoshiTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HoshiTextField.swift; sourceTree = "<group>"; };
+		4C3165A21C529D8000C8ADD7 /* TextFieldEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextFieldEffects.h; sourceTree = "<group>"; };
+		4C3165A31C529D8000C8ADD7 /* TextFieldsEffects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldsEffects.swift; sourceTree = "<group>"; };
 		4C3BE1031C4173BB0001AC14 /* libxml2.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.2.tbd; path = usr/lib/libxml2.2.tbd; sourceTree = SDKROOT; };
 		4C3BE1081C41745D0001AC14 /* TFHpple.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFHpple.h; sourceTree = "<group>"; };
 		4C3BE1091C41745D0001AC14 /* TFHpple.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFHpple.m; sourceTree = "<group>"; };
@@ -106,6 +107,11 @@
 		4C5C881C1C4A685C00A3DB4E /* ZCMeiziDetailStringRealm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCMeiziDetailStringRealm.h; sourceTree = "<group>"; };
 		4C5C881D1C4A685C00A3DB4E /* ZCMeiziDetailStringRealm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCMeiziDetailStringRealm.m; sourceTree = "<group>"; };
 		4C5C882A1C4AAB1700A3DB4E /* ZCSettingViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ZCSettingViewController.storyboard; sourceTree = "<group>"; };
+		4C67B04C1C54DA2A00071D45 /* ZCLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCLoginViewController.h; sourceTree = "<group>"; };
+		4C67B04D1C54DA2A00071D45 /* ZCLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCLoginViewController.m; sourceTree = "<group>"; };
+		4C67B04E1C54DA2A00071D45 /* ZCLoginViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ZCLoginViewController.storyboard; sourceTree = "<group>"; };
+		4C67B04F1C54DA2A00071D45 /* ZCRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCRegisterViewController.h; sourceTree = "<group>"; };
+		4C67B0501C54DA2A00071D45 /* ZCRegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCRegisterViewController.m; sourceTree = "<group>"; };
 		4CA0BB451C47FBF000665357 /* ZCMeiziPageTagRealm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCMeiziPageTagRealm.h; sourceTree = "<group>"; };
 		4CA0BB461C47FBF000665357 /* ZCMeiziPageTagRealm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCMeiziPageTagRealm.m; sourceTree = "<group>"; };
 		4CA0BB481C47FE8A00665357 /* NSDate+SFPrettyDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+SFPrettyDate.h"; sourceTree = "<group>"; };
@@ -148,11 +154,12 @@
 		4C147C791C4BE7EA0081C842 /* 注册登录 */ = {
 			isa = PBXGroup;
 			children = (
-				4C147C7A1C4BE8160081C842 /* ZCLoginViewController.h */,
-				4C147C7B1C4BE8160081C842 /* ZCLoginViewController.m */,
-				4C304CBF1C4F6B1E00E49874 /* ZCRegisterViewController.h */,
-				4C304CC01C4F6B1E00E49874 /* ZCRegisterViewController.m */,
-				4C147C7D1C4BE8340081C842 /* ZCLoginViewController.storyboard */,
+				4C67B04C1C54DA2A00071D45 /* ZCLoginViewController.h */,
+				4C67B04D1C54DA2A00071D45 /* ZCLoginViewController.m */,
+				4C67B04E1C54DA2A00071D45 /* ZCLoginViewController.storyboard */,
+				4C67B04F1C54DA2A00071D45 /* ZCRegisterViewController.h */,
+				4C67B0501C54DA2A00071D45 /* ZCRegisterViewController.m */,
+				4C31659E1C529CB300C8ADD7 /* Meizi-Bridging-Header.h */,
 			);
 			name = "注册登录";
 			sourceTree = "<group>";
@@ -236,6 +243,9 @@
 		4C3BE1061C41745D0001AC14 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				4C3165A11C529D8000C8ADD7 /* HoshiTextField.swift */,
+				4C3165A21C529D8000C8ADD7 /* TextFieldEffects.h */,
+				4C3165A31C529D8000C8ADD7 /* TextFieldsEffects.swift */,
 				4C3BE1071C41745D0001AC14 /* TFHpple */,
 			);
 			path = Vendor;
@@ -509,7 +519,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4C147C7E1C4BE8340081C842 /* ZCLoginViewController.storyboard in Resources */,
+				4C67B0521C54DA2A00071D45 /* ZCLoginViewController.storyboard in Resources */,
 				4C5C882B1C4AAB1700A3DB4E /* ZCSettingViewController.storyboard in Resources */,
 				4C1A5C851C3C214600A1DF98 /* LaunchScreen.storyboard in Resources */,
 				4C1A5C821C3C214600A1DF98 /* Assets.xcassets in Resources */,
@@ -595,15 +605,17 @@
 				4CA0BB471C47FBF000665357 /* ZCMeiziPageTagRealm.m in Sources */,
 				4C3BE1251C418AED0001AC14 /* ZCAppDelegate.m in Sources */,
 				4C3BE1101C41745D0001AC14 /* XPathQuery.m in Sources */,
+				4C67B0531C54DA2A00071D45 /* ZCRegisterViewController.m in Sources */,
 				4C28435F1C423B7200FBA332 /* ZCSettingViewController.m in Sources */,
+				4C67B0511C54DA2A00071D45 /* ZCLoginViewController.m in Sources */,
 				4C3BE10F1C41745D0001AC14 /* TFHppleElement.m in Sources */,
 				4C2843721C427CD100FBA332 /* ZCMainCell.m in Sources */,
 				4C3BE10E1C41745D0001AC14 /* TFHpple.m in Sources */,
-				4C304CC11C4F6B1E00E49874 /* ZCRegisterViewController.m in Sources */,
+				4C3165A41C529D8000C8ADD7 /* HoshiTextField.swift in Sources */,
+				4C3165A51C529D8000C8ADD7 /* TextFieldsEffects.swift in Sources */,
 				4C3C179F1C42ABD40060BCA9 /* ZCMainDetailViewController.m in Sources */,
 				4C3BE1271C418AED0001AC14 /* ZCRootViewController.m in Sources */,
 				4C3BE12B1C418AED0001AC14 /* NSString+ZCHtmlBodyString.m in Sources */,
-				4C147C7C1C4BE8160081C842 /* ZCLoginViewController.m in Sources */,
 				4C28435D1C423B7200FBA332 /* ZCCategoryViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -736,6 +748,8 @@
 			baseConfigurationReference = E5135A3A579CE788B4CA8A3A /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				DEFINES_MODULE = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"${PODS_ROOT}/Headers/Public\"",
@@ -755,6 +769,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zcill.Meizi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Meizi/Classes/Meizi-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -763,6 +779,8 @@
 			baseConfigurationReference = 18C292FF408F4F9ADA5EE91D /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				DEFINES_MODULE = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"${PODS_ROOT}/Headers/Public\"",
@@ -782,6 +800,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zcill.Meizi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Meizi/Classes/Meizi-Bridging-Header.h";
 			};
 			name = Release;
 		};

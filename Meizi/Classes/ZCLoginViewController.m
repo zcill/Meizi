@@ -46,20 +46,21 @@
     
 }
 
+// 点击登录
 - (IBAction)login:(UIButton *)sender {
     
     if (![self isValidateMobile:self.phoneNumberTextField.text]) {
         [self zc_crtoast_showWithInfo:@"手机号码格式不正确"];
         return;
     }
-    if (![self isValidPassword:self.passwordTextField.text]) {
-        [self zc_crtoast_showWithInfo:@"密码格式不正确"];
-        return;
-    }
+//    if (![self isValidPassword:self.passwordTextField.text]) {
+//        [self zc_crtoast_showWithInfo:@"密码格式不正确"];
+//        return;
+//    }
     
     // 判断帐号密码是否匹配
     [AVUser logInWithUsernameInBackground:self.phoneNumberTextField.text password:self.passwordTextField.text block:^(AVUser *user, NSError *error) {
-        
+
         if (!error) {
             
             [self zc_resignFirsetResponder];
@@ -99,18 +100,19 @@
     
 }
 
+// 点击注册
 - (IBAction)registe:(UIButton *)sender {
     [self zc_resignFirsetResponder];
     
     ZCRegisterViewController *registerVC = [[UIStoryboard storyboardWithName:@"ZCLoginViewController" bundle:nil] instantiateViewControllerWithIdentifier:@"ZCRegisterViewController"];
-    // 设置模态翻转动画效果
     registerVC.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-    
     [self presentViewController:registerVC animated:YES completion:nil];
+    
 }
 
+
+// 点击随便看看
 - (IBAction)see:(UIButton *)sender {
-    [self zc_resignFirsetResponder];
     [self zc_takeInMainPage];
 }
 

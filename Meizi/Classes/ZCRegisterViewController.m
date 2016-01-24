@@ -10,6 +10,7 @@
 #import <AVOSCloud/AVOSCloud.h>
 #import <CRToast/CRToast.h>
 #import <ChameleonFramework/Chameleon.h>
+#import "Meizi-Swift.h"
 
 @interface ZCRegisterViewController ()
 
