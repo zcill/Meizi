@@ -12,7 +12,6 @@
 #import "ZCRegisterViewController.h"
 #import <AVOSCloud/AVOSCloud.h>
 #import <CRToast/CRToast.h>
-#import <ChameleonFramework/Chameleon.h>
 
 @interface ZCLoginViewController ()
 
@@ -26,14 +25,14 @@
 }
 
 #pragma mark - private extension
-- (void)zc_crtoast_showWithInfo:(NSString *)info {
+- (void)zc_crtoast_showWithInfo:(NSString *)info color:(UIColor *)color {
     
     NSDictionary *options = @{
                               kCRToastTextKey : info,
-                              kCRToastNotificationTypeKey : @(CRToastTypeNavigationBar),
+                              kCRToastNotificationTypeKey : @(CRToastTypeStatusBar),
                               kCRToastNotificationPresentationTypeKey : @(CRToastPresentationTypeCover),
                               kCRToastTextAlignmentKey : @(NSTextAlignmentCenter),
-                              kCRToastBackgroundColorKey : FlatRedDark,
+                              kCRToastBackgroundColorKey : color,
                               kCRToastAnimationInTypeKey : @(CRToastAnimationTypeGravity),
                               kCRToastAnimationOutTypeKey : @(CRToastAnimationTypeLinear),
                               kCRToastAnimationInDirectionKey : @(CRToastAnimationDirectionTop),
@@ -50,7 +49,7 @@
 - (IBAction)login:(UIButton *)sender {
     
     if (![self isValidateMobile:self.phoneNumberTextField.text]) {
-        [self zc_crtoast_showWithInfo:@"手机号码格式不正确"];
+        [self zc_crtoast_showWithInfo:LogInErrorMobile color:FlatWatermelonDark];
         return;
     }
 //    if (![self isValidPassword:self.passwordTextField.text]) {
@@ -64,7 +63,7 @@
         if (!error) {
             
             [self zc_resignFirsetResponder];
-            [self zc_crtoast_showWithInfo:@"登录成功"];
+            [self zc_crtoast_showWithInfo:@"登录成功" color:FlatMintDark];
             
             // 设置AVInstallation
             AVInstallation *install = [AVInstallation currentInstallation];
@@ -74,7 +73,7 @@
             [self zc_takeInMainPage];
             
         } else {
-            [self zc_crtoast_showWithInfo:@"登录失败"];
+            [self zc_crtoast_showWithInfo:@"登录失败" color:FlatWatermelonDark];
             NSLog(@"%@", error.description);
         }
         
@@ -105,6 +104,7 @@
     [self zc_resignFirsetResponder];
     
     ZCRegisterViewController *registerVC = [[UIStoryboard storyboardWithName:@"ZCLoginViewController" bundle:nil] instantiateViewControllerWithIdentifier:@"ZCRegisterViewController"];
+    
     registerVC.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     [self presentViewController:registerVC animated:YES completion:nil];
     
@@ -133,7 +133,7 @@
 // 6-18位英文字母和数字组合
 -(BOOL)isValidPassword:(NSString *) password
 {
-    NSString *pattern = @"^(?![0-9]+$)(?![a-zA-Z]+$)[a-zA-Z0-9]{6,18}";
+    NSString *pattern = passwordPredicate;
     NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", pattern];
     BOOL isMatch = [pred evaluateWithObject:password];
     return isMatch;
@@ -144,7 +144,7 @@
 -(BOOL) isValidateMobile:(NSString *)mobile
 {
     //手机号以13， 15，18开头，八个 \d 数字字符
-    NSString *phoneRegex = @"^((13[0-9])|(15[^4,\\D])|(18[0,0-9]))\\d{8}$";
+    NSString *phoneRegex = mobilePredicate;
     NSPredicate *phoneTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",phoneRegex];
     //    NSLog(@"phoneTest is %@",phoneTest);
     return [phoneTest evaluateWithObject:mobile];

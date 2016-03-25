@@ -36,7 +36,7 @@
     
     // 镂空颜色
 //    self.tabBar.tintColor = RGBA(244, 59, 51, 1);
-    self.tabBar.tintColor = rgba(0.95, 0.92, 0.5, 1);
+    self.tabBar.tintColor = krgba(0.95, 0.92, 0.5, 1);
     
 }
 

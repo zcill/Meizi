@@ -9,7 +9,6 @@
 #import "ZCRegisterViewController.h"
 #import <AVOSCloud/AVOSCloud.h>
 #import <CRToast/CRToast.h>
-#import <ChameleonFramework/Chameleon.h>
 #import "Meizi-Swift.h"
 
 @interface ZCRegisterViewController ()
@@ -49,7 +48,7 @@
     user.password = self.passwordTextFIeld.text;
     
     if (![self isValidateMobile:self.phoneNumberTextField.text]) {
-        [self zc_crtoast_showWithInfo:@"手机号码格式不正确" color:FlatRed];
+        [self zc_crtoast_showWithInfo:@"手机号码格式不正确" color:FlatRedDark];
         return;
     }
     //    if (![self isValidPassword:self.passwordTextField.text]) {
@@ -63,11 +62,11 @@
         
         if (succeeded) {
             
-            [self zc_crtoast_showWithInfo:@"注册成功" color:FlatGreenDark];
+            [self zc_crtoast_showWithInfo:@"注册成功" color:FlatMintDark];
             
         } else {
             
-            [self zc_crtoast_showWithInfo:error.description color:FlatRed];
+            [self zc_crtoast_showWithInfo:error.description color:FlatRedDark];
             
         }
         

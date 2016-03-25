@@ -28,7 +28,7 @@
  */
 #import "ZCMainCell.h"
 #import "ZCAdView.h"
-#import "ZCMainDetailViewController.h"
+#import "ZCMeiziDetailViewController.h"
 
 // Model
 #import "ZCMeiziRealm.h"

@@ -41,7 +41,7 @@
 // 背景色
 #define myBackgroundColor [UIColor colorWithRed:242/255.f green:236/255.f blue:231/255.f alpha:1]
 // 转化RGB颜色
-#define RGBA(R,G,B,A) [UIColor colorWithRed:R/255.f green:G/255.f blue:B/255.f alpha:A]
-#define rgba(r,g,b,a) [UIColor colorWithRed:r green:g blue:b alpha:a]
+#define kRGBA(R,G,B,A) [UIColor colorWithRed:R/255.f green:G/255.f blue:B/255.f alpha:A]
+#define krgba(r,g,b,a) [UIColor colorWithRed:r green:g blue:b alpha:a]
 
 

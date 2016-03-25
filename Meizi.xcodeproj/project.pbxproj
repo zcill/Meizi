@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		4C00895E1C43D1CF00FD1DF8 /* ZCAdView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C00895D1C43D1CF00FD1DF8 /* ZCAdView.m */; };
+		4C147C7C1C4BE8160081C842 /* ZCLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C147C7B1C4BE8160081C842 /* ZCLoginViewController.m */; };
+		4C147C7E1C4BE8340081C842 /* ZCLoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C147C7D1C4BE8340081C842 /* ZCLoginViewController.storyboard */; };
 		4C1A5C771C3C214600A1DF98 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1A5C761C3C214600A1DF98 /* main.m */; };
 		4C1A5C821C3C214600A1DF98 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C1A5C811C3C214600A1DF98 /* Assets.xcassets */; };
 		4C1A5C851C3C214600A1DF98 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C1A5C831C3C214600A1DF98 /* LaunchScreen.storyboard */; };
@@ -17,8 +19,8 @@
 		4C28435F1C423B7200FBA332 /* ZCSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C28435C1C423B7200FBA332 /* ZCSettingViewController.m */; };
 		4C2843721C427CD100FBA332 /* ZCMainCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C2843701C427CD100FBA332 /* ZCMainCell.m */; };
 		4C28437B1C42A11500FBA332 /* ZCMainCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C28437A1C42A11500FBA332 /* ZCMainCollectionViewController.m */; };
-		4C3165A41C529D8000C8ADD7 /* HoshiTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3165A11C529D8000C8ADD7 /* HoshiTextField.swift */; };
-		4C3165A51C529D8000C8ADD7 /* TextFieldsEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3165A31C529D8000C8ADD7 /* TextFieldsEffects.swift */; };
+		4C31659B1C5289CE00C8ADD7 /* HoshiTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3165971C5289CE00C8ADD7 /* HoshiTextField.swift */; };
+		4C31659C1C5289CE00C8ADD7 /* TextFieldsEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3165991C5289CE00C8ADD7 /* TextFieldsEffects.swift */; };
 		4C3BE1041C4173BB0001AC14 /* libxml2.2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C3BE1031C4173BB0001AC14 /* libxml2.2.tbd */; };
 		4C3BE10E1C41745D0001AC14 /* TFHpple.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C3BE1091C41745D0001AC14 /* TFHpple.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		4C3BE10F1C41745D0001AC14 /* TFHppleElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C3BE10B1C41745D0001AC14 /* TFHppleElement.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -27,12 +29,13 @@
 		4C3BE1261C418AED0001AC14 /* ZCTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C3BE1161C418AED0001AC14 /* ZCTabBar.m */; };
 		4C3BE1271C418AED0001AC14 /* ZCRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C3BE1191C418AED0001AC14 /* ZCRootViewController.m */; };
 		4C3BE12B1C418AED0001AC14 /* NSString+ZCHtmlBodyString.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C3BE1231C418AED0001AC14 /* NSString+ZCHtmlBodyString.m */; };
-		4C3C179F1C42ABD40060BCA9 /* ZCMainDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C3C179E1C42ABD40060BCA9 /* ZCMainDetailViewController.m */; };
+		4C5801F81C591558001DE22C /* ZCMeiziDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5801F71C591558001DE22C /* ZCMeiziDetailViewController.m */; };
+		4C5801FE1C5917AE001DE22C /* ZCMeiziCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5801FD1C5917AE001DE22C /* ZCMeiziCollectionViewCell.m */; };
 		4C5C881E1C4A685C00A3DB4E /* ZCMeiziDetailStringRealm.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5C881D1C4A685C00A3DB4E /* ZCMeiziDetailStringRealm.m */; };
 		4C5C882B1C4AAB1700A3DB4E /* ZCSettingViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C5C882A1C4AAB1700A3DB4E /* ZCSettingViewController.storyboard */; };
-		4C67B0511C54DA2A00071D45 /* ZCLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C67B04D1C54DA2A00071D45 /* ZCLoginViewController.m */; };
-		4C67B0521C54DA2A00071D45 /* ZCLoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C67B04E1C54DA2A00071D45 /* ZCLoginViewController.storyboard */; };
-		4C67B0531C54DA2A00071D45 /* ZCRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C67B0501C54DA2A00071D45 /* ZCRegisterViewController.m */; };
+		4C608EA61C61A59400F29112 /* ZCImageSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C608EA51C61A59400F29112 /* ZCImageSize.m */; };
+		4C98FAC51C4E836700557921 /* ZCRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C98FAC41C4E836700557921 /* ZCRegisterViewController.m */; };
+		4C9B903D1C57790600360807 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C9B903C1C57790600360807 /* LocalAuthentication.framework */; };
 		4CA0BB471C47FBF000665357 /* ZCMeiziPageTagRealm.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA0BB461C47FBF000665357 /* ZCMeiziPageTagRealm.m */; };
 		4CA0BB4A1C47FE8A00665357 /* NSDate+SFPrettyDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA0BB491C47FE8A00665357 /* NSDate+SFPrettyDate.m */; };
 		4CA8D4EB1C454048009B1119 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CA8D4EA1C454048009B1119 /* libz.tbd */; };
@@ -62,6 +65,9 @@
 		4C00895C1C43D1CF00FD1DF8 /* ZCAdView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCAdView.h; sourceTree = "<group>"; };
 		4C00895D1C43D1CF00FD1DF8 /* ZCAdView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCAdView.m; sourceTree = "<group>"; };
 		4C00FD521C3EC2000068D852 /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
+		4C147C7A1C4BE8160081C842 /* ZCLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCLoginViewController.h; sourceTree = "<group>"; };
+		4C147C7B1C4BE8160081C842 /* ZCLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCLoginViewController.m; sourceTree = "<group>"; wrapsLines = 1; };
+		4C147C7D1C4BE8340081C842 /* ZCLoginViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ZCLoginViewController.storyboard; sourceTree = "<group>"; };
 		4C1A5C721C3C214600A1DF98 /* Meizi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Meizi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C1A5C761C3C214600A1DF98 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4C1A5C811C3C214600A1DF98 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -76,15 +82,15 @@
 		4C2843571C423B7200FBA332 /* ZCCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCCategoryViewController.h; sourceTree = "<group>"; };
 		4C2843581C423B7200FBA332 /* ZCCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCCategoryViewController.m; sourceTree = "<group>"; };
 		4C28435B1C423B7200FBA332 /* ZCSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCSettingViewController.h; sourceTree = "<group>"; };
-		4C28435C1C423B7200FBA332 /* ZCSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCSettingViewController.m; sourceTree = "<group>"; };
+		4C28435C1C423B7200FBA332 /* ZCSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCSettingViewController.m; sourceTree = "<group>"; wrapsLines = 0; };
 		4C28436F1C427CD100FBA332 /* ZCMainCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCMainCell.h; sourceTree = "<group>"; };
 		4C2843701C427CD100FBA332 /* ZCMainCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCMainCell.m; sourceTree = "<group>"; };
 		4C2843791C42A11400FBA332 /* ZCMainCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCMainCollectionViewController.h; sourceTree = "<group>"; };
 		4C28437A1C42A11500FBA332 /* ZCMainCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCMainCollectionViewController.m; sourceTree = "<group>"; wrapsLines = 1; };
-		4C31659E1C529CB300C8ADD7 /* Meizi-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Meizi-Bridging-Header.h"; sourceTree = "<group>"; };
-		4C3165A11C529D8000C8ADD7 /* HoshiTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HoshiTextField.swift; sourceTree = "<group>"; };
-		4C3165A21C529D8000C8ADD7 /* TextFieldEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextFieldEffects.h; sourceTree = "<group>"; };
-		4C3165A31C529D8000C8ADD7 /* TextFieldsEffects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldsEffects.swift; sourceTree = "<group>"; };
+		4C3165941C52896D00C8ADD7 /* Meizi-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Meizi-Bridging-Header.h"; sourceTree = "<group>"; };
+		4C3165971C5289CE00C8ADD7 /* HoshiTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HoshiTextField.swift; sourceTree = "<group>"; };
+		4C3165981C5289CE00C8ADD7 /* TextFieldEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextFieldEffects.h; sourceTree = "<group>"; };
+		4C3165991C5289CE00C8ADD7 /* TextFieldsEffects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldsEffects.swift; sourceTree = "<group>"; };
 		4C3BE1031C4173BB0001AC14 /* libxml2.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.2.tbd; path = usr/lib/libxml2.2.tbd; sourceTree = SDKROOT; };
 		4C3BE1081C41745D0001AC14 /* TFHpple.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFHpple.h; sourceTree = "<group>"; };
 		4C3BE1091C41745D0001AC14 /* TFHpple.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFHpple.m; sourceTree = "<group>"; };
@@ -101,17 +107,21 @@
 		4C3BE1221C418AED0001AC14 /* NSString+ZCHtmlBodyString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+ZCHtmlBodyString.h"; sourceTree = "<group>"; };
 		4C3BE1231C418AED0001AC14 /* NSString+ZCHtmlBodyString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+ZCHtmlBodyString.m"; sourceTree = "<group>"; };
 		4C3BE1241C418AED0001AC14 /* ZCMoreDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCMoreDefines.h; sourceTree = "<group>"; };
-		4C3C179D1C42ABD40060BCA9 /* ZCMainDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCMainDetailViewController.h; sourceTree = "<group>"; };
-		4C3C179E1C42ABD40060BCA9 /* ZCMainDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCMainDetailViewController.m; sourceTree = "<group>"; };
 		4C3C17A01C42ADFB0060BCA9 /* ZCMainHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCMainHeader.h; sourceTree = "<group>"; };
+		4C5801F61C591558001DE22C /* ZCMeiziDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCMeiziDetailViewController.h; sourceTree = "<group>"; };
+		4C5801F71C591558001DE22C /* ZCMeiziDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCMeiziDetailViewController.m; sourceTree = "<group>"; };
+		4C5801FC1C5917AE001DE22C /* ZCMeiziCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCMeiziCollectionViewCell.h; sourceTree = "<group>"; };
+		4C5801FD1C5917AE001DE22C /* ZCMeiziCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCMeiziCollectionViewCell.m; sourceTree = "<group>"; };
 		4C5C881C1C4A685C00A3DB4E /* ZCMeiziDetailStringRealm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCMeiziDetailStringRealm.h; sourceTree = "<group>"; };
 		4C5C881D1C4A685C00A3DB4E /* ZCMeiziDetailStringRealm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCMeiziDetailStringRealm.m; sourceTree = "<group>"; };
 		4C5C882A1C4AAB1700A3DB4E /* ZCSettingViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ZCSettingViewController.storyboard; sourceTree = "<group>"; };
-		4C67B04C1C54DA2A00071D45 /* ZCLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCLoginViewController.h; sourceTree = "<group>"; };
-		4C67B04D1C54DA2A00071D45 /* ZCLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCLoginViewController.m; sourceTree = "<group>"; };
-		4C67B04E1C54DA2A00071D45 /* ZCLoginViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ZCLoginViewController.storyboard; sourceTree = "<group>"; };
-		4C67B04F1C54DA2A00071D45 /* ZCRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCRegisterViewController.h; sourceTree = "<group>"; };
-		4C67B0501C54DA2A00071D45 /* ZCRegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCRegisterViewController.m; sourceTree = "<group>"; };
+		4C608EA31C61A44B00F29112 /* ZCSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCSingleton.h; sourceTree = "<group>"; };
+		4C608EA41C61A59400F29112 /* ZCImageSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCImageSize.h; sourceTree = "<group>"; };
+		4C608EA51C61A59400F29112 /* ZCImageSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCImageSize.m; sourceTree = "<group>"; };
+		4C98FAC31C4E836700557921 /* ZCRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCRegisterViewController.h; sourceTree = "<group>"; };
+		4C98FAC41C4E836700557921 /* ZCRegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCRegisterViewController.m; sourceTree = "<group>"; };
+		4C9B903C1C57790600360807 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
+		4C9B903E1C57817B00360807 /* ZCMeizi.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCMeizi.pch; sourceTree = "<group>"; };
 		4CA0BB451C47FBF000665357 /* ZCMeiziPageTagRealm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCMeiziPageTagRealm.h; sourceTree = "<group>"; };
 		4CA0BB461C47FBF000665357 /* ZCMeiziPageTagRealm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCMeiziPageTagRealm.m; sourceTree = "<group>"; };
 		4CA0BB481C47FE8A00665357 /* NSDate+SFPrettyDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+SFPrettyDate.h"; sourceTree = "<group>"; };
@@ -128,6 +138,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C9B903D1C57790600360807 /* LocalAuthentication.framework in Frameworks */,
 				4CA8D4EB1C454048009B1119 /* libz.tbd in Frameworks */,
 				4C3BE1041C4173BB0001AC14 /* libxml2.2.tbd in Frameworks */,
 				E8CC6059EB64A86EA12469B2 /* libPods.a in Frameworks */,
@@ -154,12 +165,12 @@
 		4C147C791C4BE7EA0081C842 /* 注册登录 */ = {
 			isa = PBXGroup;
 			children = (
-				4C67B04C1C54DA2A00071D45 /* ZCLoginViewController.h */,
-				4C67B04D1C54DA2A00071D45 /* ZCLoginViewController.m */,
-				4C67B04E1C54DA2A00071D45 /* ZCLoginViewController.storyboard */,
-				4C67B04F1C54DA2A00071D45 /* ZCRegisterViewController.h */,
-				4C67B0501C54DA2A00071D45 /* ZCRegisterViewController.m */,
-				4C31659E1C529CB300C8ADD7 /* Meizi-Bridging-Header.h */,
+				4C147C7A1C4BE8160081C842 /* ZCLoginViewController.h */,
+				4C147C7B1C4BE8160081C842 /* ZCLoginViewController.m */,
+				4C98FAC31C4E836700557921 /* ZCRegisterViewController.h */,
+				4C98FAC41C4E836700557921 /* ZCRegisterViewController.m */,
+				4C147C7D1C4BE8340081C842 /* ZCLoginViewController.storyboard */,
+				4C3165941C52896D00C8ADD7 /* Meizi-Bridging-Header.h */,
 			);
 			name = "注册登录";
 			sourceTree = "<group>";
@@ -207,6 +218,7 @@
 			isa = PBXGroup;
 			children = (
 				4C1A5C761C3C214600A1DF98 /* main.m */,
+				4C9B903E1C57817B00360807 /* ZCMeizi.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -243,9 +255,9 @@
 		4C3BE1061C41745D0001AC14 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
-				4C3165A11C529D8000C8ADD7 /* HoshiTextField.swift */,
-				4C3165A21C529D8000C8ADD7 /* TextFieldEffects.h */,
-				4C3165A31C529D8000C8ADD7 /* TextFieldsEffects.swift */,
+				4C3165981C5289CE00C8ADD7 /* TextFieldEffects.h */,
+				4C3165971C5289CE00C8ADD7 /* HoshiTextField.swift */,
+				4C3165991C5289CE00C8ADD7 /* TextFieldsEffects.swift */,
 				4C3BE1071C41745D0001AC14 /* TFHpple */,
 			);
 			path = Vendor;
@@ -299,6 +311,9 @@
 				4C3BE1221C418AED0001AC14 /* NSString+ZCHtmlBodyString.h */,
 				4C3BE1231C418AED0001AC14 /* NSString+ZCHtmlBodyString.m */,
 				4C3BE1241C418AED0001AC14 /* ZCMoreDefines.h */,
+				4C608EA31C61A44B00F29112 /* ZCSingleton.h */,
+				4C608EA41C61A59400F29112 /* ZCImageSize.h */,
+				4C608EA51C61A59400F29112 /* ZCImageSize.m */,
 			);
 			path = ZCTools;
 			sourceTree = "<group>";
@@ -338,8 +353,8 @@
 				4C3C17A01C42ADFB0060BCA9 /* ZCMainHeader.h */,
 				4C2843791C42A11400FBA332 /* ZCMainCollectionViewController.h */,
 				4C28437A1C42A11500FBA332 /* ZCMainCollectionViewController.m */,
-				4C3C179D1C42ABD40060BCA9 /* ZCMainDetailViewController.h */,
-				4C3C179E1C42ABD40060BCA9 /* ZCMainDetailViewController.m */,
+				4C5801F61C591558001DE22C /* ZCMeiziDetailViewController.h */,
+				4C5801F71C591558001DE22C /* ZCMeiziDetailViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -347,6 +362,8 @@
 		4C5C88251C4AAAB400A3DB4E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4C5801FC1C5917AE001DE22C /* ZCMeiziCollectionViewCell.h */,
+				4C5801FD1C5917AE001DE22C /* ZCMeiziCollectionViewCell.m */,
 				4C28436F1C427CD100FBA332 /* ZCMainCell.h */,
 				4C2843701C427CD100FBA332 /* ZCMainCell.m */,
 				4C00895C1C43D1CF00FD1DF8 /* ZCAdView.h */,
@@ -404,6 +421,7 @@
 		E3BF12CA3CCEF2D075C6577C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4C9B903C1C57790600360807 /* LocalAuthentication.framework */,
 				4CA8D4EA1C454048009B1119 /* libz.tbd */,
 				4C3BE1031C4173BB0001AC14 /* libxml2.2.tbd */,
 				4C00FD521C3EC2000068D852 /* libxml2.tbd */,
@@ -519,7 +537,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4C67B0521C54DA2A00071D45 /* ZCLoginViewController.storyboard in Resources */,
+				4C147C7E1C4BE8340081C842 /* ZCLoginViewController.storyboard in Resources */,
 				4C5C882B1C4AAB1700A3DB4E /* ZCSettingViewController.storyboard in Resources */,
 				4C1A5C851C3C214600A1DF98 /* LaunchScreen.storyboard in Resources */,
 				4C1A5C821C3C214600A1DF98 /* Assets.xcassets in Resources */,
@@ -595,27 +613,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C31659C1C5289CE00C8ADD7 /* TextFieldsEffects.swift in Sources */,
 				4C28437B1C42A11500FBA332 /* ZCMainCollectionViewController.m in Sources */,
 				4C3BE1261C418AED0001AC14 /* ZCTabBar.m in Sources */,
+				4C608EA61C61A59400F29112 /* ZCImageSize.m in Sources */,
 				4CA0BB4A1C47FE8A00665357 /* NSDate+SFPrettyDate.m in Sources */,
 				4C00895E1C43D1CF00FD1DF8 /* ZCAdView.m in Sources */,
 				4C1A5C771C3C214600A1DF98 /* main.m in Sources */,
 				4C5C881E1C4A685C00A3DB4E /* ZCMeiziDetailStringRealm.m in Sources */,
 				4CA8D5001C455E27009B1119 /* ZCMeiziRealm.m in Sources */,
+				4C5801FE1C5917AE001DE22C /* ZCMeiziCollectionViewCell.m in Sources */,
 				4CA0BB471C47FBF000665357 /* ZCMeiziPageTagRealm.m in Sources */,
 				4C3BE1251C418AED0001AC14 /* ZCAppDelegate.m in Sources */,
 				4C3BE1101C41745D0001AC14 /* XPathQuery.m in Sources */,
-				4C67B0531C54DA2A00071D45 /* ZCRegisterViewController.m in Sources */,
 				4C28435F1C423B7200FBA332 /* ZCSettingViewController.m in Sources */,
-				4C67B0511C54DA2A00071D45 /* ZCLoginViewController.m in Sources */,
+				4C31659B1C5289CE00C8ADD7 /* HoshiTextField.swift in Sources */,
 				4C3BE10F1C41745D0001AC14 /* TFHppleElement.m in Sources */,
 				4C2843721C427CD100FBA332 /* ZCMainCell.m in Sources */,
 				4C3BE10E1C41745D0001AC14 /* TFHpple.m in Sources */,
-				4C3165A41C529D8000C8ADD7 /* HoshiTextField.swift in Sources */,
-				4C3165A51C529D8000C8ADD7 /* TextFieldsEffects.swift in Sources */,
-				4C3C179F1C42ABD40060BCA9 /* ZCMainDetailViewController.m in Sources */,
+				4C98FAC51C4E836700557921 /* ZCRegisterViewController.m in Sources */,
 				4C3BE1271C418AED0001AC14 /* ZCRootViewController.m in Sources */,
 				4C3BE12B1C418AED0001AC14 /* NSString+ZCHtmlBodyString.m in Sources */,
+				4C147C7C1C4BE8160081C842 /* ZCLoginViewController.m in Sources */,
+				4C5801F81C591558001DE22C /* ZCMeiziDetailViewController.m in Sources */,
 				4C28435D1C423B7200FBA332 /* ZCCategoryViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -750,6 +770,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PRODUCT_NAME)/ZCMeizi.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"${PODS_ROOT}/Headers/Public\"",
@@ -781,6 +802,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PRODUCT_NAME)/ZCMeizi.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"${PODS_ROOT}/Headers/Public\"",

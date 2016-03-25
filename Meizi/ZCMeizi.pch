@@ -1,0 +1,108 @@
+//
+//  ZCMeizi.pch
+//  Meizi
+//
+//  Created by 朱立焜 on 16/1/26.
+//  Copyright © 2016年 朱立焜. All rights reserved.
+//
+
+#ifndef ZCMeizi_pch
+#define ZCMeizi_pch
+
+#pragma mark - >>>>>>>>>>>>> 导入三方库
+
+#import <Realm/Realm.h>
+#import <AVOSCloud/AVOSCloud.h>
+#import <ChameleonFramework/Chameleon.h>
+
+#pragma mark - >>>>>>>>>>>>> 常量宏
+
+// LeanCloud初始化
+#define LeanCloudAppID @"可以在Leancloud自己申请一个填进去"
+#define LeanCloudAppKey @"可以在Leancloud自己申请一个填进去"
+
+// Umeng AppKey
+#define UmengAppKey @"可以在友盟自己申请"
+
+// 网络状态监听
+#define noNetworkString @"无网络连接"
+#define WWANString @"正在使用蜂窝数据"
+#define WiFiString @"正在使用WiFi"
+
+// 登录错误信息
+#define LogInErrorMobile @"请输入正确的手机号码"
+#define LogInErrorPassword @"密码不能为空"
+#define LogInErrorUser @"请使用指定帐号登录"
+#define LogInErrorPwdNotMatch @"用户名或密码不正确"
+#define LogInErrorTimeOut @"网络请求超时"
+
+// 指纹识别错误信息
+#define TouchIDNotEnrolled @"此设备未录入指纹信息!"
+#define TouchIDNotAvailable @"此设备不支持Touch ID!"
+#define TouchIDPasscodeNotSet @"未设置密码,无法开启认证!"
+#define TouchIDSystemCancel @"系统取消认证"
+#define TouchIDUserFallback @"选择输入密码!"
+#define TouchIDUserCancel @"用户取消认证!"
+#define TouchIDAuthenticationFailed @"用户认证失败!"
+
+// 匹配登录信息的正则表达式
+#define passwordPredicate @"^(?![0-9]+$)(?![a-zA-Z]+$)[a-zA-Z0-9]{6,18}"
+#define mobilePredicate @"^((13[0-9])|(15[^4,\\D])|(18[0,0-9]))\\d{8}$"
+
+// 通知相关
+#define NotificationChangeUserAccount @"Change_User_Account"
+#define NotificationDismissLoginView @"Dismiss_Login_View"
+
+#pragma mark - >>>>>>>>>>>>> 宽高宏
+
+#define kScreenHeight [UIScreen mainScreen].bounds.size.height
+#define kScreenWidth [UIScreen mainScreen].bounds.size.width
+
+#pragma mark - >>>>>>>>>>>>> 颜色宏
+
+#define pieRedColor [UIColor colorWithRed:0.871 green:0.208 blue:0.180 alpha:1.000]
+#define pieOrangeColor [UIColor colorWithRed:0.941 green:0.588 blue:0.110 alpha:1.000]
+#define pieYellowColor [UIColor colorWithRed:0.929 green:0.655 blue:0.141 alpha:1.000]
+#define pieGreenColor [UIColor colorWithRed:0.396 green:0.812 blue:0.396 alpha:1.000]
+#define pieBlueColor [UIColor colorWithRed:0.294 green:0.616 blue:0.914 alpha:1.000]
+
+
+#pragma mark - >>>>>>>>>>>>> 打印宏
+
+// DLog will output like NSLog only when the DEBUG variable is set
+
+#ifdef DEBUG
+#define DLog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
+
+#else
+#define DLog(...)
+
+#endif
+
+// ALog will always output like NSLog
+
+#define ALog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
+
+// ULog will show the UIAlertView only when the DEBUG variable is set
+
+#ifdef DEBUG
+#define ULog(fmt, ...)  { UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"%s\n [Line %d] ", __PRETTY_FUNCTION__, __LINE__] message:[NSString stringWithFormat:fmt, ##__VA_ARGS__]  delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil]; [alert show]; }
+
+#else
+#define ULog(...)
+
+#endif
+
+#define CRToastOptionsWithInfo(info) @{\
+            kCRToastTextKey : info,\
+            kCRToastNotificationTypeKey : @(CRToastTypeNavigationBar),\
+            kCRToastNotificationPresentationTypeKey : @(CRToastPresentationTypeCover),\
+            kCRToastTextAlignmentKey : @(NSTextAlignmentCenter),\
+            kCRToastBackgroundColorKey : [UIColor redColor],\
+            kCRToastAnimationInTypeKey : @(CRToastAnimationTypeGravity),\
+            kCRToastAnimationOutTypeKey : @(CRToastAnimationTypeLinear),\
+            kCRToastAnimationInDirectionKey : @(CRToastAnimationDirectionTop),\
+            kCRToastAnimationOutDirectionKey : @(CRToastAnimationDirectionTop)\
+        }
+
+#endif /* ZCMeizi_pch */

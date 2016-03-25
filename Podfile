@@ -1,19 +1,29 @@
 platform:ios, 8.0
 
+pod 'AVOSCloud'
+pod 'AFNetworking'
+
+pod 'BlocksKit'
+
+pod 'CRToast', '~> 0.0.7'
+pod 'Crashlytics'
+pod 'ChameleonFramework'
+pod 'CHTCollectionViewWaterfallLayout'
+
+pod 'Fabric'
+
+pod 'IDMPhotoBrowser'
+
 pod 'MJRefresh'
-pod 'SDWebImage'
+
 pod 'Realm'
 
-pod 'ChameleonFramework'
-
+pod 'SDWebImage'
 pod 'SIAlertView'
-pod 'CRToast', '~> 0.0.7'
 pod 'SCLAlertView-Objective-C'
-
-pod 'AVOSCloud'
-pod 'Fabric'
-pod 'Crashlytics'
+pod 'SDCycleScrollView','~> 1.6'
+pod 'SVProgressHUD'
 
 pod 'UMengAnalytics'
 
-pod 'SDCycleScrollView','~> 1.6'
+

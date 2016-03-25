@@ -8,6 +8,7 @@
 
 #import "ZCMainCollectionViewController.h"
 #import "ZCMainHeader.h"
+#import "ZCMeiziDetailViewController.h"
 
 @interface ZCMainCollectionViewController ()<UICollectionViewDelegateFlowLayout, SDCycleScrollViewDelegate>
 
@@ -28,7 +29,27 @@
 
 @implementation ZCMainCollectionViewController
 
-// 懒加载
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    self.detailUrlArray = [[NSMutableArray alloc] initWithCapacity:0];
+    self.detailUrlDict = [[NSMutableDictionary alloc] initWithCapacity:0];
+    
+    [self getRealmPageData];
+    
+    // 设置布局
+    RLMRealm *realm = [self getRealmPageData];
+    [self setNaviBar];
+    
+    // 设置数据和CollectionView
+    [self initData];
+    [self setupCollectionView];
+    
+    // 设置上拉刷新和下拉刷新控件
+    [self setRefreshControlWithRealm:realm];
+}
+
+#pragma mark - 懒加载
 - (NSMutableArray *)dataSource {
     
     if (_dataSource == nil) {
@@ -49,11 +70,8 @@
     return _detailUrlDict;
 }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    self.detailUrlArray = [[NSMutableArray alloc] initWithCapacity:0];
-    self.detailUrlDict = [[NSMutableDictionary alloc] initWithCapacity:0];
+#pragma mark - 布局相关
+- (RLMRealm *)getRealmPageData {
     
     // 读取数据库，查看上次看到的页码，直接赋值给self.page
     RLMRealm *realm = [RLMRealm defaultRealm];
@@ -64,9 +82,14 @@
         
         ZCMeiziPageTagRealm *lastTagPageObject = [allPageTag lastObject];
         self.page = lastTagPageObject.page;
-    
+        
     }
     
+    return realm;
+    
+}
+
+- (void)setNaviBar {
     [self.navigationController.navigationBar setTranslucent:NO];
     [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:0.95 green:0.92 blue:0.5 alpha:1]];
     [self.navigationController.navigationBar setTintColor:[UIColor grayColor]];
@@ -75,9 +98,9 @@
                                                                       }];
     
     self.view.backgroundColor = [UIColor whiteColor];
-    
-    [self initData];
-    [self setupCollectionView];
+}
+
+- (void)setRefreshControlWithRealm:(RLMRealm *)realm {
     
     // 下拉刷新
     self.collectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
@@ -89,7 +112,6 @@
         [realm deleteObjects:[ZCMeiziRealm allObjects]];
         [realm deleteObjects:[ZCMeiziPageTagRealm allObjects]];
         [realm commitWriteTransaction];
-        
         [self initData];
     }];
     
@@ -99,9 +121,8 @@
         [self initData];
         [self realm_add_pageTag_intoRealm:realm];
     }];
+    
 }
-
-#pragma mark - 布局相关
 
 #pragma mark - 数据相关
 - (void)initData {
@@ -115,65 +136,6 @@
     [self parsingHtmlGetDetailUrl];
     
     [self addMeiziDataIntoRealm];
-}
-
-// 把妹子的数据放进本地数据库
-- (void)addMeiziDataIntoRealm {
-    
-    RLMRealm *realm = [RLMRealm defaultRealm];
-
-    [realm beginWriteTransaction];
-    [self realm_update_inRealm:realm];
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self.collectionView reloadData];
-    });
-    
-    NSLog(@"%@", realm.path);
-}
-
-/**
- *  把妹子的thumbImageUrl和title存进数据库
- *
- *  @param realm 数据库
- */
-- (void)realm_update_inRealm:(RLMRealm *)realm {
-    
-    for (NSDictionary *dict in _dataSource) {
-        
-        ZCMeiziRealm *girlRealm = [[ZCMeiziRealm alloc] init];
-        girlRealm.meiziTitle = dict[@"alt"];
-        girlRealm.meiziImageUrl = dict[@"data-original"];
-        girlRealm.meiziUrl = [[_detailUrlDict objectForKey:girlRealm.meiziTitle] objectForKey:@"href"];
-        
-        // 用于刷新列表的更新数据，防止插入相同的数据
-        [realm addOrUpdateObject:girlRealm];
-        
-        // 两种方法更新条目，都可以使用，但是都要求在数据库的表中设置了主键
-//        [ZCMeiziRealm createOrUpdateInRealm:realm withValue:girlRealm];
-        
-    }
-    [realm commitWriteTransaction];
-    
-}
-
-/**
- *  把每次用户阅读到的地方页码标记下来存进数据库
- *
- *  @param realm 数据库
- */
-- (void)realm_add_pageTag_intoRealm:(RLMRealm *)realm {
-    
-    ZCMeiziPageTagRealm *tagPageObject = [[ZCMeiziPageTagRealm alloc] init];
-    
-    NSDate *currentDate = [NSDate date];
-    tagPageObject.tagDate = [currentDate formatDate:currentDate];
-    tagPageObject.page = _page;
-    
-    [realm beginWriteTransaction];
-    [realm addOrUpdateObject:tagPageObject];
-    [realm commitWriteTransaction];
-    
 }
 
 // 从html源代码中抓取数据
@@ -246,6 +208,65 @@
     
 }
 
+// 把妹子的数据放进本地数据库
+- (void)addMeiziDataIntoRealm {
+    
+    RLMRealm *realm = [RLMRealm defaultRealm];
+
+    [realm beginWriteTransaction];
+    [self realm_update_inRealm:realm];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.collectionView reloadData];
+    });
+    
+    NSLog(@"%@", realm.path);
+}
+
+/**
+ *  把妹子的thumbImageUrl和title存进数据库
+ *
+ *  @param realm 数据库
+ */
+- (void)realm_update_inRealm:(RLMRealm *)realm {
+    
+    for (NSDictionary *dict in _dataSource) {
+        
+        ZCMeiziRealm *girlRealm = [[ZCMeiziRealm alloc] init];
+        girlRealm.meiziTitle = dict[@"alt"];
+        girlRealm.meiziImageUrl = dict[@"data-original"];
+        girlRealm.meiziUrl = [[_detailUrlDict objectForKey:girlRealm.meiziTitle] objectForKey:@"href"];
+        
+        // 用于刷新列表的更新数据，防止插入相同的数据
+        [realm addOrUpdateObject:girlRealm];
+        
+        // 两种方法更新条目，都可以使用，但是都要求在数据库的表中设置了主键
+//        [ZCMeiziRealm createOrUpdateInRealm:realm withValue:girlRealm];
+        
+    }
+    [realm commitWriteTransaction];
+    
+}
+
+/**
+ *  把每次用户阅读到的地方页码标记下来存进数据库
+ *
+ *  @param realm 数据库
+ */
+- (void)realm_add_pageTag_intoRealm:(RLMRealm *)realm {
+    
+    ZCMeiziPageTagRealm *tagPageObject = [[ZCMeiziPageTagRealm alloc] init];
+    
+    NSDate *currentDate = [NSDate date];
+    tagPageObject.tagDate = [currentDate formatDate:currentDate];
+    tagPageObject.page = _page;
+    
+    [realm beginWriteTransaction];
+    [realm addOrUpdateObject:tagPageObject];
+    [realm commitWriteTransaction];
+    
+}
+
 #pragma mark - CollectionView Delegate DelegateFlowOut And DataSource
 - (void)setupCollectionView {
     
@@ -291,8 +312,20 @@
     NSString *url = [[_detailUrlDict objectForKey:title] objectForKey:@"href"];
     */
 //    ZCMeiziRealm *meizi = self.dataSource[indexPath.item];
+    
+    /*
     ZCMeiziRealm *meizi = [ZCMeiziRealm allObjects][indexPath.item];
     ZCMainDetailViewController *detailVC = [[ZCMainDetailViewController alloc] init];
+    detailVC.contentUrl = meizi.meiziUrl;
+    detailVC.contentTitle = meizi.meiziTitle;
+    detailVC.title = meizi.meiziTitle;
+    detailVC.hidesBottomBarWhenPushed = YES;
+    
+    [self.navigationController pushViewController:detailVC animated:YES];
+     */
+    
+    ZCMeiziRealm *meizi = [ZCMeiziRealm allObjects][indexPath.item];
+    ZCMeiziDetailViewController *detailVC = [[ZCMeiziDetailViewController alloc] init];
     detailVC.contentUrl = meizi.meiziUrl;
     detailVC.contentTitle = meizi.meiziTitle;
     detailVC.title = meizi.meiziTitle;
@@ -331,7 +364,7 @@
         
         adCycleScrollView.clickItemOperationBlock = ^(NSInteger currentIndex) {
             
-            ZCMainDetailViewController *detailVC = [[ZCMainDetailViewController alloc] init];
+            ZCMeiziDetailViewController *detailVC = [[ZCMeiziDetailViewController alloc] init];
             detailVC.contentUrl = urls[currentIndex];
             detailVC.contentTitle = titles[currentIndex];
             detailVC.title = titles[currentIndex];

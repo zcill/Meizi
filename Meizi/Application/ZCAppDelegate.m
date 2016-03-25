@@ -8,9 +8,10 @@
 
 #import "ZCAppDelegate.h"
 #import "ZCTabBar.h"
-#import <UMengAnalytics/MobClick.h>
-#import <AVOSCloud/AVOSCloud.h>
 #import "ZCLoginViewController.h"
+#import <AVOSCloud/AVOSCloud.h>
+#import <UMengAnalytics/MobClick.h>
+#import <LocalAuthentication/LocalAuthentication.h>
 
 @interface ZCAppDelegate ()
 
@@ -18,10 +19,71 @@
 
 @implementation ZCAppDelegate
 
+- (void)confirmTouchID {
+    
+    LAContext *context = [[LAContext alloc] init];
+    NSError *error;
+    
+    if ([context canEvaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics error:&error]) {
+        
+        [context evaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics localizedReason:@"验证Touch ID" reply:^(BOOL success, NSError * _Nullable error) {
+            if (!error) {
+                NSLog(@"%d", success);
+            } else {
+                NSLog(@"%@", [self getAuthErrorDescription:error.code]);
+            }
+        }];
+        
+    } else {
+        NSLog(@"%@", [self getAuthErrorDescription:error.code]);
+    }
+    
+}
+
+- (NSString *)getAuthErrorDescription:(NSInteger)code
+{
+    NSString *msg = @"";
+    switch (code) {
+        case LAErrorTouchIDNotEnrolled:
+            //认证不能开始,因为touch id没有录入指纹.
+            msg = TouchIDNotEnrolled;
+            break;
+        case LAErrorTouchIDNotAvailable:
+            //认证不能开始,因为touch id在此台设备尚是无效的.
+            msg = TouchIDNotAvailable;
+            break;
+        case LAErrorPasscodeNotSet:
+            //认证不能开始,因为此台设备没有设置密码.
+            msg = TouchIDPasscodeNotSet;
+            break;
+        case LAErrorSystemCancel:
+            //认证被系统取消了,例如其他的应用程序到前台了
+            msg = TouchIDSystemCancel;
+            break;
+        case LAErrorUserFallback:
+            //认证被取消,因为用户点击了fallback按钮(输入密码).
+            msg = TouchIDUserFallback;
+            break;
+        case LAErrorUserCancel:
+            //认证被用户取消,例如点击了cancel按钮.
+            msg = TouchIDUserCancel;
+            break;
+        case LAErrorAuthenticationFailed:
+            //认证没有成功,因为用户没有成功的提供一个有效的认证资格
+            msg = TouchIDAuthenticationFailed;
+            break;
+        default:
+            break;
+    }
+    return msg;
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+    // 初始化LeanCloud
     [self setLeanCloudSDK];
+    
+    // 设置友盟统计
     [self setUmengAnalytics];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -52,7 +114,8 @@
 - (void)setLeanCloudSDK {
     
     // 初始化LeanCloud
-    [AVOSCloud setApplicationId:@"appID" clientKey:@"appKey"];
+    // AppID和AppKey存放在pch文件中
+    [AVOSCloud setApplicationId:LeanCloudAppID clientKey:LeanCloudAppKey];
     [AVOSCloud setAllLogsEnabled:YES];
     
 }
@@ -63,7 +126,7 @@
 - (void)setUmengAnalytics {
     
     // 开启友盟统计功能
-    [MobClick startWithAppkey:@"569504ad67e58eefcc0017f9" reportPolicy:BATCH channelId:nil];
+    [MobClick startWithAppkey:UmengAppKey reportPolicy:BATCH channelId:nil];
     
     // 获取Xcode工程的Version号而不是build号
     NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
