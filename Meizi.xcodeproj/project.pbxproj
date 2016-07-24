@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		34ADFFB99278B50D42805211 /* libPods-Meizi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FB3889877E10398A61D4BF32 /* libPods-Meizi.a */; };
 		4C00895E1C43D1CF00FD1DF8 /* ZCAdView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C00895D1C43D1CF00FD1DF8 /* ZCAdView.m */; };
 		4C147C7C1C4BE8160081C842 /* ZCLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C147C7B1C4BE8160081C842 /* ZCLoginViewController.m */; };
 		4C147C7E1C4BE8340081C842 /* ZCLoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C147C7D1C4BE8340081C842 /* ZCLoginViewController.storyboard */; };
@@ -40,7 +41,6 @@
 		4CA0BB4A1C47FE8A00665357 /* NSDate+SFPrettyDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA0BB491C47FE8A00665357 /* NSDate+SFPrettyDate.m */; };
 		4CA8D4EB1C454048009B1119 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CA8D4EA1C454048009B1119 /* libz.tbd */; };
 		4CA8D5001C455E27009B1119 /* ZCMeiziRealm.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA8D4FF1C455E27009B1119 /* ZCMeiziRealm.m */; };
-		E8CC6059EB64A86EA12469B2 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 56FD7F5C37AE729DC9825FB1 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,7 +61,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		18C292FF408F4F9ADA5EE91D /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		2329B5559A1BDDEB6FF70478 /* Pods-Meizi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Meizi.release.xcconfig"; path = "Pods/Target Support Files/Pods-Meizi/Pods-Meizi.release.xcconfig"; sourceTree = "<group>"; };
 		4C00895C1C43D1CF00FD1DF8 /* ZCAdView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCAdView.h; sourceTree = "<group>"; };
 		4C00895D1C43D1CF00FD1DF8 /* ZCAdView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCAdView.m; sourceTree = "<group>"; };
 		4C00FD521C3EC2000068D852 /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
@@ -129,8 +129,8 @@
 		4CA8D4EA1C454048009B1119 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		4CA8D4FE1C455E27009B1119 /* ZCMeiziRealm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCMeiziRealm.h; sourceTree = "<group>"; };
 		4CA8D4FF1C455E27009B1119 /* ZCMeiziRealm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCMeiziRealm.m; sourceTree = "<group>"; };
-		56FD7F5C37AE729DC9825FB1 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		E5135A3A579CE788B4CA8A3A /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		B9E150AD6DC1AC7A5EB357AE /* Pods-Meizi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Meizi.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Meizi/Pods-Meizi.debug.xcconfig"; sourceTree = "<group>"; };
+		FB3889877E10398A61D4BF32 /* libPods-Meizi.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Meizi.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,7 +141,7 @@
 				4C9B903D1C57790600360807 /* LocalAuthentication.framework in Frameworks */,
 				4CA8D4EB1C454048009B1119 /* libz.tbd in Frameworks */,
 				4C3BE1041C4173BB0001AC14 /* libxml2.2.tbd in Frameworks */,
-				E8CC6059EB64A86EA12469B2 /* libPods.a in Frameworks */,
+				34ADFFB99278B50D42805211 /* libPods-Meizi.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -182,8 +182,8 @@
 				4C1A5C8E1C3C214600A1DF98 /* MeiziTests */,
 				4C1A5C991C3C214600A1DF98 /* MeiziUITests */,
 				4C1A5C731C3C214600A1DF98 /* Products */,
-				B950DDE44F62B5EC0EDF56EB /* Pods */,
 				E3BF12CA3CCEF2D075C6577C /* Frameworks */,
+				D78467C235159DB4306D8B1E /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -409,11 +409,11 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
-		B950DDE44F62B5EC0EDF56EB /* Pods */ = {
+		D78467C235159DB4306D8B1E /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				E5135A3A579CE788B4CA8A3A /* Pods.debug.xcconfig */,
-				18C292FF408F4F9ADA5EE91D /* Pods.release.xcconfig */,
+				B9E150AD6DC1AC7A5EB357AE /* Pods-Meizi.debug.xcconfig */,
+				2329B5559A1BDDEB6FF70478 /* Pods-Meizi.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -425,7 +425,7 @@
 				4CA8D4EA1C454048009B1119 /* libz.tbd */,
 				4C3BE1031C4173BB0001AC14 /* libxml2.2.tbd */,
 				4C00FD521C3EC2000068D852 /* libxml2.tbd */,
-				56FD7F5C37AE729DC9825FB1 /* libPods.a */,
+				FB3889877E10398A61D4BF32 /* libPods-Meizi.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -437,12 +437,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4C1A5C9F1C3C214600A1DF98 /* Build configuration list for PBXNativeTarget "Meizi" */;
 			buildPhases = (
-				43A3FE432B9F0764AAD08301 /* Check Pods Manifest.lock */,
+				81AB1F900FAFD134E4281D11 /* [CP] Check Pods Manifest.lock */,
 				4C1A5C6E1C3C214600A1DF98 /* Sources */,
 				4C1A5C6F1C3C214600A1DF98 /* Frameworks */,
 				4C1A5C701C3C214600A1DF98 /* Resources */,
-				DAE67535AF9BE0D55659BAA5 /* Embed Pods Frameworks */,
-				EA5B6F94CBAF648850C15A12 /* Copy Pods Resources */,
+				F79FCBF0EE5FAB55A8483AB4 /* [CP] Embed Pods Frameworks */,
+				DF7E4D87E0006898DC264335 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -561,14 +561,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		43A3FE432B9F0764AAD08301 /* Check Pods Manifest.lock */ = {
+		81AB1F900FAFD134E4281D11 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -576,34 +576,34 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		DAE67535AF9BE0D55659BAA5 /* Embed Pods Frameworks */ = {
+		DF7E4D87E0006898DC264335 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Meizi/Pods-Meizi-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		EA5B6F94CBAF648850C15A12 /* Copy Pods Resources */ = {
+		F79FCBF0EE5FAB55A8483AB4 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Meizi/Pods-Meizi-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -765,7 +765,7 @@
 		};
 		4C1A5CA01C3C214600A1DF98 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E5135A3A579CE788B4CA8A3A /* Pods.debug.xcconfig */;
+			baseConfigurationReference = B9E150AD6DC1AC7A5EB357AE /* Pods-Meizi.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -797,7 +797,7 @@
 		};
 		4C1A5CA11C3C214600A1DF98 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 18C292FF408F4F9ADA5EE91D /* Pods.release.xcconfig */;
+			baseConfigurationReference = 2329B5559A1BDDEB6FF70478 /* Pods-Meizi.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
