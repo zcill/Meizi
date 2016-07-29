@@ -3,7 +3,7 @@
 //  SCLAlertView
 //
 //  Created by Diogo Autilio on 9/26/14.
-//  Copyright (c) 2014 AnyKey Entertainment. All rights reserved.
+//  Copyright (c) 2014-2016 AnyKey Entertainment. All rights reserved.
 //
 
 #import "SCLButton.h"
@@ -60,6 +60,15 @@
     self.frame = CGRectMake(0.0f, 0.0f, windowWidth - (MARGIN_BUTTON * 2), MIN_HEIGHT);
     self.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
     self.titleLabel.textAlignment = NSTextAlignmentCenter;
+    self.layer.cornerRadius = 3.0f;
+}
+
+- (void)adjustWidthWithWindowWidth:(CGFloat)windowWidht numberOfButtons:(NSUInteger)numberOfButtons
+{
+    CGFloat allButtonsWidth = windowWidht - (MARGIN_BUTTON * 2);
+    CGFloat buttonWidth = (allButtonsWidth - ((numberOfButtons - 1) * 10)) / numberOfButtons;
+    
+    self.frame = CGRectMake(0.0f, 0.0f, buttonWidth, MIN_HEIGHT);
 }
 
 - (void)setTitle:(NSString *)title forState:(UIControlState)state
@@ -69,6 +78,9 @@
     
     // Update title frame.
     [self.titleLabel sizeToFit];
+    
+    // Update button frame
+    [self layoutIfNeeded];
     
     // Get height needed to display title label completely
     CGFloat buttonHeight = MAX(self.titleLabel.frame.size.height, MIN_HEIGHT);
@@ -107,6 +119,10 @@
     if (buttonConfig[@"textColor"])
     {
         [self setTitleColor:buttonConfig[@"textColor"] forState:UIControlStateNormal];
+    }
+    if (buttonConfig[@"cornerRadius"])
+    {
+        self.layer.cornerRadius = [buttonConfig[@"cornerRadius"] floatValue];
     }
     if ((buttonConfig[@"borderColor"]) && (buttonConfig[@"borderWidth"]))
     {

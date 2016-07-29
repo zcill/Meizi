@@ -71,7 +71,7 @@
 {
     UIImageView *imageView = [[UIImageView alloc] init];
     _imageView = imageView;
-    [self addSubview:imageView];
+    [self.contentView addSubview:imageView];
 }
 
 - (void)setupTitleLabel
@@ -79,13 +79,16 @@
     UILabel *titleLabel = [[UILabel alloc] init];
     _titleLabel = titleLabel;
     _titleLabel.hidden = YES;
-    [self addSubview:titleLabel];
+    [self.contentView addSubview:titleLabel];
 }
 
 - (void)setTitle:(NSString *)title
 {
     _title = [title copy];
     _titleLabel.text = [NSString stringWithFormat:@"   %@", title];
+    if (_titleLabel.hidden) {
+        _titleLabel.hidden = NO;
+    }
 }
 
 
@@ -93,14 +96,16 @@
 {
     [super layoutSubviews];
     
-    _imageView.frame = self.bounds;
-    
-    CGFloat titleLabelW = self.sd_width;
-    CGFloat titleLabelH = _titleLabelHeight;
-    CGFloat titleLabelX = 0;
-    CGFloat titleLabelY = self.sd_height - titleLabelH;
-    _titleLabel.frame = CGRectMake(titleLabelX, titleLabelY, titleLabelW, titleLabelH);
-    _titleLabel.hidden = !_titleLabel.text;
+    if (self.onlyDisplayText) {
+        _titleLabel.frame = self.bounds;
+    } else {
+        _imageView.frame = self.bounds;
+        CGFloat titleLabelW = self.sd_width;
+        CGFloat titleLabelH = _titleLabelHeight;
+        CGFloat titleLabelX = 0;
+        CGFloat titleLabelY = self.sd_height - titleLabelH;
+        _titleLabel.frame = CGRectMake(titleLabelX, titleLabelY, titleLabelW, titleLabelH);
+    }
 }
 
 @end

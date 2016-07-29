@@ -3,7 +3,7 @@
 //  SCLAlertView
 //
 //  Created by Diogo Autilio on 9/26/14.
-//  Copyright (c) 2014 AnyKey Entertainment. All rights reserved.
+//  Copyright (c) 2014-2016 AnyKey Entertainment. All rights reserved.
 //
 
 #import "SCLAlertView.h"
@@ -15,8 +15,10 @@
 
 #if defined(__has_feature) && __has_feature(modules)
 @import AVFoundation;
+@import AudioToolbox;
 #else
 #import <AVFoundation/AVFoundation.h>
+#import <AudioToolbox/AudioToolbox.h>
 #endif
 
 #define KEYBOARD_HEIGHT 80
@@ -27,21 +29,22 @@
 @interface SCLAlertView ()  <UITextFieldDelegate, UIGestureRecognizerDelegate>
 
 @property (nonatomic, strong) NSMutableArray *inputs;
+@property (nonatomic, strong) NSMutableArray *customViews;
 @property (nonatomic, strong) NSMutableArray *buttons;
 @property (nonatomic, strong) UIImageView *circleIconImageView;
 @property (nonatomic, strong) UIView *circleView;
 @property (nonatomic, strong) UIView *circleViewBackground;
 @property (nonatomic, strong) UIView *contentView;
 @property (nonatomic, strong) UIImageView *backgroundView;
-@property (nonatomic, strong) AVAudioPlayer *audioPlayer;
 @property (nonatomic, strong) UITapGestureRecognizer *gestureRecognizer;
 @property (nonatomic, strong) NSString *titleFontFamily;
 @property (nonatomic, strong) NSString *bodyTextFontFamily;
 @property (nonatomic, strong) NSString *buttonsFontFamily;
-@property (nonatomic, strong) UIViewController *rootViewController;
 @property (nonatomic, strong) UIWindow *previousWindow;
 @property (nonatomic, strong) UIWindow *SCLAlertWindow;
-@property (nonatomic, copy) DismissBlock dismissBlock;
+@property (nonatomic, copy) SCLDismissBlock dismissBlock;
+@property (nonatomic, assign) SystemSoundID soundID;
+@property (nonatomic, weak) UIViewController *rootViewController;
 @property (nonatomic, weak) id<UIGestureRecognizerDelegate> restoreInteractivePopGestureDelegate;
 @property (nonatomic) BOOL canAddObservers;
 @property (nonatomic) BOOL keyboardIsVisible;
@@ -148,12 +151,11 @@ SCLTimerDisplay *buttonTimer;
 - (void)setupViewWindowWidth:(CGFloat)windowWidth
 {
     // Default values
-    kCircleTopPosition = -12.0f;
     kCircleBackgroundTopPosition = -15.0f;
     kCircleHeight = 56.0f;
     kCircleHeightBackground = 62.0f;
     kActivityIndicatorHeight = 40.0f;
-    kTitleTop = 24.0f;
+    kTitleTop = 30.0f;
     kTitleHeight = 40.0f;
     self.subTitleY = 70.0f;
     self.subTitleHeight = 90.0f;
@@ -167,6 +169,7 @@ SCLTimerDisplay *buttonTimer;
     self.hideAnimationType = FadeOut;
     self.showAnimationType = SlideInFromTop;
     self.backgroundType = Shadow;
+    self.tintTopCircle = YES;
     
     // Font
     _titleFontFamily = @"HelveticaNeue";
@@ -186,32 +189,31 @@ SCLTimerDisplay *buttonTimer;
     _backgroundView = [[UIImageView alloc]initWithFrame:[self mainScreenFrame]];
     _buttons = [[NSMutableArray alloc] init];
     _inputs = [[NSMutableArray alloc] init];
+    _customViews = [[NSMutableArray alloc] init];
     
     // Add Subviews
     [self.view addSubview:_contentView];
     [self.view addSubview:_circleViewBackground];
     
-    // Background View
-    _backgroundView.userInteractionEnabled = YES;
-    
-    // Content View
-    _contentView.backgroundColor = [UIColor whiteColor];
-    _contentView.layer.cornerRadius = 5.0f;
-    _contentView.layer.masksToBounds = YES;
-    _contentView.layer.borderWidth = 0.5f;
-    [_contentView addSubview:_labelTitle];
-    [_contentView addSubview:_viewText];
-    
     // Circle View
-    _circleViewBackground.backgroundColor = [UIColor whiteColor];
-    _circleViewBackground.layer.cornerRadius = _circleViewBackground.frame.size.height / 2;
     CGFloat x = (kCircleHeightBackground - kCircleHeight) / 2;
     _circleView.frame = CGRectMake(x, x, kCircleHeight, kCircleHeight);
     _circleView.layer.cornerRadius = _circleView.frame.size.height / 2;
+    
+    // Circle Background View
+    _circleViewBackground.backgroundColor = [UIColor whiteColor];
+    _circleViewBackground.layer.cornerRadius = _circleViewBackground.frame.size.height / 2;
     x = (kCircleHeight - _circleIconHeight) / 2;
+    
+    // Circle Image View
     _circleIconImageView.frame = CGRectMake(x, x, _circleIconHeight, _circleIconHeight);
+    _circleIconImageView.contentMode = UIViewContentModeScaleAspectFill;
+    
     [_circleViewBackground addSubview:_circleView];
     [_circleView addSubview:_circleIconImageView];
+    
+    // Background View
+    _backgroundView.userInteractionEnabled = YES;
     
     // Title
     _labelTitle.numberOfLines = 1;
@@ -232,6 +234,17 @@ SCLTimerDisplay *buttonTimer;
         _viewText.textContainer.lineFragmentPadding = 0;
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
+    
+    // Content View
+    _contentView.backgroundColor = [UIColor whiteColor];
+    _contentView.layer.cornerRadius = 5.0f;
+    _contentView.layer.masksToBounds = YES;
+    _contentView.layer.borderWidth = 0.5f;
+    [_contentView addSubview:_viewText];    
+
+    CGRect position = [self.contentView convertRect:self.labelTitle.frame toView:self.view];
+    _labelTitle.frame = position;
+    [self.view addSubview:_labelTitle];
     
     // Colors
     self.backgroundViewColor = [UIColor whiteColor];
@@ -266,6 +279,27 @@ SCLTimerDisplay *buttonTimer;
     [super viewWillLayoutSubviews];
     
     CGSize sz = [self mainScreenFrame].size;
+    
+    // Check for larger top circle icon flag
+    if (_useLargerIcon) {
+        // Adjust icon
+        _circleIconHeight = 70.0f;
+        
+        // Adjust coordinate variables for larger sized top circle
+        kCircleBackgroundTopPosition = -61.0f;
+        kCircleHeight = 106.0f;
+        kCircleHeightBackground = 122.0f;
+        
+        // Reposition inner circle appropriately
+        CGFloat x = (kCircleHeightBackground - kCircleHeight) / 2;
+        _circleView.frame = CGRectMake(x, x, kCircleHeight, kCircleHeight);
+        if (_labelTitle.text == nil)
+        {
+            kTitleTop = kCircleHeightBackground / 2;
+        }
+    } else {
+        kCircleBackgroundTopPosition = -(kCircleHeightBackground / 2);
+    }
     
     // Check if the rootViewController is modal, if so we need to get the modal size not the main screen size
     if([self isModal] && !_usingNewWindow)
@@ -305,53 +339,78 @@ SCLTimerDisplay *buttonTimer;
         
         // Set frames
         self.view.frame = r;
-        _contentView.frame = CGRectMake(0.0f, kCircleHeight / 4, _windowWidth, _windowHeight);
+        _contentView.frame = CGRectMake(0.0f, 0.0f, _windowWidth, _windowHeight);
         _circleViewBackground.frame = CGRectMake(_windowWidth / 2 - kCircleHeightBackground / 2, kCircleBackgroundTopPosition, kCircleHeightBackground, kCircleHeightBackground);
+        _circleViewBackground.layer.cornerRadius = _circleViewBackground.frame.size.height / 2;
+        _circleView.layer.cornerRadius = _circleView.frame.size.height / 2;
         _circleIconImageView.frame = CGRectMake(kCircleHeight / 2 - _circleIconHeight / 2, kCircleHeight / 2 - _circleIconHeight / 2, _circleIconHeight, _circleIconHeight);
+        _labelTitle.frame = CGRectMake(12.0f, kTitleTop, _windowWidth - 24.0f, kTitleHeight);
     }
     else
     {
         CGFloat x = (sz.width - _windowWidth) / 2;
-        CGFloat y = (sz.height - _windowHeight -  (kCircleHeight / 8)) / 2;
+        CGFloat y = (sz.height - _windowHeight - (kCircleHeight / 8)) / 2;
         
         _contentView.frame = CGRectMake(x, y, _windowWidth, _windowHeight);
-        y -= kCircleHeightBackground * 0.6f;
+        y -= kCircleHeightBackground / 2;
         x = (sz.width - kCircleHeightBackground) / 2;
+        _circleView.layer.cornerRadius = _circleView.frame.size.height / 2;        
         _circleViewBackground.frame = CGRectMake(x, y, kCircleHeightBackground, kCircleHeightBackground);
+        _circleViewBackground.layer.cornerRadius = _circleViewBackground.frame.size.height / 2;        
         _circleIconImageView.frame = CGRectMake(kCircleHeight / 2 - _circleIconHeight / 2, kCircleHeight / 2 - _circleIconHeight / 2, _circleIconHeight, _circleIconHeight);
+        _labelTitle.frame = CGRectMake(12.0f + self.contentView.frame.origin.x, kTitleTop + self.contentView.frame.origin.y, _windowWidth - 24.0f, kTitleHeight);
     }
     
+    // Text fields
+    CGFloat y = (_labelTitle.text == nil) ? kTitleTop : kTitleTop + _labelTitle.frame.size.height;
+    _viewText.frame = CGRectMake(12.0f, y, _windowWidth - 24.0f, _subTitleHeight);
+    y += _subTitleHeight + 14.0f;
+    for (SCLTextView *textField in _inputs)
     {
-        // Text fields
-        CGFloat y = (_labelTitle.text == nil) ? (kCircleHeight - 20.0f) : 74.0f;
-        y += _subTitleHeight + 14.0f;
-        for (SCLTextView *textField in _inputs)
-        {
-            textField.frame = CGRectMake(12.0f, y, _windowWidth - 24.0f, textField.frame.size.height);
-            textField.layer.cornerRadius = 3.0f;
-            y += textField.frame.size.height + 10.0f;
-        }
+        textField.frame = CGRectMake(12.0f, y, _windowWidth - 24.0f, textField.frame.size.height);
+        textField.layer.cornerRadius = 3.0f;
+        y += textField.frame.size.height + 10.0f;
+    }
+    
+    // Custom views
+    for (UIView *view in _customViews)
+    {
+        view.frame = CGRectMake(12.0f, y, view.frame.size.width, view.frame.size.height);
+        y += view.frame.size.height + 10.0f;
+    }
+    
+    // Buttons
+    CGFloat x = 12.0f;
+    for (SCLButton *btn in _buttons)
+    {
+        btn.frame = CGRectMake(x, y, btn.frame.size.width, btn.frame.size.height);
         
-        // Buttons
-        for (SCLButton *btn in _buttons)
-        {
-            btn.frame = CGRectMake(12.0f, y, btn.frame.size.width, btn.frame.size.height);
-            btn.layer.cornerRadius = 3.0f;
+        // Add horizontal or vertical offset acording on _horizontalButtons parameter
+        if (_horizontalButtons) {
+            x += btn.frame.size.width + 10.0f;
+        } else {
             y += btn.frame.size.height + 10.0f;
         }
     }
+    
+    // Adapt window height according to icon size
+    self.windowHeight = _useLargerIcon ? y : self.windowHeight;
+    _contentView.frame = CGRectMake(_contentView.frame.origin.x, _contentView.frame.origin.y, _windowWidth, _windowHeight);
+    
+    // Adjust corner radius, if a value has been passed
+    _contentView.layer.cornerRadius = self.cornerRadius ? self.cornerRadius : 5.0f;
 }
 
 #pragma mark - UIViewController
 
 - (BOOL)prefersStatusBarHidden
 {
-  return self.statusBarHidden;
+    return self.statusBarHidden;
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle
 {
-  return self.statusBarStyle;
+    return self.statusBarStyle;
 }
 
 #pragma mark - Handle gesture
@@ -466,9 +525,15 @@ SCLTimerDisplay *buttonTimer;
 
 - (void)setSoundURL:(NSURL *)soundURL
 {
-    NSError *error;
     _soundURL = soundURL;
-    _audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:_soundURL error:&error];
+    
+    //DisposeSound
+    AudioServicesDisposeSystemSoundID(_soundID);
+    
+    AudioServicesCreateSystemSoundID((__bridge CFURLRef)_soundURL, &_soundID);
+    
+    //PlaySound
+    AudioServicesPlaySystemSound(_soundID);
 }
 
 #pragma mark - Subtitle Height
@@ -486,6 +551,40 @@ SCLTimerDisplay *buttonTimer;
     _activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
     _activityIndicatorView.frame = CGRectMake(kCircleHeight / 2 - kActivityIndicatorHeight / 2, kCircleHeight / 2 - kActivityIndicatorHeight / 2, kActivityIndicatorHeight, kActivityIndicatorHeight);
     [_circleView addSubview:_activityIndicatorView];
+}
+
+#pragma mark - UICustomView
+
+- (UIView *)addCustomView:(UIView *)customView
+{
+    // Update view height
+    self.windowHeight += customView.bounds.size.height + 10.0f;
+    
+    [_contentView addSubview:customView];
+    [_customViews addObject:customView];
+    
+    return customView;
+}
+
+#pragma mark - SwitchView
+
+- (SCLSwitchView *)addSwitchViewWithLabel:(NSString *)label
+{
+    // Add switch view
+    SCLSwitchView *switchView = [[SCLSwitchView alloc] initWithFrame:CGRectMake(0, 0, self.windowWidth, 31.0f)];
+    
+    // Update view height
+    self.windowHeight += switchView.bounds.size.height + 10.0f;
+    
+    if (label != nil)
+    {
+        switchView.labelText = label;
+    }
+    
+    [_contentView addSubview:switchView];
+    [_inputs addObject:switchView];
+    
+    return switchView;
 }
 
 #pragma mark - TextField
@@ -592,11 +691,23 @@ SCLTimerDisplay *buttonTimer;
     [btn setTitle:title forState:UIControlStateNormal];
     btn.titleLabel.font = [UIFont fontWithName:_buttonsFontFamily size:_buttonsFontSize];
     
-    // Update view height
-    self.windowHeight += (btn.frame.size.height + ADD_BUTTON_PADDING);
-    
     [_contentView addSubview:btn];
     [_buttons addObject:btn];
+    
+    if (_horizontalButtons) {
+        // Update buttons width according to the number of buttons
+        for (SCLButton *bttn in _buttons) {
+            [bttn adjustWidthWithWindowWidth:self.windowWidth numberOfButtons:[_buttons count]];
+        }
+        
+        // Update view height
+        if (!([_buttons count] > 1)) {
+            self.windowHeight += (btn.frame.size.height + ADD_BUTTON_PADDING);
+        }
+    } else {
+        // Update view height
+        self.windowHeight += (btn.frame.size.height + ADD_BUTTON_PADDING);
+    }
     
     return btn;
 }
@@ -660,11 +771,7 @@ SCLTimerDisplay *buttonTimer;
     if (btn.validationBlock && !btn.validationBlock()) {
         return;
     }
-    if([self isVisible])
-    {
-        [self hideView];
-    }
-
+    
     if (btn.actionType == SCLBlock)
     {
         if (btn.actionBlock)
@@ -678,6 +785,11 @@ SCLTimerDisplay *buttonTimer;
     else
     {
         NSLog(@"Unknown action type for button");
+    }
+    
+    if([self isVisible])
+    {
+        [self hideView];
     }
 }
 
@@ -839,19 +951,6 @@ SCLTimerDisplay *buttonTimer;
         _labelTitle.frame = CGRectMake(12.0f, 37.0f, _windowWidth - 24.0f, kTitleHeight);
     }
     
-    // Play sound, if necessary
-    if(_soundURL != nil)
-    {
-        if (_audioPlayer == nil)
-        {
-            NSLog(@"You need to set your sound file first");
-        }
-        else
-        {
-            [_audioPlayer play];
-        }
-    }
-    
     // Add button, if necessary
     if(completeText != nil)
     {
@@ -859,7 +958,7 @@ SCLTimerDisplay *buttonTimer;
     }
     
     // Alert view color and images
-    self.circleView.backgroundColor = viewColor;
+    self.circleView.backgroundColor = self.tintTopCircle ? viewColor : _backgroundViewColor;
     
     if (style == Waiting)
     {
@@ -905,8 +1004,8 @@ SCLTimerDisplay *buttonTimer;
     {
         [durationTimer invalidate];
         
-        if (buttonTimer && _buttons.count > 0) {
-            
+        if (buttonTimer && _buttons.count > 0)
+        {
             SCLButton *btn = _buttons[buttonTimer.buttonIndex];
             btn.timer = buttonTimer;
             [buttonTimer startTimerWithTimeLimit:duration completed:^{
@@ -1055,9 +1154,20 @@ SCLTimerDisplay *buttonTimer;
     return (self.view.alpha);
 }
 
-- (void)alertIsDismissed:(DismissBlock)dismissBlock
+- (void)alertIsDismissed:(SCLDismissBlock)dismissBlock
 {
     self.dismissBlock = dismissBlock;
+}
+
+- (SCLForceHideBlock)forceHideBlock:(SCLForceHideBlock)forceHideBlock
+{
+    _forceHideBlock = forceHideBlock;
+    
+    if (_forceHideBlock)
+    {
+        [self hideView];
+    }
+    return _forceHideBlock;
 }
 
 - (CGRect)mainScreenFrame
@@ -1154,6 +1264,10 @@ SCLTimerDisplay *buttonTimer;
         case SlideInToCenter:
             [self slideInToCenter];
             break;
+            
+        case SimplyAppear:
+            [self simplyAppear];
+            break;
     }
 }
 
@@ -1190,11 +1304,20 @@ SCLTimerDisplay *buttonTimer;
         case SlideOutFromCenter:
             [self slideOutFromCenter];
             break;
+        
+        case SimplyDisappear:
+            [self simplyDisappear];
+            break;
     }
     
-    if(_activityIndicatorView)
+    if (_activityIndicatorView)
     {
         [_activityIndicatorView stopAnimating];
+    }
+    
+    if (durationTimer)
+    {
+        [durationTimer invalidate];
     }
     
     if (self.dismissBlock)
@@ -1202,11 +1325,18 @@ SCLTimerDisplay *buttonTimer;
         self.dismissBlock();
     }
     
-    if(_usingNewWindow)
+    if (_usingNewWindow)
     {
         // Restore previous window
         [self.previousWindow makeKeyAndVisible];
         self.previousWindow = nil;
+    }
+    
+    for (SCLButton *btn in _buttons)
+    {
+        btn.actionBlock = nil;
+        btn.target = nil;
+        btn.selector = nil;
     }
 }
 
@@ -1219,9 +1349,9 @@ SCLTimerDisplay *buttonTimer;
         self.view.alpha = 0.0f;
     } completion:^(BOOL completed) {
         [self.backgroundView removeFromSuperview];
-        if(_usingNewWindow)
+        if (_usingNewWindow)
         {
-            // Remove current window            
+            // Remove current window
             [self.SCLAlertWindow setHidden:YES];
             self.SCLAlertWindow = nil;
         }
@@ -1300,6 +1430,18 @@ SCLTimerDisplay *buttonTimer;
         [self fadeOut];
     }];
 }
+
+- (void)simplyDisappear
+{
+    self.backgroundView.alpha = _backgroundOpacity;
+    self.view.alpha = 1.0f;
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        self.backgroundView.alpha = 0.0f;
+        self.view.alpha = 0.0f;
+    });
+}
+
 
 #pragma mark - Show Animations
 
@@ -1472,6 +1614,688 @@ SCLTimerDisplay *buttonTimer;
             self.view.center = _backgroundView.center;
         }];
     }];
+}
+
+- (void)simplyAppear
+{
+    self.backgroundView.alpha = 0.0f;
+    self.view.alpha = 0.0f;
+
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        self.backgroundView.alpha = _backgroundOpacity;
+        self.view.alpha = 1.0f;
+    });
+}
+
+
+@end
+
+@interface SCLALertViewTextFieldBuilder()
+#pragma mark - Parameters
+@property(copy, nonatomic) NSString *parameterTitle;
+
+#pragma mark - Available later after adding
+@property(weak, nonatomic) SCLTextView *textField;
+
+#pragma mark - Setters
+@property(copy, nonatomic) SCLALertViewTextFieldBuilder *(^title) (NSString *title);
+@end
+
+@implementation SCLALertViewTextFieldBuilder
+- (SCLALertViewTextFieldBuilder *(^) (NSString *title))title {
+    if (!_title) {
+        __weak typeof(self) weakSelf = self;
+        _title = ^(NSString *title){
+            weakSelf.parameterTitle = title;
+            return weakSelf;
+        };
+    }
+    return _title;
+}
+@end
+
+@interface SCLALertViewButtonBuilder()
+
+#pragma mark - Parameters
+@property(copy, nonatomic) NSString *parameterTitle;
+@property(weak, nonatomic) id parameterTarget;
+@property(assign, nonatomic) SEL parameterSelector;
+@property(copy, nonatomic) void(^parameterActionBlock)(void);
+@property(copy, nonatomic) BOOL(^parameterValidationBlock)(void);
+
+#pragma mark - Available later after adding
+@property(weak, nonatomic) SCLButton *button;
+
+#pragma mark - Setters
+@property(copy, nonatomic) SCLALertViewButtonBuilder *(^title) (NSString *title);
+@property(copy, nonatomic) SCLALertViewButtonBuilder *(^target) (id target);
+@property(copy, nonatomic) SCLALertViewButtonBuilder *(^selector) (SEL selector);
+@property(copy, nonatomic) SCLALertViewButtonBuilder *(^actionBlock) (void(^actionBlock)(void));
+@property(copy, nonatomic) SCLALertViewButtonBuilder *(^validationBlock) (BOOL(^validationBlock)(void));
+
+@end
+
+@implementation SCLALertViewButtonBuilder
+- (SCLALertViewButtonBuilder *(^) (NSString *title))title {
+    if (!_title) {
+        __weak typeof(self) weakSelf = self;
+        _title = ^(NSString *title){
+            weakSelf.parameterTitle = title;
+            return weakSelf;
+        };
+    }
+    return _title;
+}
+- (SCLALertViewButtonBuilder *(^) (id target))target {
+    if (!_target) {
+        __weak typeof(self) weakSelf = self;
+        _target = ^(id target){
+            weakSelf.parameterTarget = target;
+            return weakSelf;
+        };
+    }
+    return _target;
+}
+- (SCLALertViewButtonBuilder *(^) (SEL selector))selector {
+    if (!_selector) {
+        __weak typeof(self) weakSelf = self;
+        _selector = ^(SEL selector){
+            weakSelf.parameterSelector = selector;
+            return weakSelf;
+        };
+    }
+    return _selector;
+}
+- (SCLALertViewButtonBuilder *(^) (void(^actionBlock)(void)))actionBlock {
+    if (!_actionBlock) {
+        __weak typeof(self) weakSelf = self;
+        _actionBlock = ^(void(^actionBlock)(void)){
+            weakSelf.parameterActionBlock = actionBlock;
+            return weakSelf;
+        };
+    }
+    return _actionBlock;
+}
+- (SCLALertViewButtonBuilder *(^) (BOOL(^validationBlock)(void)))validationBlock {
+    if (!_validationBlock) {
+        __weak typeof(self) weakSelf = self;
+        _validationBlock = ^(BOOL(^validationBlock)(void)){
+            weakSelf.parameterValidationBlock = validationBlock;
+            return weakSelf;
+        };
+    }
+    return _validationBlock;
+}
+@end
+
+
+@interface SCLAlertViewBuilder()
+
+@property (strong, nonatomic) SCLAlertView *alertView;
+
+@end
+
+@implementation SCLAlertViewBuilder
+
+#pragma mark - Init
+
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        self.alertView = [[SCLAlertView alloc] init];
+    }
+    return self;
+}
+- (instancetype)initWithNewWindow {
+    self = [super init];
+    if (self) {
+        self.alertView = [[SCLAlertView alloc] initWithNewWindow];
+    }
+    return self;
+}
+
+- (instancetype)initWithNewWindowWidth:(CGFloat)width {
+    self = [super init];
+    if (self) {
+        self.alertView = [[SCLAlertView alloc] initWithNewWindowWidth:width];
+    }
+    return self;
+}
+
+#pragma mark - Properties
+- (SCLAlertViewBuilder *(^) (CGFloat cornerRadius))cornerRadius {
+    if (!_cornerRadius) {
+        __weak typeof(self) weakSelf = self;
+        _cornerRadius = ^(CGFloat cornerRadius) {
+            weakSelf.alertView.cornerRadius = cornerRadius;
+            return weakSelf;
+        };
+    }
+    return _cornerRadius;
+}
+
+- (SCLAlertViewBuilder *(^) (BOOL tintTopCircle))tintTopCircle {
+    if (!_tintTopCircle) {
+        __weak typeof(self) weakSelf = self;
+        _tintTopCircle = ^(BOOL tintTopCircle) {
+            weakSelf.alertView.tintTopCircle = tintTopCircle;
+            return weakSelf;
+        };
+    }
+    return _tintTopCircle;
+}
+- (SCLAlertViewBuilder *(^) (BOOL useLargerIcon))useLargerIcon {
+    if (!_useLargerIcon) {
+        __weak typeof(self) weakSelf = self;
+        _useLargerIcon = ^(BOOL useLargerIcon) {
+            weakSelf.alertView.useLargerIcon = useLargerIcon;
+            return weakSelf;
+        };
+    }
+    return _useLargerIcon;
+}
+- (SCLAlertViewBuilder *(^) (UILabel *labelTitle))labelTitle {
+    if (!_labelTitle) {
+        __weak typeof(self) weakSelf = self;
+        _labelTitle = ^(UILabel *labelTitle) {
+            weakSelf.alertView.labelTitle = labelTitle;
+            return weakSelf;
+        };
+    }
+    return _labelTitle;
+}
+- (SCLAlertViewBuilder *(^) (UITextView *viewText))viewText {
+    if (!_viewText) {
+        __weak typeof(self) weakSelf = self;
+        _viewText = ^(UITextView *viewText) {
+            weakSelf.alertView.viewText = viewText;
+            return weakSelf;
+        };
+    }
+    return _viewText;
+}
+- (SCLAlertViewBuilder *(^) (UIActivityIndicatorView *activityIndicatorView))activityIndicatorView {
+    if (!_activityIndicatorView) {
+        __weak typeof(self) weakSelf = self;
+        _activityIndicatorView = ^(UIActivityIndicatorView *activityIndicatorView) {
+            weakSelf.alertView.activityIndicatorView = activityIndicatorView;
+            return weakSelf;
+        };
+    }
+    return _activityIndicatorView;
+}
+- (SCLAlertViewBuilder *(^) (BOOL shouldDismissOnTapOutside))shouldDismissOnTapOutside {
+    if (!_shouldDismissOnTapOutside) {
+        __weak typeof(self) weakSelf = self;
+        _shouldDismissOnTapOutside = ^(BOOL shouldDismissOnTapOutside) {
+            weakSelf.alertView.shouldDismissOnTapOutside = shouldDismissOnTapOutside;
+            return weakSelf;
+        };
+    }
+    return _shouldDismissOnTapOutside;
+}
+- (SCLAlertViewBuilder *(^) (NSURL *soundURL))soundURL {
+    if (!_soundURL) {
+        __weak typeof(self) weakSelf = self;
+        _soundURL = ^(NSURL *soundURL) {
+            weakSelf.alertView.soundURL = soundURL;
+            return weakSelf;
+        };
+    }
+    return _soundURL;
+}
+- (SCLAlertViewBuilder *(^) (SCLAttributedFormatBlock attributedFormatBlock))attributedFormatBlock {
+    if (!_attributedFormatBlock) {
+        __weak typeof(self) weakSelf = self;
+        _attributedFormatBlock = ^(SCLAttributedFormatBlock attributedFormatBlock) {
+            weakSelf.alertView.attributedFormatBlock = attributedFormatBlock;
+            return weakSelf;
+        };
+    }
+    return _attributedFormatBlock;
+}
+- (SCLAlertViewBuilder *(^) (CompleteButtonFormatBlock completeButtonFormatBlock))completeButtonFormatBlock {
+    if (!_completeButtonFormatBlock) {
+        __weak typeof(self) weakSelf = self;
+        _completeButtonFormatBlock = ^(CompleteButtonFormatBlock completeButtonFormatBlock) {
+            weakSelf.alertView.completeButtonFormatBlock = completeButtonFormatBlock;
+            return weakSelf;
+        };
+    }
+    return _completeButtonFormatBlock;
+}
+- (SCLAlertViewBuilder *(^) (ButtonFormatBlock buttonFormatBlock))buttonFormatBlock {
+    if (!_buttonFormatBlock) {
+        __weak typeof(self) weakSelf = self;
+        _buttonFormatBlock = ^(ButtonFormatBlock buttonFormatBlock) {
+            weakSelf.alertView.buttonFormatBlock = buttonFormatBlock;
+            return weakSelf;
+        };
+    }
+    return _buttonFormatBlock;
+}
+- (SCLAlertViewBuilder *(^) (SCLForceHideBlock forceHideBlock))forceHideBlock {
+    if (!_forceHideBlock) {
+        __weak typeof(self) weakSelf = self;
+        _forceHideBlock = ^(SCLForceHideBlock forceHideBlock) {
+            weakSelf.alertView.forceHideBlock = forceHideBlock;
+            return weakSelf;
+        };
+    }
+    return _forceHideBlock;
+}
+- (SCLAlertViewBuilder *(^) (SCLAlertViewHideAnimation hideAnimationType))hideAnimationType {
+    if (!_hideAnimationType) {
+        __weak typeof(self) weakSelf = self;
+        _hideAnimationType = ^(SCLAlertViewHideAnimation hideAnimationType) {
+            weakSelf.alertView.hideAnimationType = hideAnimationType;
+            return weakSelf;
+        };
+    }
+    return _hideAnimationType;
+}
+- (SCLAlertViewBuilder *(^) (SCLAlertViewShowAnimation showAnimationType))showAnimationType {
+    if (!_showAnimationType) {
+        __weak typeof(self) weakSelf = self;
+        _showAnimationType = ^(SCLAlertViewShowAnimation showAnimationType) {
+            weakSelf.alertView.showAnimationType = showAnimationType;
+            return weakSelf;
+        };
+    }
+    return _showAnimationType;
+}
+- (SCLAlertViewBuilder *(^) (SCLAlertViewBackground backgroundType))backgroundType {
+    if (!_backgroundType) {
+        __weak typeof(self) weakSelf = self;
+        _backgroundType = ^(SCLAlertViewBackground backgroundType) {
+            weakSelf.alertView.backgroundType = backgroundType;
+            return weakSelf;
+        };
+    }
+    return _backgroundType;
+}
+- (SCLAlertViewBuilder *(^) (UIColor *customViewColor))customViewColor {
+    if (!_customViewColor) {
+        __weak typeof(self) weakSelf = self;
+        _customViewColor = ^(UIColor *customViewColor) {
+            weakSelf.alertView.customViewColor = customViewColor;
+            return weakSelf;
+        };
+    }
+    return _customViewColor;
+}
+- (SCLAlertViewBuilder *(^) (UIColor *backgroundViewColor))backgroundViewColor {
+    if (!_backgroundViewColor) {
+        __weak typeof(self) weakSelf = self;
+        _backgroundViewColor = ^(UIColor *backgroundViewColor) {
+            weakSelf.alertView.backgroundViewColor = backgroundViewColor;
+            return weakSelf;
+        };
+    }
+    return _backgroundViewColor;
+}
+- (SCLAlertViewBuilder *(^) (UIColor *iconTintColor))iconTintColor {
+    if (!_iconTintColor) {
+        __weak typeof(self) weakSelf = self;
+        _iconTintColor = ^(UIColor *iconTintColor) {
+            weakSelf.alertView.iconTintColor = iconTintColor;
+            return weakSelf;
+        };
+    }
+    return _iconTintColor;
+}
+- (SCLAlertViewBuilder *(^) (CGFloat circleIconHeight))circleIconHeight {
+    if (!_circleIconHeight) {
+        __weak typeof(self) weakSelf = self;
+        _circleIconHeight = ^(CGFloat circleIconHeight) {
+            weakSelf.alertView.circleIconHeight = circleIconHeight;
+            return weakSelf;
+        };
+    }
+    return _circleIconHeight;
+}
+- (SCLAlertViewBuilder *(^) (CGRect extensionBounds))extensionBounds {
+    if (!_extensionBounds) {
+        __weak typeof(self) weakSelf = self;
+        _extensionBounds = ^(CGRect extensionBounds) {
+            weakSelf.alertView.extensionBounds = extensionBounds;
+            return weakSelf;
+        };
+    }
+    return _extensionBounds;
+}
+- (SCLAlertViewBuilder *(^) (BOOL statusBarHidden))statusBarHidden {
+    if (!_statusBarHidden) {
+        __weak typeof(self) weakSelf = self;
+        _statusBarHidden = ^(BOOL statusBarHidden) {
+            weakSelf.alertView.statusBarHidden = statusBarHidden;
+            return weakSelf;
+        };
+    }
+    return _statusBarHidden;
+}
+- (SCLAlertViewBuilder *(^) (UIStatusBarStyle statusBarStyle))statusBarStyle {
+    if (!_statusBarStyle) {
+        __weak typeof(self) weakSelf = self;
+        _statusBarStyle = ^(UIStatusBarStyle statusBarStyle) {
+            weakSelf.alertView.statusBarStyle = statusBarStyle;
+            return weakSelf;
+        };
+    }
+    return _statusBarStyle;
+}
+
+#pragma mark - Custom Setters
+- (SCLAlertViewBuilder *(^) (SCLDismissBlock dismissBlock))alertIsDismissed {
+    if (!_alertIsDismissed) {
+        __weak typeof(self) weakSelf = self;
+        _alertIsDismissed = ^(SCLDismissBlock dismissBlock) {
+            [weakSelf.alertView alertIsDismissed:dismissBlock];
+            return weakSelf;
+        };
+    }
+    return _alertIsDismissed;
+}
+- (SCLAlertViewBuilder *(^) (void))removeTopCircle {
+    if (!_removeTopCircle) {
+        __weak typeof(self) weakSelf = self;
+        _removeTopCircle = ^(void) {
+            [weakSelf.alertView removeTopCircle];
+            return weakSelf;
+        };
+    }
+    return _removeTopCircle;
+}
+- (SCLAlertViewBuilder *(^) (UIView *view))addCustomView {
+    if (!_addCustomView) {
+        __weak typeof(self) weakSelf = self;
+        _addCustomView = ^(UIView *view) {
+            [weakSelf.alertView addCustomView:view];
+            return weakSelf;
+        };
+    }
+    return _addCustomView;
+}
+- (SCLAlertViewBuilder *(^) (NSString *title))addTextField {
+    if (!_addTextField) {
+        __weak typeof(self) weakSelf = self;
+        _addTextField = ^(NSString *title) {
+            [weakSelf.alertView addTextField:title];
+            return weakSelf;
+        };
+    }
+    return _addTextField;
+}
+- (SCLAlertViewBuilder *(^) (UITextField *textField))addCustomTextField {
+    if (!_addCustomTextField) {
+        __weak typeof(self) weakSelf = self;
+        _addCustomTextField = ^(UITextField *textField) {
+            [weakSelf.alertView addCustomTextField:textField];
+            return weakSelf;
+        };
+    }
+    return _addCustomTextField;
+}
+- (SCLAlertViewBuilder *(^) (NSString *title))addSwitchViewWithLabelTitle {
+    if (!_addSwitchViewWithLabelTitle) {
+        __weak typeof(self) weakSelf = self;
+        _addSwitchViewWithLabelTitle = ^(NSString *title) {
+            [weakSelf.alertView addSwitchViewWithLabel:title];
+            return weakSelf;
+        };
+    }
+    return _addSwitchViewWithLabelTitle;
+}
+- (SCLAlertViewBuilder *(^) (NSInteger buttonIndex, BOOL reverse))addTimerToButtonIndex {
+    if (!_addTimerToButtonIndex) {
+        __weak typeof(self) weakSelf = self;
+        _addTimerToButtonIndex = ^(NSInteger buttonIndex, BOOL reverse) {
+            [weakSelf.alertView addTimerToButtonIndex:buttonIndex reverse:reverse];
+            return weakSelf;
+        };
+    }
+    return _addTimerToButtonIndex;
+}
+- (SCLAlertViewBuilder *(^) (NSString *titleFontFamily, CGFloat size))setTitleFontFamily {
+    if (!_setTitleFontFamily) {
+        __weak typeof(self) weakSelf = self;
+        _setTitleFontFamily = ^(NSString *titleFontFamily, CGFloat size) {
+            [weakSelf.alertView setTitleFontFamily:titleFontFamily withSize:size];
+            return weakSelf;
+        };
+    }
+    return _setTitleFontFamily;
+}
+- (SCLAlertViewBuilder *(^) (NSString *bodyTextFontFamily, CGFloat size))setBodyTextFontFamily {
+    if (!_setBodyTextFontFamily) {
+        __weak typeof(self) weakSelf = self;
+        _setBodyTextFontFamily = ^(NSString *bodyTextFontFamily, CGFloat size) {
+            [weakSelf.alertView setBodyTextFontFamily:bodyTextFontFamily withSize:size];
+            return weakSelf;
+        };
+    }
+    return _setBodyTextFontFamily;
+}
+- (SCLAlertViewBuilder *(^) (NSString *buttonsFontFamily, CGFloat size))setButtonsTextFontFamily {
+    if (!_setButtonsTextFontFamily) {
+        __weak typeof(self) weakSelf = self;
+        _setButtonsTextFontFamily = ^(NSString *buttonsFontFamily, CGFloat size) {
+            [weakSelf.alertView setButtonsTextFontFamily:buttonsFontFamily withSize:size];
+            return weakSelf;
+        };
+    }
+    return _setButtonsTextFontFamily;
+}
+- (SCLAlertViewBuilder *(^) (NSString *title, SCLActionBlock action))addButtonWithActionBlock {
+    if (!_addButtonWithActionBlock) {
+        __weak typeof(self) weakSelf = self;
+        _addButtonWithActionBlock = ^(NSString *title, SCLActionBlock action) {
+            [weakSelf.alertView addButton:title actionBlock:action];
+            return weakSelf;
+        };
+    }
+    return _addButtonWithActionBlock;
+}
+- (SCLAlertViewBuilder *(^) (NSString *title, SCLValidationBlock validationBlock, SCLActionBlock action))addButtonWithValidationBlock {
+    if (!_addButtonWithValidationBlock) {
+        __weak typeof(self) weakSelf = self;
+        _addButtonWithValidationBlock = ^(NSString *title, SCLValidationBlock validationBlock, SCLActionBlock action) {
+            [weakSelf.alertView addButton:title validationBlock:validationBlock actionBlock:action];
+            return weakSelf;
+        };
+    }
+    return _addButtonWithValidationBlock;
+}
+- (SCLAlertViewBuilder *(^) (NSString *title, id target, SEL selector))addButtonWithTarget {
+    if (!_addButtonWithTarget) {
+        __weak typeof(self) weakSelf = self;
+        _addButtonWithTarget = ^(NSString *title, id target, SEL selector) {
+            [weakSelf.alertView addButton:title target:target selector:selector];
+            return weakSelf;
+        };
+    }
+    return _addButtonWithTarget;
+}
+
+#pragma mark - Builders
+- (SCLAlertViewBuilder *(^)(SCLALertViewButtonBuilder *builder))addButtonWithBuilder {
+    if (!_addButtonWithBuilder) {
+        __weak typeof(self) weakSelf = self;
+        _addButtonWithBuilder = ^(SCLALertViewButtonBuilder *builder){
+            SCLButton *button = nil;
+            if (builder.parameterTarget && builder.parameterSelector) {
+                button = [weakSelf.alertView addButton:builder.parameterTitle target:builder.parameterTarget selector:builder.parameterSelector];
+            }
+            else if (builder.parameterValidationBlock && builder.parameterActionBlock) {
+                button = [weakSelf.alertView addButton:builder.parameterTitle validationBlock:builder.parameterValidationBlock actionBlock:builder.parameterActionBlock];
+            }
+            else if (builder.parameterActionBlock) {
+                button = [weakSelf.alertView addButton:builder.parameterTitle actionBlock:builder.parameterActionBlock];
+            }
+            builder.button = button;
+            return weakSelf; 
+        };
+    }
+    return _addButtonWithBuilder;
+}
+- (SCLAlertViewBuilder *(^)(SCLALertViewTextFieldBuilder *builder))addTextFieldWithBuilder {
+    if (!_addTextFieldWithBuilder) {
+        __weak typeof(self) weakSelf = self;
+        _addTextFieldWithBuilder = ^(SCLALertViewTextFieldBuilder *builder){
+            builder.textField = [weakSelf.alertView addTextField:builder.parameterTitle];
+            return weakSelf;
+        };
+    }
+    return _addTextFieldWithBuilder;
+}
+@end
+
+@interface SCLAlertViewShowBuilder()
+
+@property(weak, nonatomic) UIViewController *parameterViewController;
+@property(copy, nonatomic) UIImage *parameterImage;
+@property(copy, nonatomic) UIColor *parameterColor;
+@property(copy, nonatomic) NSString *parameterTitle;
+@property(copy, nonatomic) NSString *parameterSubTitle;
+@property(copy, nonatomic) NSString *parameterCompleteText;
+@property(copy, nonatomic) NSString *parameterCloseButtonTitle;
+@property(assign, nonatomic) SCLAlertViewStyle parameterStyle;
+@property(assign, nonatomic) NSTimeInterval parameterDuration;
+
+#pragma mark - Setters
+@property(copy, nonatomic) SCLAlertViewShowBuilder *(^viewController)(UIViewController *viewController);
+@property(copy, nonatomic) SCLAlertViewShowBuilder *(^image)(UIImage *image);
+@property(copy, nonatomic) SCLAlertViewShowBuilder *(^color)(UIColor *color);
+@property(copy, nonatomic) SCLAlertViewShowBuilder *(^title)(NSString *title);
+@property(copy, nonatomic) SCLAlertViewShowBuilder *(^subTitle)(NSString *subTitle);
+@property(copy, nonatomic) SCLAlertViewShowBuilder *(^completeText)(NSString *completeText);
+@property(copy, nonatomic) SCLAlertViewShowBuilder *(^style)(SCLAlertViewStyle style);
+@property(copy, nonatomic) SCLAlertViewShowBuilder *(^closeButtonTitle)(NSString *closeButtonTitle);
+@property(copy, nonatomic) SCLAlertViewShowBuilder *(^duration)(NSTimeInterval duration);
+
+#pragma mark - Show
+@property(copy, nonatomic) void (^show)(SCLAlertView *view, UIViewController *controller);
+@end
+
+@implementation SCLAlertViewShowBuilder
+
+
+#pragma mark - Setters
+- (SCLAlertViewShowBuilder *(^)(UIViewController *viewController))viewController {
+    if (!_viewController) {
+        __weak typeof(self) weakSelf = self;
+        _viewController = ^(UIViewController *viewController){
+            weakSelf.parameterViewController = viewController;
+            return weakSelf;
+        };
+    }
+    return _viewController;
+}
+- (SCLAlertViewShowBuilder *(^)(UIImage *image))image {
+    if (!_image) {
+        __weak typeof(self) weakSelf = self;
+        _image = ^(UIImage *image) {
+            weakSelf.parameterImage = image;
+            return weakSelf;
+        };
+    }
+    return _image;
+}
+- (SCLAlertViewShowBuilder *(^)(UIColor *color))color {
+    if (!_color) {
+        __weak typeof(self) weakSelf = self;
+        _color = ^(UIColor *color) {
+            weakSelf.parameterColor = color;
+            return weakSelf;
+        };
+    }
+    return _color;
+}
+- (SCLAlertViewShowBuilder *(^)(NSString *title))title {
+    if (!_title) {
+        __weak typeof(self) weakSelf = self;
+        _title = ^(NSString *title){
+            weakSelf.parameterTitle = title;
+            return weakSelf;
+        };
+    }
+    return _title;
+}
+- (SCLAlertViewShowBuilder *(^)(NSString *subTitle))subTitle {
+    if (!_subTitle) {
+        __weak typeof(self) weakSelf = self;
+        _subTitle = ^(NSString *subTitle){
+            weakSelf.parameterSubTitle = subTitle;
+            return weakSelf;
+        };
+    }
+    return _subTitle;
+}
+- (SCLAlertViewShowBuilder *(^)(NSString *completeText))completeText {
+    if (!_completeText) {
+        __weak typeof(self) weakSelf = self;
+        _completeText = ^(NSString *completeText){
+            weakSelf.parameterCompleteText = completeText;
+            return weakSelf;
+        };
+    }
+    return _completeText;
+}
+
+- (SCLAlertViewShowBuilder *(^)(SCLAlertViewStyle style))style {
+    if (!_style) {
+        __weak typeof(self) weakSelf = self;
+        _style = ^(SCLAlertViewStyle style){
+            weakSelf.parameterStyle = style;
+            return weakSelf;
+        };
+    }
+    return _style;
+}
+- (SCLAlertViewShowBuilder *(^)(NSString *closeButtonTitle))closeButtonTitle {
+    if (!_closeButtonTitle) {
+        __weak typeof(self) weakSelf = self;
+        _closeButtonTitle = ^(NSString *closeButtonTitle){
+            weakSelf.parameterCloseButtonTitle = closeButtonTitle;
+            return weakSelf;
+        };
+    }
+    return _closeButtonTitle;
+}
+- (SCLAlertViewShowBuilder *(^)(NSTimeInterval duration))duration {
+    if (!_duration) {
+        __weak typeof(self) weakSelf = self;
+        _duration = ^(NSTimeInterval duration){
+            weakSelf.parameterDuration = duration;
+            return weakSelf;
+        };
+    }
+    return _duration;
+}
+
+- (void)showAlertView:(SCLAlertView *)alertView {
+    [self showAlertView:alertView onViewController:self.parameterViewController];
+}
+
+- (void)showAlertView:(SCLAlertView *)alertView onViewController:(UIViewController *)controller {
+    UIViewController *targetController = controller ? controller : self.parameterViewController;
+    
+    if (self.parameterImage || self.parameterColor) {
+        [alertView showTitle:targetController image:self.parameterImage color:self.parameterColor title:self.parameterTitle subTitle:self.parameterSubTitle duration:self.parameterDuration completeText:self.parameterCloseButtonTitle style:self.parameterStyle];
+    }
+    else {
+        [alertView showTitle:targetController title:self.parameterTitle subTitle:self.parameterSubTitle style:self.parameterStyle closeButtonTitle:self.parameterCloseButtonTitle duration:self.parameterDuration];
+    }
+}
+
+- (void (^)(SCLAlertView *view, UIViewController *controller))show {
+    if (!_show) {
+        __weak typeof(self) weakSelf = self;
+        _show = ^(SCLAlertView *view, UIViewController *controller) {
+            [weakSelf showAlertView:view onViewController:controller];
+        };
+    }
+    return _show;
 }
 
 @end
