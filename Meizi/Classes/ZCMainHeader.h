@@ -19,7 +19,7 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <MJRefresh/MJRefresh.h>
 #import <SDCycleScrollView/SDCycleScrollView.h>
-#import <UMengAnalytics/MobClick.h>
+#import <UMMobClick/MobClick.h>
 #import <Realm/Realm.h>
 #import "NSDate+SFPrettyDate.h"
 

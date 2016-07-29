@@ -11,7 +11,7 @@
 #import "TFHppleElement.h"
 #import "XPathQuery.h"
 #import <SDWebImage/UIImageView+WebCache.h>
-#import <UMengAnalytics/MobClick.h>
+#import <UMMobClick/MobClick.h>
 
 #import <Realm/Realm.h>
 

@@ -7,7 +7,7 @@
 //
 
 #import "ZCSettingViewController.h"
-#import <UMengAnalytics/MobClick.h>
+#import <UMMobClick/MobClick.h>
 #import <AVOSCloud/AVOSCloud.h>
 #import <SDWebImage/SDImageCache.h>
 #import <CRToast/CRToast.h>

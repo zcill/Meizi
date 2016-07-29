@@ -14,7 +14,7 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "ZCMeiziRealm.h"
 #import <SCLAlertView-Objective-C/SCLAlertView.h>
-#import <UMengAnalytics/MobClick.h>
+#import <UMMobClick/MobClick.h>
 #import <AFNetworking/AFNetworking.h>
 #import <SVProgressHUD/SVProgressHUD.h>
 #import <IDMPhotoBrowser/IDMPhotoBrowser.h>

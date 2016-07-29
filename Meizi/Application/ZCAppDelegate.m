@@ -10,7 +10,7 @@
 #import "ZCTabBar.h"
 #import "ZCLoginViewController.h"
 #import <AVOSCloud/AVOSCloud.h>
-#import <UMengAnalytics/MobClick.h>
+#import <UMMobClick/MobClick.h>
 #import <LocalAuthentication/LocalAuthentication.h>
 
 @interface ZCAppDelegate ()
@@ -126,7 +126,12 @@
 - (void)setUmengAnalytics {
     
     // 开启友盟统计功能
-    [MobClick startWithAppkey:UmengAppKey reportPolicy:BATCH channelId:nil];
+    UMAnalyticsConfig *config = [[UMAnalyticsConfig alloc] init];
+    config.appKey = UmengAppKey;
+    config.ePolicy = BATCH;
+    config.channelId = nil;
+    
+    [MobClick startWithConfigure:config];
     
     // 获取Xcode工程的Version号而不是build号
     NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
