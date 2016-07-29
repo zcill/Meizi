@@ -220,7 +220,9 @@
         [self.collectionView reloadData];
     });
     
-    NSLog(@"%@", realm.path);
+//    NSLog(@"%@", realm.path);
+    NSString *localPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
+    NSLog(@"local document path: %@", localPath);
 }
 
 /**
